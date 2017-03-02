@@ -1,0 +1,8 @@
+.idea/
+responsive-testing-portal-client/reports/
+.project
+.classpath
+test-output
+.settings
+target
+doxygen.config
