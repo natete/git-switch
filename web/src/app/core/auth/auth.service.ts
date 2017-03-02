@@ -14,4 +14,13 @@ export class AuthService {
 
     return tempSubject.asObservable();
   }
+
+  getAccessToken(): Observable<string> {
+    // TODO
+    let tempSubject = new Subject<string>();
+
+    setTimeout(()=> tempSubject.next('TODO'), 3000);
+
+    return tempSubject.asObservable();
+  }
 }
