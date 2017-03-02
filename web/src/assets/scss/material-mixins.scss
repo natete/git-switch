@@ -1,0 +1,22 @@
+/**
+ * Common mixins to be able to load the theme colors
+ */
+
+/**
+ * Define common classes to use the default primary color.
+ */
+@mixin primary-color-base-styles($theme) {
+
+  /* Get the primary palette from the theme */
+  $primaryPalette: map-get($theme, primary);
+
+  /* Class to use the primary color as background */
+  .primary-color-bg {
+    background-color: mat-color($primaryPalette, default);
+  }
+
+  /* Class to use the primary color as text color */
+  .primary-color-font {
+    color: mat-color($primaryPalette, default);
+  }
+}

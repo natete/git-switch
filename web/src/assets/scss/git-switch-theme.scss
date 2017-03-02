@@ -1,0 +1,21 @@
+/**
+ * Custom Angular Material theme.
+ */
+
+// Import and include the core styles
+@import '~@angular/material/core/theming/all-theme';
+@import '~@angular/material/core/theming/theming';
+@include mat-core();
+
+// Define the color palette for each state
+// TODO Define palettes according to design
+$gd-app-primary: mat-palette($mat-blue-grey);
+$gd-app-accent:  mat-palette($mat-green);
+$gd-app-warn:    mat-palette($mat-deep-orange);
+
+// Define the theme object
+$git-switch-app-theme: mat-light-theme($gd-app-primary, $gd-app-accent, $gd-app-warn);
+@include angular-material-theme($git-switch-app-theme);
+
+// Include the custom mixin using the palette colors
+@include primary-color-base-styles($git-switch-app-theme);
