@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Account } from './account';
 import { Http, Response, URLSearchParams } from '@angular/http';
 
@@ -33,11 +33,13 @@ export class AccountService {
       .subscribe(
         (gitHubClient: any) => {
           let params = new URLSearchParams();
+
           params.set('client_id', gitHubClient.client_id);
-          params.set('redirect_uri', 'http://localhost:4200/accounts');
+          params.set('redirect_uri', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/accounts`);
           params.set('state', nonce);
           params.set('scope', 'user, repo');
           params.set('allow_signup', 'false');
+
 
           location.href = 'https://github.com/login/oauth/authorize?' + params.toString();
         }
