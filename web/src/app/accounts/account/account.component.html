@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="start center" fxFill>
+<div fxLayout="row" fxLayoutAlign="start center" fxFill *ngIf="account">
 
   <div fxLayout="column" fxLayoutAlign="center center" fxFlex="20">
     <img src="{{account.photoUrl}}" alt="Profile Picture"/>
@@ -15,7 +15,7 @@
   </div>
 
   <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
-    <i class="fa fa-lg fa-times"></i>
+    <i class="fa fa-lg fa-times" (click)="removeAccount(account)"></i>
   </div>
 
 </div>
