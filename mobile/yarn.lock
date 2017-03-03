@@ -50,6 +50,16 @@
   dependencies:
     tsickle "^0.1.7"
 
+"@ionic-native/core@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-3.0.0.tgz#79f95b98c251e127e99bfde6985e3a9864efe6ac"
+
+"@ionic-native/nativestorage@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/nativestorage/-/nativestorage-3.0.0.tgz#0782a2cdf244f088019a1d49ed4f3a2199ab2d0f"
+  dependencies:
+    "@ionic-native/core" "3.0.0"
+
 "@ionic/app-scripts@1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@ionic/app-scripts/-/app-scripts-1.1.3.tgz#ef510d64b8e4d9e8219717b98e00624c072c2221"
