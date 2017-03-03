@@ -40,13 +40,6 @@ export class AccountsListComponent implements OnInit {
     this.accountService.addAccount();
   }
 
-  /**
-   * Remove an existing account.
-   * @param account The account to disconnect.
-   */
-  removeAccount(account: Account): void {
-    this.accountService.removeAccount(account)
-      .subscribe(() => console.log('account removed'));
-  }
+
 
 }

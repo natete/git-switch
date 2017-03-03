@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Account } from '../account';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-account',
@@ -10,9 +11,18 @@ export class AccountComponent implements OnInit {
 
   @Input() account: Account;
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit() {
+  }
+
+  /**
+   * Remove an existing account.
+   * @param account The account to disconnect.
+   */
+  removeAccount(account: Account): void {
+    this.accountService.removeAccount(account)
+        .subscribe(() => console.log('account removed'));
   }
 
 }
