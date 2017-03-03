@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Mi cuenta de git 1",
+    "email": "migit1@test.com",
+    "photoUrl": "http://lorempixel.com/200/200/"
+  },
+  {
+    "id": 2,
+    "name": "Mi cuenta de git 2",
+    "email": "migit2@test.com",
+    "photoUrl": "http://lorempixel.com/200/200/"
+  }
+]

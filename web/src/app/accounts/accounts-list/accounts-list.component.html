@@ -1,0 +1,19 @@
+<h1>List of connected accounts</h1>
+
+<div fxLayout="row" fxLayoutAlign="center center" fxFill *ngIf="!accounts">
+  <div fxLayout="column" fxLayoutAlign="center center" fxFill>
+    <md-spinner></md-spinner>
+  </div>
+</div>
+
+<div *ngIf="accounts">
+  <app-account *ngFor="let account of accounts" [account]="account"></app-account>
+</div>
+
+
+
+<div>
+  <button md-raised-button color="primary" (click)="addAccount()">
+    Add new Git account
+  </button>
+</div>

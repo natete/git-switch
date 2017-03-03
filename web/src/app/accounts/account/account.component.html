@@ -1,0 +1,21 @@
+<div fxLayout="row" fxLayoutAlign="start center" fxFill *ngIf="account">
+
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="20">
+    <img src="{{account.photoUrl}}" alt="Profile Picture"/>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="center start" fxFlex="70">
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
+      {{account.name}}
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
+      {{account.email}}
+    </div>
+
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
+    <i class="fa fa-lg fa-times" (click)="removeAccount(account)"></i>
+  </div>
+
+</div>
