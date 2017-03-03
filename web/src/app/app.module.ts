@@ -13,6 +13,7 @@ import { AuthService } from './core/auth/auth.service';
 import { httpFactory } from './core/http/http.factory';
 
 import 'hammerjs';
+import { AccountsModule } from './accounts/accounts.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import 'hammerjs';
     HomeComponent
   ],
   imports: [
+    AccountsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
