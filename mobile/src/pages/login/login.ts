@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AuthService } from '../../providers/auth/auth-service';
 
 /*
  Generated class for the Login page.
@@ -13,10 +14,20 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  username: string;
+  password: string;
+  errorMessage: string;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  constructor(private navCtrl: NavController,
+              private navParams: NavParams,
+              private authService: AuthService) {}
+
+  ionViewDidLoad() { }
+
+  login(): void {
+    this.authService.login(this.username, this.password)
+      .catch(() => {
+        this.errorMessage = 'Invalid username and/or password';
+      });
   }
-
 }

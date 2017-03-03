@@ -7,9 +7,9 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AccountsPage } from '../pages/accounts/accounts';
 import { LoginPage } from '../pages/login/login';
 import { Http, XHRBackend, RequestOptions } from '@angular/http';
-import { HttpService } from '../providers/http/http-service';
 import { AuthService } from '../providers/auth/auth-service';
 import { TokenService } from '../providers/auth/token-service';
+import { HttpFactory } from '../providers/http/http.factory';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { TokenService } from '../providers/auth/token-service';
     AuthService,
     TokenService,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    { provide: Http, useFactory: HttpService, deps: [XHRBackend, RequestOptions, TokenService] }
+    { provide: Http, useFactory: HttpFactory, deps: [XHRBackend, RequestOptions, TokenService] }
   ]
 })
 export class AppModule {
