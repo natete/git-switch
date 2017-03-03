@@ -1,18 +1,41 @@
-<!--
-  Generated template for the Accounts page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Accounts</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-list [virtualScroll]="accounts" approxItemHeight="108px">
+      <ion-item *virtualItem="let account">
+        <ion-avatar item-left><img [src]="account.avatar"></ion-avatar>
+
+        <div class="item-content">
+          <h2>
+            <ion-icon item-left name="logo-github"></ion-icon>
+            {{account.name}}
+          </h2>
+          <p>
+            <ion-icon name="book" item-left></ion-icon>
+            {{account.numOfRepos}}
+          </p>
+        </div>
+
+        <button class="close-button" (click)="removeAccount(account)" item-right ion-button clear>
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-item>
+  </ion-list>
+
+  <button ion-button block icon-only large color="secondary"
+          (click)="addAccount()"><ion-icon name="add"></ion-icon></button>
 
 </ion-content>

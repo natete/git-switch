@@ -8,14 +8,14 @@ export class TokenService {
   constructor() { }
 
   setToken(token: string): Promise<void> {
-    return NativeStorage.setItem('token', token);
+    return Promise.resolve();// NativeStorage.setItem('token', token);
   }
 
   getToken(): Promise<string> {
-    return NativeStorage.getItem('token');
+    return Promise.resolve('token');//NativeStorage.getItem('token');
   }
 
   revokeToken(): Promise<void> {
-    return NativeStorage.remove('token');
+    return Promise.resolve();//NativeStorage.remove('token');
   }
 }

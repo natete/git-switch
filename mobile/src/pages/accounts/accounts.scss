@@ -1,3 +1,17 @@
 page-accounts {
 
+  ion-item.item-block {
+    border-bottom: 20px solid map-get($colors, dark);
+    box-sizing: content-box;
+  }
+
+  .item-content {
+    ion-icon[item-left] {
+      margin-bottom: 0;
+    }
+  }
+
+  .close-button.item-button {
+    font-size: 1.8rem;
+  }
 }

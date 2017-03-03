@@ -184,6 +184,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-in-memory-web-api@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.3.0.tgz#d4f3a9490cac67e7b6332c9994a4f25012964582"
+
 ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
@@ -1683,7 +1687,7 @@ ionic-angular@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/ionic-angular/-/ionic-angular-2.1.0.tgz#189d9a66120a6bc1927eb399ba14d7cbec392500"
 
-ionic-native@2.4.1, ionic-native@^2.2.11:
+ionic-native@^2.2.11:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/ionic-native/-/ionic-native-2.4.1.tgz#79ecb9ae8db33d6f208bd5d08b181960020212c5"
   dependencies:
