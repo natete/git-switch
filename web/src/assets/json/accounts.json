@@ -2,13 +2,13 @@
   {
     "id": 1,
     "name": "Mi cuenta de git 1",
-    "email": "mjimenez@emergya.com",
+    "email": "migit1@test.com",
     "photoUrl": "http://lorempixel.com/200/200/"
   },
   {
     "id": 2,
     "name": "Mi cuenta de git 2",
-    "email": "mm.jimenez86@gmail.com",
+    "email": "migit2@test.com",
     "photoUrl": "http://lorempixel.com/200/200/"
   }
 ]
