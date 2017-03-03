@@ -23,10 +23,11 @@ export class AccountsListComponent implements OnInit {
             return {code: params['code'], nonce: params['state']}
         })
         .subscribe((params: {code: string, nonce: string}) => {
-          this.accountService.authorizeAccount(params.code, params.nonce);
+          this.accountService.authorizeAccount(params.code, params.nonce)
+            .subscribe(res => console.log(res));
         });
 
-    this.accountService.getConnectedAccounts()
+    this.accountService.getAccounts()
         .subscribe(
           (accounts) => this.accounts = accounts,
           (error) => console.log(error)
