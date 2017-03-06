@@ -26,10 +26,11 @@ export class AccountComponent implements OnInit {
   removeAccount(account: Account): void {
 
     this.dialogService.confirm('Confirm Remove', 'Are you sure you want to disconnect this account?')
-        .subscribe(() => this.accountService.removeAccount(account));
-
-    // this.accountService.removeAccount(account)
-    //     .subscribe(() => console.log('account removed'));
+        .filter(res => res)
+        .subscribe(() => {
+          return this.accountService.removeAccount(account)
+            .subscribe(res => console.log('Borrado'));
+        });
   }
 
 }
