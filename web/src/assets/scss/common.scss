@@ -32,17 +32,23 @@ body {
  */
 .splash-logo-container {
   height: 100vh;
-  text-align: center;
-  //background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+
+  .splash-logo {
+    width: 20vw;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
 }
 
-.splash-logo {
-  width: 20vw;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+app-root:empty + .splash-logo-container {
+  opacity: 1;
 }
+
+
 
