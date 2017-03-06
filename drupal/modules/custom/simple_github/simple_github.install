@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Installation and schema related functions for the Simple GitHub module.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_requirements().
+ */
+function simple_github_requirements($phase) {
+  $requirements = array();
+  // Non extra requirements detected by now
+  return $requirements;
+}
+
+/**
+ * Implements hook_install().
+ */
+function simple_github_install() {
+    ;
+}
