@@ -50,6 +50,7 @@ export class AccountsListComponent implements OnInit {
    * Add a new account.
    */
   addAccount(): void {
+    this.spinnerService.showSpinner();
     this.accountService.addAccount();
   }
 
