@@ -7,7 +7,58 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-  pullRequests = [];
+  pullRequests = [
+    {
+      description: 'Pull Request description gfjdngfkjdnbjdkjnfvjdn',
+      userName: 'UserName1',
+      date: "10 months",
+      commits: 312,
+      comments: 129,
+      count: 582,
+      from: 'MB-1685-DEV_Fix',
+      to: 'Master_branch_of_project'
+    },
+    {
+      description: 'Pull Request description',
+      userName: 'UserName1',
+      date: "10 months",
+      commits: 312,
+      comments: 129,
+      count: 582,
+      from: 'MB-1685-DEV_Fix',
+      to: 'Master_branch_of_project'
+    },
+    {
+      description: 'Pull Request description',
+      userName: 'UserName1',
+      date: "10 months",
+      commits: 312,
+      comments: 129,
+      count: 582,
+      from: 'MB-1685-DEV_Fix',
+      to: 'Master_branch_of_project'
+    },
+    {
+      description: 'Pull Request description',
+      userName: 'UserName1',
+      date: "10 months",
+      commits: 312,
+      comments: 129,
+      count: 582,
+      from: 'MB-1685-DEV_Fix',
+      to: 'Master_branch_of_project'
+    },
+    {
+      description: 'Pull Request description',
+      userName: 'UserName1',
+      date: "10 months",
+      commits: 312,
+      comments: 129,
+      count: 582,
+      from: 'MB-1685-DEV_Fix',
+      to: 'Master_branch_of_project'
+    }
+  ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
