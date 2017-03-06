@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Account } from '../account';
 import { AccountService } from '../account.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-accounts-list',
@@ -13,7 +14,8 @@ export class AccountsListComponent implements OnInit {
   public accounts: Account[];
 
   constructor(private accountService: AccountService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private snackBar: MdSnackBar) { }
 
   ngOnInit() {
 
@@ -26,7 +28,7 @@ export class AccountsListComponent implements OnInit {
         })
         .subscribe((params: {code: string, nonce: string}) => {
           this.accountService.authorizeAccount(params.code, params.nonce)
-            .subscribe(res => console.log(res));
+            .subscribe(() => this.snackBar.open('Account successfully added', null, {duration: 2000}));
         });
 
     // Get the list of accounts

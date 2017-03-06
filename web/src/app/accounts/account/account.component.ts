@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Account } from '../account';
 import { AccountService } from '../account.service';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 import { DialogsService } from '../../shared/dialogs/dialogs.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class AccountComponent implements OnInit {
   @Input() account: Account;
 
   constructor(private accountService: AccountService,
-              private dialogService: DialogsService) { }
+              private dialogService: DialogsService,
+              private snackBar: MdSnackBar) { }
 
   ngOnInit() {
   }
@@ -29,7 +30,9 @@ export class AccountComponent implements OnInit {
         .filter(res => res)
         .subscribe(() => {
           return this.accountService.removeAccount(account)
-            .subscribe(res => console.log('Borrado'));
+            .subscribe(() => {
+              this.snackBar.open('Account successfully removed', null, {duration: 2000});
+            });
         });
   }
 
