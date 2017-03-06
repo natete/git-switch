@@ -7,7 +7,7 @@ import { Http, Response, URLSearchParams } from '@angular/http';
 export class AccountService {
 
   private storage: Storage = localStorage;
-  private accounts = new BehaviorSubject<Account[]>([]);
+  private accounts = new BehaviorSubject<Account[]>(null);
 
   constructor(private http: Http) {
     this.refreshConnectedAccounts()

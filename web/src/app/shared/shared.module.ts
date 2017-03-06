@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
 import { DialogsModule } from './dialogs/dialogs.module';
+import { SpinnerService } from './providers/spinner.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { DialogsModule } from './dialogs/dialogs.module';
     FlexLayoutModule,
     MaterialModule
   ],
-  declarations: []
+  declarations: [],
+  providers: [SpinnerService]
 })
 export class SharedModule { }

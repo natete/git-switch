@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Account } from '../account';
 import { AccountService } from '../account.service';
-import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
+import { MdSnackBar } from '@angular/material';
 import { DialogsService } from '../../shared/dialogs/dialogs.service';
+import { SpinnerService } from '../../shared/providers/spinner.service';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-account',
@@ -15,6 +17,7 @@ export class AccountComponent implements OnInit {
 
   constructor(private accountService: AccountService,
               private dialogService: DialogsService,
+              private spinnerService: SpinnerService,
               private snackBar: MdSnackBar) { }
 
   ngOnInit() {
@@ -28,11 +31,11 @@ export class AccountComponent implements OnInit {
 
     this.dialogService.confirm('Confirm Remove', 'Are you sure you want to disconnect this account?')
         .filter(res => res)
+        .do(() => this.spinnerService.showSpinner())
         .subscribe(() => {
           return this.accountService.removeAccount(account)
-            .subscribe(() => {
-              this.snackBar.open('Account successfully removed', null, {duration: 2000});
-            });
+                     .do(() => this.spinnerService.hideSpinner())
+                     .subscribe(() => this.snackBar.open('Account successfully removed', null, { duration: 2000 }))
         });
   }
 
