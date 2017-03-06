@@ -31,19 +31,8 @@ body {
  * Splash-like screen styles
  */
 .splash-logo-container {
-  height: 100vh;
   opacity: 0;
   transition: opacity .5s ease-in-out;
-
-  .splash-logo {
-    width: 20vw;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
 }
 
 app-root:empty + .splash-logo-container {
