@@ -58,9 +58,10 @@ export class AccountService {
     // return this.http.post('', params) // TODO User the correct endpoint and method
     return this.http.get('/assets/json/github-client.json')
                .map(() => {
-                 const currentValue: Account[] = this.accounts.getValue();
+                 let currentValue: Account[] = this.accounts.getValue();
                  const accountIndex = currentValue.indexOf(account);
-                 this.accounts.next(currentValue.splice(accountIndex, 1));
+                 currentValue.splice(accountIndex, 1);
+                 this.accounts.next(currentValue);
                });
   }
 

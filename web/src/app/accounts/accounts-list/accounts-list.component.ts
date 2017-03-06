@@ -17,6 +17,8 @@ export class AccountsListComponent implements OnInit {
 
   ngOnInit() {
 
+    // Capture de URL parameters to check if we are coming back from
+    // authorizing a new git account.
     this.activatedRoute.queryParams
         .filter((params: Params) => params['code'] && params['state'])
         .map((params: Params) => {
@@ -27,6 +29,7 @@ export class AccountsListComponent implements OnInit {
             .subscribe(res => console.log(res));
         });
 
+    // Get the list of accounts
     this.accountService.getAccounts()
         .subscribe(
           (accounts) => this.accounts = accounts,

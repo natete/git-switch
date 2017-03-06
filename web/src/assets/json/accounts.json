@@ -2,13 +2,17 @@
   {
     "id": 1,
     "name": "Mi cuenta de git 1",
+    "type": "GITHUB",
     "email": "migit1@test.com",
-    "photoUrl": "http://lorempixel.com/200/200/"
+    "photoUrl": "http://lorempixel.com/200/200/",
+    "repoNumber": 7
   },
   {
     "id": 2,
     "name": "Mi cuenta de git 2",
     "email": "migit2@test.com",
-    "photoUrl": "http://lorempixel.com/200/200/"
+    "type": "BITBUCKET",
+    "photoUrl": "http://lorempixel.com/200/200/",
+    "repoNumber": 32
   }
 ]

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Account } from '../account';
 import { AccountService } from '../account.service';
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { DialogsService } from '../../shared/dialogs/dialogs.service';
 
 @Component({
   selector: 'app-account',
@@ -11,7 +13,8 @@ export class AccountComponent implements OnInit {
 
   @Input() account: Account;
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService,
+              private dialogService: DialogsService) { }
 
   ngOnInit() {
   }
@@ -21,8 +24,12 @@ export class AccountComponent implements OnInit {
    * @param account The account to disconnect.
    */
   removeAccount(account: Account): void {
-    this.accountService.removeAccount(account)
-        .subscribe(() => console.log('account removed'));
+
+    this.dialogService.confirm('Confirm Remove', 'Are you sure you want to disconnect this account?')
+        .subscribe(() => this.accountService.removeAccount(account));
+
+    // this.accountService.removeAccount(account)
+    //     .subscribe(() => console.log('account removed'));
   }
 
 }

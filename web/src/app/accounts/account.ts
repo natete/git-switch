@@ -2,7 +2,9 @@ export class Account {
   id: number;
   name: string;
   email: string;
+  type: string;
   photoUrl: string;
+  repoNumber: number;
 
   constructor(account?: any) {
     // TODO: Adapt this to the information received from the BE
@@ -11,6 +13,8 @@ export class Account {
       this.name = account.name;
       this.email = account.email;
       this.photoUrl = account.photoUrl;
+      this.repoNumber = account.repoNumber;
+      this.type = account.type || 'git';
     }
   }
 }
