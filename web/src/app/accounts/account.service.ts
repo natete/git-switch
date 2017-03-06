@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { Account } from './account';
 import { Http, Response, URLSearchParams } from '@angular/http';
 
@@ -7,69 +7,87 @@ import { Http, Response, URLSearchParams } from '@angular/http';
 export class AccountService {
 
   private storage: Storage = localStorage;
+  private accounts = new BehaviorSubject<Account[]>(null);
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    this.refreshConnectedAccounts()
+        .subscribe((res: Account[]) => this.accounts.next(res));
+  }
 
   /**
-   * Get the list of connected accounts.
-   * @returns {Observable<R>}.
+   * Get the observable list of accounts.
+   * @returns {Observable<Account[]>}.
    */
-  getConnectedAccounts(): Observable<Account[]> {
-    return this.http.get('/assets/json/accounts.json') //TODO use the proper endpoint
-      // .map((res: Response) => {
-      //   res.json()
-      // })
-      .catch((err: any) => Observable.throw(err));
+  getAccounts(): Observable<Account[]> {
+    return this.accounts.asObservable();
   }
 
   /**
    * Initiate the process for getting a git login code.
    */
   addAccount(): void {
-    var nonce = this.createNonce();
+    const nonce = this.createNonce();
     this.storage.setItem('GitNonce', nonce);
 
     this.http.get('/assets/json/github-client.json')
-      .subscribe(
-        (gitHubClient: any) => {
-          let params = new URLSearchParams();
+        .subscribe(
+          (gitHubClient: any) => {
+            const params = new URLSearchParams();
 
-          params.set('client_id', gitHubClient.client_id);
-          params.set('redirect_uri', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/accounts`);
-          params.set('state', nonce);
-          params.set('scope', 'user, repo');
-          params.set('allow_signup', 'false');
+            params.set('client_id', gitHubClient.client_id);
+            params.set('redirect_uri', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/accounts`);
+            params.set('state', nonce);
+            params.set('scope', 'user, repo');
+            params.set('allow_signup', 'false');
 
-
-          location.href = 'https://github.com/login/oauth/authorize?' + params.toString();
-        }
-      )
+            location.href = 'https://github.com/login/oauth/authorize?' + params.toString();
+          }
+        )
   }
 
   /**
    * Disconnect an account.
    * @param account The account to disconnect.
-   * @returns {Observable<Response>}.
+   * @returns {Observable<void>}.
    */
-  removeAccount(account: Account) {
-    let params = new URLSearchParams();
+  removeAccount(account: Account): Observable<void> {
+
+    const params = new URLSearchParams();
     params.set('accountId', account.id.toString());
-    return this.http.post('', params); // TODO
+
+    // return this.http.post('', params) // TODO User the correct endpoint and method
+    return this.http.get('/assets/json/github-client.json')
+               .map(() => {
+                 let currentValue: Account[] = this.accounts.getValue();
+                 const accountIndex = currentValue.indexOf(account);
+                 currentValue.splice(accountIndex, 1);
+                 this.accounts.next(currentValue);
+               });
   }
 
   /**
    * Authorize the user account.
    * @param code The code to send to the BE so that it can obtain the access token.
    * @param nonce The nonce to check if the petition has been compromised.
-   * @return TODO
+   * @return {Observable<void>}.
    */
-  authorizeAccount(code: string, nonce: string) {
+  authorizeAccount(code: string, nonce: string): Observable<void> {
     if (this.storage.getItem('GitNonce') === nonce) {
-      let params = new URLSearchParams();
+      const params = new URLSearchParams();
       params.set('code', code);
       params.set('nonce', nonce);
 
-      this.http.post('', params); // TODO
+      //this.http.post('', params); // TODO
+      return this.http.get('/assets/json/new-account.json')
+                 .map((res) => {
+                   const currentValue: Account[] = this.accounts.getValue();
+                   currentValue.push(new Account(res));
+                   this.accounts.next(currentValue);
+                 })
+                 .catch((err: any) => {
+                    console.log('error');
+                    return Observable.throw(err)
+                 });
     }
   }
 
@@ -77,8 +95,20 @@ export class AccountService {
    * Change the default storage method.
    * @param storage The storage type.
    */
-  public setStorage(storage: Storage) {
+  setStorage(storage: Storage): void {
     this.storage = storage;
+  }
+
+  /**
+   * Get the list of connected accounts.
+   * @returns {Observable<R>}.
+   */
+  private refreshConnectedAccounts(): Observable<Account[]> {
+    return this.http.get('/assets/json/accounts.json') //TODO use the proper endpoint
+    // .map((res: Response) => {
+    //   res.json()
+    // })
+               .catch((err: any) => Observable.throw(err));
   }
 
   /**
