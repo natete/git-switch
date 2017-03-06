@@ -54,6 +54,12 @@
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-3.0.0.tgz#79f95b98c251e127e99bfde6985e3a9864efe6ac"
 
+"@ionic-native/inappbrowser@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/inappbrowser/-/inappbrowser-3.0.0.tgz#bf8519351477c633488af5e90f47f6a69c7985d8"
+  dependencies:
+    "@ionic-native/core" "3.0.0"
+
 "@ionic-native/nativestorage@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/nativestorage/-/nativestorage-3.0.0.tgz#0782a2cdf244f088019a1d49ed4f3a2199ab2d0f"

@@ -5,11 +5,10 @@ import { Account } from './account';
 
 @Component({
   selector: 'page-accounts',
-  templateUrl: 'accounts.html'
+  templateUrl: 'accounts.page.html'
 })
 export class AccountsPage {
   accounts: Account[];
-  user: Account;
 
   constructor(private navCtrl: NavController,
               private navParams: NavParams,
@@ -27,32 +26,42 @@ export class AccountsPage {
     this.accountsService
         .getAccounts()
         .subscribe(accounts => {
-          // TODO use application user
-          this.user = accounts[0];
           this.accounts = accounts;
-          loader.dismissAll();
+          loader
+            .dismiss()
+            .catch(() => console.log('Already dismissed'));
         });
   }
 
-  removeAccount(account: Account): void {
+  /**
+   * Starts the process to add a new account.
+   */
+  addAccount(): void {
+    this.accountsService.addAccount();
+  }
+
+  /**
+   * Starts the process to delete the given account.
+   * @param accountId the id of the account to be deleted.
+   */
+  deleteAccount(accountId: number): void {
     const confirm = this.alertCtrl.create({
       title: 'Remove account',
       message: 'Are you sure you want to remove the account?',
       buttons: [
-        {
-          text: 'Cancel',
-        },
-        {
-          text: 'Yes',
-          handler: () => this.proceedRemoveAccount(account)
-        }
+        { text: 'Cancel' },
+        { text: 'Yes', handler: () => this.proceedRemoveAccount(accountId) }
       ]
     });
 
     confirm.present();
   }
 
-  private proceedRemoveAccount(account: Account): void {
-    this.accountsService.deleteAccount(account);
+  /**
+   * Deletes the given account.
+   * @param accountId the id of the account to be deleted.
+   */
+  private proceedRemoveAccount(accountId: number): void {
+    this.accountsService.deleteAccount(accountId);
   }
 }
