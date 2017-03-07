@@ -13,7 +13,7 @@ import 'rxjs/add/operator/do';
 })
 export class AccountsListComponent implements OnInit {
 
-  public accounts: Account[];
+  private accounts: Account[];
 
   constructor(private accountService: AccountService,
               private activatedRoute: ActivatedRoute,

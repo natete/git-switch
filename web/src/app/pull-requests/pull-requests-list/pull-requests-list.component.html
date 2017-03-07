@@ -1,0 +1,9 @@
+<div *ngIf="pullRequests">
+
+  <h1>List of open pull requests</h1>
+
+  <div>
+    <app-pull-request *ngFor="let pr of pullRequests" [pullRequest]="pr"></app-pull-request>
+  </div>
+
+</div>
