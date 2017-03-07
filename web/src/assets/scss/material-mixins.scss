@@ -20,3 +20,23 @@
     color: mat-color($primaryPalette, default);
   }
 }
+
+
+/**
+ * Define common classes to use the default accent color.
+ */
+@mixin accent-color-base-styles($theme) {
+
+  /* Get the accent palette from the theme */
+  $accentPalette: map-get($theme, accent);
+
+  /* Class to use the accent color as background */
+  .accent-color-bg {
+    background-color: mat-color($accentPalette, default);
+  }
+
+  /* Class to use the accent color as text color */
+  .accent-color-font {
+    color: mat-color($accentPalette, default);
+  }
+}

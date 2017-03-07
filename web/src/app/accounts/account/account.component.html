@@ -1,28 +1,104 @@
-<md-card class="account-profile-container" *ngIf="account">
-  <div fxLayout="row" fxLayoutAlign="start center" fxFill>
+<md-card class="account-profile-container primary-color-bg" *ngIf="account">
+  <div fxLayout="row" fxFill>
+    <div fxLayout="column" fxFlex.xs="90" fxFlex.md="90" fxFlex.sm="90">
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex.md="50" fxFlex.sm="33" fxFlex.xs="33">
 
-    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
-      <img class="account-profile-picture" src="{{account.photoUrl}}" alt="Profile Picture"/>
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10" fxFlex.xs="15">
+          <img class="account-profile-picture" [src]="account.photoUrl" alt="Profile Picture" fxHide.md fxHide.sm
+               fxHide.xs/>
+          <img class="account-profile-picture-sm" [src]="account.photoUrl" alt="Profile Picture" fxHide.lg fxHide.xl/>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10" fxHide.xs fxHide.sm>
+          <i class="fa fa-5x fa-{{account.type.toLowerCase()}} account-icon" fxHide.md></i>
+          <i class="fa fa-2x fa-{{account.type.toLowerCase()}} account-icon" fxHide.lg fxHide.xl></i>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center start"
+             fxFlex.lg="30" fxFlex.xl="30" fxFlex.md="70" fxFlex.sm="70" fxFlex.xs="90">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFill>
+            <span class="account-full-name">{{account.fullname}}</span>
+            <span class="accent-color-font" fxHide.xs fxHide.sm>{{account.username}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center"
+             fxFlex="10"
+             fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+            <i class="fa fa-list account-icon"></i>
+            <span class="accent-color-font">{{account.repoNumber}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center"
+             fxFlex="15"
+             fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFill>
+            <i class="fa fa-users account-icon"></i>
+            <span class="accent-color-font">{{account.organization}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center"
+             fxFlex="15"
+             fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFill>
+            <i class="fa fa-map-marker account-icon"></i>
+            <span class="accent-color-font">{{account.location}}</span>
+          </div>
+        </div>
+
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10" fxHide.md fxHide.sm fxHide.xs>
+          <button md-icon-button class="account-remove-button" (click)="removeAccount(account)">
+            <md-icon>clear</md-icon>
+          </button>
+        </div>
+
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" fxHide.lg fxHide.xl fxHide.md fxFlex.xs="33" fxFlex.sm="33">
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
+          <i class="fa fa-{{account.type.toLowerCase()}} account-icon"></i>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center start" fxFlex>
+          <span class="accent-color-font">{{account.username}}</span>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutAlign.xs="start center"
+           fxHide.lg fxHide.xl
+           fxFlex.md="50" fxFlex.xs="33" fxFlex.sm="33">
+
+        <div fxLayout="column" fxLayoutAlign="center start" fxFlex="10" fxFlex.xs="30">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFill>
+            <i class="fa fa-list account-icon"></i>
+            <span class="accent-color-font">{{account.repoNumber}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center start" fxFlex="30">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFill>
+            <i class="fa fa-users account-icon"></i>
+            <span class="accent-color-font">{{account.organization}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center start" fxFlex="30" fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFill>
+            <i class="fa fa-map-marker account-icon"></i>
+            <span class="accent-color-font">{{account.location}}</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="space-around start" fxFlex="80">
-      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
-        <i class="fa fa-lg fa-{{account.type.toLowerCase()}} account-icon"></i>
-        {{account.name}}
-      </div>
-      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
-        <md-icon>storage</md-icon>
-        {{account.repoNumber}}
-      </div>
-
-    </div>
-
-    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
-      <!--<i class="fa fa-lg fa-times" (click)="removeAccount(account)"></i>-->
-      <button md-icon-button (click)="removeAccount(account)">
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10" fxHide.lg fxHide.xl>
+      <button md-icon-button class="account-remove-button-sm" (click)="removeAccount(account)">
         <md-icon>clear</md-icon>
       </button>
     </div>
-
   </div>
 </md-card>

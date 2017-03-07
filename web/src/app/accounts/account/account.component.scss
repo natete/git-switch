@@ -1,5 +1,7 @@
 .account-profile-container {
-  margin: 1%;
+  margin: 10px 0;
+  padding: 10px;
+  height: 80px;
 }
 
 .account-icon {
@@ -8,5 +10,39 @@
 
 .account-profile-picture {
   border-radius: 50%;
-  max-width: 100px;
+  max-width: 75px;
+}
+
+.account-profile-picture-sm {
+  border-radius: 50%;
+  max-width: 25px;
+}
+
+.account-full-name {
+  margin-right: 2em;
+  font-weight: bold;
+}
+
+.account-remove-button {
+  width: 60px;
+  height: 60px;
+
+  md-icon {
+    height: 60px;
+    width: 60px;
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+
+.account-remove-button-sm {
+  width: 40px;
+  height: 40px;
+
+  md-icon {
+    height: 40px;
+    width: 40px;
+    font-size: 40px;
+    line-height: 40px;
+  }
 }
