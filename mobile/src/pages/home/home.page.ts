@@ -1,9 +1,9 @@
-import {Component} from "@angular/core";
-import {NavController, NavParams} from "ionic-angular";
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.page.html'
 })
 export class HomePage {
 
@@ -11,7 +11,7 @@ export class HomePage {
     {
       description: 'Pull Request description gfjdngfkjdnbjdkjnfvjdn',
       userName: 'UserName1',
-      date: "10 months",
+      date: '10 months',
       commits: 312,
       comments: 129,
       count: 582,
@@ -21,7 +21,7 @@ export class HomePage {
     {
       description: 'Pull Request description',
       userName: 'UserName1',
-      date: "10 months",
+      date: '10 months',
       commits: 312,
       comments: 129,
       count: 582,
@@ -31,7 +31,7 @@ export class HomePage {
     {
       description: 'Pull Request description',
       userName: 'UserName1',
-      date: "10 months",
+      date: '10 months',
       commits: 312,
       comments: 129,
       count: 582,
@@ -41,7 +41,7 @@ export class HomePage {
     {
       description: 'Pull Request description',
       userName: 'UserName1',
-      date: "10 months",
+      date: '10 months',
       commits: 312,
       comments: 129,
       count: 582,
@@ -51,7 +51,7 @@ export class HomePage {
     {
       description: 'Pull Request descriptionbhfvkdbfvkdbfvkbdfkbgbvdfgbfgbfgbbgfkdjnbdkfbnkbnfggggggggggggggggg',
       userName: 'UserName1gbfgbfgbfgbfgbf',
-      date: "10 monthsgfbfgbfgbfgb",
+      date: '10 monthsgfbfgbfgbfgb',
       commits: 312,
       comments: 129,
       count: 582,
