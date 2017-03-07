@@ -6,6 +6,7 @@ import { DialogsModule } from './dialogs/dialogs.module';
 import { SpinnerService } from './providers/spinner.service';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 @NgModule({
   imports: [
@@ -18,9 +19,10 @@ import { RouterModule } from '@angular/router';
     DialogsModule,
     FlexLayoutModule,
     HeaderComponent,
-    MaterialModule
+    MaterialModule,
+    NavMenuComponent
   ],
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, NavMenuComponent],
   providers: [SpinnerService]
 })
 export class SharedModule { }
