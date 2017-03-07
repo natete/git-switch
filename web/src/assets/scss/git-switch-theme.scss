@@ -8,13 +8,117 @@
 @include mat-core();
 
 // Define the color palette for each state
-// TODO Define palettes according to design
-$gd-app-primary: mat-palette($mat-blue-grey);
-$gd-app-accent:  mat-palette($mat-green);
-$gd-app-warn:    mat-palette($mat-deep-orange);
+$base-primary-color: #F2F2F2;
+$base-accent-color: #f38709;
+$base-warn-color: #FF1B2F;
+
+$gs-primary-colors: (
+        50: #ffffff,
+        100: #ffffff,
+        200: #ffffff,
+        300: #ffffff,
+        400: #ffffff,
+        500: $base-primary-color,
+        600: #e5e5e5,
+        700: #d8d8d8,
+        800: #cccccc,
+        900: #bfbfbf,
+        A100: #ffffff,
+        A200: #ffffff,
+        A400: #ffffff,
+        A700: #b2b2b2,
+        contrast: (
+                0: $black-87-opacity,
+                50: $black-87-opacity,
+                100: $black-87-opacity,
+                200: $black-87-opacity,
+                300: $black-87-opacity,
+                400: $black-87-opacity,
+                500: $base-accent-color,
+                600: $white-87-opacity,
+                700: $white-87-opacity,
+                800: $white-87-opacity,
+                900: $white-87-opacity,
+                1000: $white-87-opacity,
+                A100: $black-87-opacity,
+                A200: $black-87-opacity,
+                A400: $black-87-opacity,
+                A700: $white-87-opacity,
+        )
+);
+
+$gs-accent-colors: (
+        50: #784304,
+        100: #905005,
+        200: #a95e06,
+        300: #c26c07,
+        400: #da7908,
+        500: $base-accent-color,
+        600: #f89f37,
+        700: #f9ab4f,
+        800: #fab668,
+        900: #fac280,
+        A100: #f89f37,
+        A200: #F7931E,
+        A400: #f38709,
+        A700: #fbce99,
+        contrast: (
+                50: $black-87-opacity,
+                100: $black-87-opacity,
+                200: $black-87-opacity,
+                300: $black-87-opacity,
+                400: $black-87-opacity,
+                500: $base-primary-color,
+                600: $black-87-opacity,
+                700: $black-87-opacity,
+                800: white,
+                900: white,
+                A100: $black-87-opacity,
+                A200: $black-87-opacity,
+                A400: $black-87-opacity,
+                A700: black,
+        )
+);
+
+$gs-warn-colors: (
+        50: #ff9aa3,
+        100: #ff818c,
+        200: #ff6775,
+        300: #ff4e5e,
+        400: #ff3446,
+        500: $base-warn-color,
+        600: #ff0118,
+        700: #e70014,
+        800: #cd0012,
+        900: #b40010,
+        A100: #ffb4bb,
+        A200: #ffcdd2,
+        A400: #ffe7e9,
+        A700: #9a000e,
+        contrast: (
+                50: $black-87-opacity,
+                100: $black-87-opacity,
+                200: $black-87-opacity,
+                300: $black-87-opacity,
+                400: $black-87-opacity,
+                500: white,
+                600: white,
+                700: white,
+                800: $white-87-opacity,
+                900: $white-87-opacity,
+                A100: $black-87-opacity,
+                A200: white,
+                A400: white,
+                A700: white,
+        )
+);
+
+$gs-app-primary: mat-palette($gs-primary-colors);
+$gs-app-accent:  mat-palette($gs-accent-colors);
+$gs-app-warn:    mat-palette($gs-warn-colors);
 
 // Define the theme object
-$git-switch-app-theme: mat-light-theme($gd-app-primary, $gd-app-accent, $gd-app-warn);
+$git-switch-app-theme: mat-light-theme($gs-app-primary, $gs-app-accent, $gs-app-warn);
 @include angular-material-theme($git-switch-app-theme);
 
 // Include the custom mixin using the palette colors
