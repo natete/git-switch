@@ -4,7 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthService } from '../providers/auth/auth.service';
 import { LoginPage } from '../pages/login/login.page';
-
+import 'rxjs/add/operator/do';
 @Component({
   templateUrl: 'app.html'
 })
@@ -33,6 +33,7 @@ export class MyApp {
   initLoginSubscription() {
     this.authService
         .getAuthStream()
+        .do(() => console.log('authstream'))
         .subscribe(
           () => this.nav.setRoot(TabsPage),
           () => this.nav.setRoot(LoginPage)

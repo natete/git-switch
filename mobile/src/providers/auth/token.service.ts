@@ -7,14 +7,27 @@ export class TokenService {
 
   constructor() { }
 
-  setToken(token: string): Promise<void> {
+  /**
+   * Saves the token in the native storage.
+   * @param token the token to be stored.
+   * @returns {Promise<any>} with the result of the storage process.
+   */
+  setToken(token: any): Promise<void> {
     return NativeStorage.setItem('token', token);
   }
 
-  getToken(): Promise<string> {
+  /**
+   * Returns the token stored in the device.
+   * @returns {Promise<any>} with the stored token.
+   */
+  getToken(): Promise<any> {
     return NativeStorage.getItem('token');
   }
 
+  /**
+   * Removes the token from the device.
+   * @returns {Promise<any>} with the result of the removal process.
+   */
   revokeToken(): Promise<void> {
     return NativeStorage.remove('token');
   }
