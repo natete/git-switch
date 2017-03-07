@@ -1,16 +1,20 @@
 page-home {
-  .bold-content {
-    font-weight: bold;
+  ion-card-header {
+    background-color: map-get($colors, primary);
+  }
+
+  ion-card-content {
+    background-color: map-get($colors, light);
   }
 
   .bottom-border {
     border-bottom: $border-style;
     padding-bottom: 1rem;
+    padding-top: 1rem;
   }
 
   .text-overflow {
     white-space: nowrap;
-    width: 90%;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -20,8 +24,20 @@ page-home {
     margin-right: 2rem;
     font-weight: bold;
   }
-  .tam-div {
-    max-width: 80%;
+  .branches-wrapper {
+    max-width: calc(100% - 45px);
+  }
+
+  .color-primary {
+
+    strong,
+    ion-icon {
+      color: map-get($colors, font);
+    }
+
+    * {
+      color: map-get($colors, primary);
+    }
   }
 
   .top-bottom-margin {
@@ -45,7 +61,6 @@ page-home {
     }
     ion-card-header {
       text-align: center;
-      width: 100% !important;
     }
   }
 }
