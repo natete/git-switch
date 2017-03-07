@@ -3,3 +3,7 @@
 </h1>
 
 <router-outlet></router-outlet>
+
+<div class="spinner-container" *ngIf="mustShowSpinner">
+  <md-progress-spinner color="accent" class="center-spinner" mode="indeterminate"></md-progress-spinner>
+</div>

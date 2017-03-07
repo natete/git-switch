@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { AuthService } from '../../providers/auth/auth-service';
+import { AuthService } from '../../providers/auth/auth.service';
 
 /*
  Generated class for the Login page.

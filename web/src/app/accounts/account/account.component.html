@@ -1,21 +1,28 @@
-<div fxLayout="row" fxLayoutAlign="start center" fxFill *ngIf="account">
+<md-card class="account-profile-container" *ngIf="account">
+  <div fxLayout="row" fxLayoutAlign="start center" fxFill>
 
-  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="20">
-    <img src="{{account.photoUrl}}" alt="Profile Picture"/>
-  </div>
-
-  <div fxLayout="column" fxLayoutAlign="center start" fxFlex="70">
-    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
-      {{account.name}}
-    </div>
-    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
-      {{account.email}}
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
+      <img class="account-profile-picture" src="{{account.photoUrl}}" alt="Profile Picture"/>
     </div>
 
-  </div>
+    <div fxLayout="column" fxLayoutAlign="space-around start" fxFlex="80">
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
+        <i class="fa fa-lg fa-{{account.type.toLowerCase()}} account-icon"></i>
+        {{account.name}}
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="50">
+        <md-icon>storage</md-icon>
+        {{account.repoNumber}}
+      </div>
 
-  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
-    <i class="fa fa-lg fa-times" (click)="removeAccount(account)"></i>
-  </div>
+    </div>
 
-</div>
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
+      <!--<i class="fa fa-lg fa-times" (click)="removeAccount(account)"></i>-->
+      <button md-icon-button (click)="removeAccount(account)">
+        <md-icon>clear</md-icon>
+      </button>
+    </div>
+
+  </div>
+</md-card>
