@@ -31,10 +31,8 @@ export class AccountsListComponent implements OnInit {
         .map((params: Params) => {
             return {code: params['code'], nonce: params['state']}
         })
-        .subscribe((params: {code: string, nonce: string}) => {
-          this.accountService.authorizeAccount(params.code, params.nonce)
-            .subscribe(() => this.snackBar.open('Account successfully added', null, {duration: 2000}));
-        });
+        .flatMap((params) => (this.accountService.authorizeAccount(params.code, params.nonce)))
+        .subscribe(() => this.snackBar.open('Account successfully added', null, {duration: 2000}));
 
     // Get the list of accounts
     this.accountService.getAccounts()
@@ -53,7 +51,6 @@ export class AccountsListComponent implements OnInit {
     this.spinnerService.showSpinner();
     this.accountService.addAccount();
   }
-
 
 
 }

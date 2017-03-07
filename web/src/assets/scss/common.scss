@@ -27,4 +27,17 @@ body {
   right: 0;
 }
 
+/**
+ * Splash-like screen styles
+ */
+.splash-logo-container {
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+}
+
+app-root:empty + .splash-logo-container {
+  opacity: 1;
+}
+
+
 

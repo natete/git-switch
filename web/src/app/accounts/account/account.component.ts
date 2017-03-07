@@ -32,11 +32,9 @@ export class AccountComponent implements OnInit {
     this.dialogService.confirm('Confirm Remove', 'Are you sure you want to disconnect this account?')
         .filter(res => res)
         .do(() => this.spinnerService.showSpinner())
-        .subscribe(() => {
-          return this.accountService.removeAccount(account)
-                     .do(() => this.spinnerService.hideSpinner())
-                     .subscribe(() => this.snackBar.open('Account successfully removed', null, { duration: 2000 }))
-        });
+        .flatMap(() => this.accountService.removeAccount(account))
+        .do(() => this.spinnerService.hideSpinner())
+        .subscribe(() => this.snackBar.open('Account successfully removed', null, { duration: 2000 }));
   }
 
 }
