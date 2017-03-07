@@ -15,9 +15,9 @@
 
 <ion-content>
   <ion-list [virtualScroll]="pullRequests" no-lines approxItemHeight="162px">
-    <ion-item *virtualItem="let pullRequest">
+    <ion-item *virtualItem="let pullRequest" color="dark">
       <ion-card class="top-bottom-margin">
-        <ion-card-header class="text-overflow bold-content">
+        <ion-card-header color="light" class="text-overflow bold-content">
           {{pullRequest.description}}
         </ion-card-header>
         <ion-card-content>

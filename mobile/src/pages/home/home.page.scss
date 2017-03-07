@@ -3,9 +3,19 @@ page-home {
     font-weight: bold;
   }
 
+  ion-card-header {
+    width: 100% !important;
+    background-color: map-get($colors, primary);
+  }
+
+  ion-card-content{
+    background-color: map-get($colors, light);
+  }
+
   .bottom-border {
     border-bottom: $border-style;
     padding-bottom: 1rem;
+    padding-top: 1rem;
   }
 
   .text-overflow {
@@ -22,6 +32,10 @@ page-home {
   }
   .tam-div {
     max-width: 80%;
+  }
+
+  ion-col, h4{
+    color: map-get($colors, primary) !important;
   }
 
   .top-bottom-margin {
@@ -45,7 +59,6 @@ page-home {
     }
     ion-card-header {
       text-align: center;
-      width: 100% !important;
     }
   }
 }
