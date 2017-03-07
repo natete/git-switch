@@ -3,7 +3,7 @@ import { Http, XHRBackend, RequestOptions } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { HomePage } from '../pages/home/home.page';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { AccountsPage } from '../pages/accounts/accounts.page';

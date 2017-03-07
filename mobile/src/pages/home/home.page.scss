@@ -1,0 +1,51 @@
+page-home {
+  .bold-content {
+    font-weight: bold;
+  }
+
+  .bottom-border {
+    border-bottom: $border-style;
+    padding-bottom: 1rem;
+  }
+
+  .text-overflow {
+    white-space: nowrap;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-div-content {
+    height: 100%;
+    margin-right: 2rem;
+    font-weight: bold;
+  }
+  .tam-div {
+    max-width: 80%;
+  }
+
+  .top-bottom-margin {
+    margin-bottom: 0.1rem;
+    margin-top: 0.1rem;
+  }
+
+  @media(max-width: map-get($grid-max-widths, sm)) {
+    .col {
+      padding: 0;
+    }
+    .item ion-icon[item-left] {
+      margin-bottom: 0.1rem;
+      margin-top: 0.1rem;
+    }
+  }
+
+  @media (min-width: map-get($grid-max-widths,sm)+1) {
+    .bottom-border {
+      justify-content: center;
+    }
+    ion-card-header {
+      text-align: center;
+      width: 100% !important;
+    }
+  }
+}
