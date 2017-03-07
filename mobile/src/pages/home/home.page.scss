@@ -1,14 +1,9 @@
 page-home {
-  .bold-content {
-    font-weight: bold;
-  }
-
   ion-card-header {
-    width: 100% !important;
     background-color: map-get($colors, primary);
   }
 
-  ion-card-content{
+  ion-card-content {
     background-color: map-get($colors, light);
   }
 
@@ -20,7 +15,6 @@ page-home {
 
   .text-overflow {
     white-space: nowrap;
-    width: 90%;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -30,12 +24,20 @@ page-home {
     margin-right: 2rem;
     font-weight: bold;
   }
-  .tam-div {
-    max-width: 80%;
+  .branches-wrapper {
+    max-width: calc(100% - 45px);
   }
 
-  ion-col, h4{
-    color: map-get($colors, primary) !important;
+  .color-primary {
+
+    strong,
+    ion-icon {
+      color: map-get($colors, font);
+    }
+
+    * {
+      color: map-get($colors, primary);
+    }
   }
 
   .top-bottom-margin {
