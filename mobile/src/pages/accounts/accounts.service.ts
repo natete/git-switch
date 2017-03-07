@@ -4,11 +4,11 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Account } from './account';
 import { InAppBrowser } from '@ionic-native/inappbrowser';
+import { Constants } from '../../shared/constants';
 
 @Injectable()
 export class AccountsService {
   private readonly IN_APP_BROWSER_PARAMS = 'location=no,clearcache=yes';
-  private readonly GITHUB_BASE_URL = 'https://github.com/login/oauth/authorize?';
   private readonly ACCOUNTS_URL = 'api/accounts';
 
   private accountsStream = new BehaviorSubject<Account[]>([]);
@@ -42,7 +42,7 @@ export class AccountsService {
 
     const params: URLSearchParams = this.buildParams(redirectUri, nonce);
 
-    const browserRef = new InAppBrowser(this.GITHUB_BASE_URL + params.toString(), '_blank', this.IN_APP_BROWSER_PARAMS);
+    const browserRef = new InAppBrowser(Constants.GITHUB_API_URL + params.toString(), '_blank', this.IN_APP_BROWSER_PARAMS);
 
     browserRef.on('loadstart')
               .filter(event => event.url.indexOf(redirectUri) === 0)

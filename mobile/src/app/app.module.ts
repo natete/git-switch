@@ -1,15 +1,15 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { Http, XHRBackend, RequestOptions } from '@angular/http';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryWebApiModule, InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { AccountsPage } from '../pages/accounts/accounts.page';
-import { LoginPage } from '../pages/login/login';
+import { LoginPage } from '../pages/login/login.page';
 import { AuthService } from '../providers/auth/auth.service';
-import { TokenService } from '../providers/auth/token-service';
+import { TokenService } from '../providers/auth/token.service';
 import { HttpFactory } from '../providers/http/http.factory';
 import { AccountsService } from '../pages/accounts/accounts.service';
 import { InMemoryDataService } from '../assets/database/in-memory-data.service';
@@ -25,7 +25,10 @@ import { InMemoryDataService } from '../assets/database/in-memory-data.service';
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    InMemoryWebApiModule.forRoot(InMemoryDataService, {
+      host: 'localhost',
+      passThruUnknownUrl: true
+    } as InMemoryBackendConfigArgs)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

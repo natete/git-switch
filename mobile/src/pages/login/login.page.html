@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      <ion-icon name="creamy-icon-logo"></ion-icon>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="input-container">
+    <ion-label stacked>Username</ion-label>
+    <ion-input type="text" [(ngModel)]="username"></ion-input>
+  </div>
+  <div class="input-container">
+    <ion-label stacked>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </div>
+
+  <div class="error-message" color="danger">{{errorMessage}}</div>
+
+  <button ion-button block (click)="login()">Login in GitSwitch</button>
+</ion-content>

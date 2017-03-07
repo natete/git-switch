@@ -10,7 +10,7 @@ import { AuthService } from '../../providers/auth/auth.service';
  */
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login.page.html'
 })
 export class LoginPage {
 
@@ -26,8 +26,7 @@ export class LoginPage {
 
   login(): void {
     this.authService.login(this.username, this.password)
-      .catch(() => {
-        this.errorMessage = 'Invalid username and/or password';
-      });
+        .then(() => console.log('logged in'))
+        .catch(() => this.errorMessage = 'Invalid username and/or password');
   }
 }
