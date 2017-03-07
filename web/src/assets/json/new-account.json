@@ -1,7 +1,10 @@
 {
   "id": 3,
-  "name": "Mi cuenta de git nueva",
+  "fullname": "Myname Mysurname New",
+  "username": "nice_username_new",
   "email": "migitnuevo@test.com",
   "photoUrl": "http://lorempixel.com/200/200/",
-  "repoNumber": 10
+  "repoNumber": 10,
+  "organization": "Emergya",
+  "location": "Sevilla"
 }

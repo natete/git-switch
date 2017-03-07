@@ -4,6 +4,40 @@
 body {
   min-height: 100vh;
   margin: 0px;
+  font-family: 'Roboto', sans-serif
+}
+
+/**
+ * Default background container.
+ */
+.main-content-dark-container {
+  display: block;
+  background-color: $dark-background;
+  height: 100%;
+  width: 100%;
+  padding: 2% 0;
+  min-height: calc(100vh - 64px);
+}
+
+/**
+ * Common wrapper to center the main content.
+ */
+.content-wrapper {
+  max-width: 65%;
+  margin: 0 auto;
+}
+
+/**
+ * Common components toolbar
+ */
+.content-title {
+  color: white;
+  margin: 0;
+  font-weight: bold;
+}
+
+.toolbar-container{
+  margin-bottom: 4%;
 }
 
 /**

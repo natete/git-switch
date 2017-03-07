@@ -1,16 +1,30 @@
-<div *ngIf="accounts">
+<app-header></app-header>
 
-  <h1>List of connected accounts</h1>
+<div class="main-content-dark-container">
 
-  <div>
-    <app-account *ngFor="let account of accounts" [account]="account"></app-account>
-  </div>
+  <div class="content-wrapper">
+
+    <div class="toolbar-container">
+      <!-- TODO: This should be in its own component with the filtering options -->
+      <h1 class="content-title">Accounts</h1>
+    </div>
+
+    <div class="account-list-container">
+
+      <div *ngIf="accounts">
+        <app-account *ngFor="let account of accounts" [account]="account"></app-account>
+      </div>
+      <div *ngIf="!accounts">
+        You have not added any account yet!
+      </div>
 
 
-  <div>
-    <button md-raised-button color="primary" (click)="addAccount()">
-      Add new Git account
-    </button>
+      <button md-raised-button color="accent" class="add-new-account-button" (click)="addAccount()">
+        <md-icon>add</md-icon>
+      </button>
+
+    </div>
+
   </div>
 
 </div>
