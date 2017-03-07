@@ -17,7 +17,7 @@
   <ion-list [virtualScroll]="pullRequests" no-lines approxItemHeight="162px">
     <ion-item *virtualItem="let pullRequest">
       <ion-card class="top-bottom-margin">
-        <ion-card-header class="bold-content header-text-overflow">
+        <ion-card-header class="text-overflow bold-content">
           {{pullRequest.description}}
         </ion-card-header>
         <ion-card-content>
@@ -26,14 +26,14 @@
               <ion-icon name="git-pull-request"></ion-icon>
              <div>{{pullRequest.count}}</div>
             </div>
-            <div>
-                <h4><span class="bold-content">from</span> {{pullRequest.from}}</h4>
-                <h4><span class="bold-content">to</span> {{pullRequest.to}}</h4>
+            <div class="tam-div">
+              <h4 class="text-overflow"><span class="bold-content">from</span> {{pullRequest.from}}</h4>
+              <h4 class="text-overflow"><span class="bold-content">to</span> {{pullRequest.to}}</h4>
             </div>
           </ion-row>
 
           <ion-row>
-            <ion-col col-8 col-sm>
+            <ion-col col-8 col-sm class="text-overflow">
               <ion-icon name="contact" item-left></ion-icon>
               {{pullRequest.userName}}
             </ion-col>
@@ -41,7 +41,7 @@
               <ion-icon name="git-commit" item-left></ion-icon>
               {{pullRequest.commits}}
             </ion-col>
-            <ion-col col-8 col-sm>
+            <ion-col col-8 col-sm class="text-overflow">
               <ion-icon  name="time" item-left></ion-icon>
               {{pullRequest.date}}
             </ion-col>

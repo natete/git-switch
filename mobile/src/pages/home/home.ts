@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from "@angular/core";
+import {NavController, NavParams} from "ionic-angular";
 
 @Component({
   selector: 'page-home',
@@ -49,14 +49,14 @@ export class HomePage {
       to: 'Master_branch_of_project'
     },
     {
-      description: 'Pull Request description',
-      userName: 'UserName1',
-      date: "10 months",
+      description: 'Pull Request descriptionbhfvkdbfvkdbfvkbdfkbgbvdfgbfgbfgbbgfkdjnbdkfbnkbnfggggggggggggggggg',
+      userName: 'UserName1gbfgbfgbfgbfgbf',
+      date: "10 monthsgfbfgbfgbfgb",
       commits: 312,
       comments: 129,
       count: 582,
-      from: 'MB-1685-DEV_Fix',
-      to: 'Master_branch_of_project'
+      from: 'MB-1685-DEV_Fixfgbfsgbbbgggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+      to: 'Master_branch_of_projectggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg'
     }
   ];
 
