@@ -22,3 +22,10 @@ function simple_github_requirements($phase) {
 function simple_github_install() {
     ;
 }
+
+/**
+ * Implements hook_uninstall().
+ */
+function simple_github_uninstall() {
+    \Drupal::service('config.factory')->getEditable('simple_github.settings')->delete();
+}

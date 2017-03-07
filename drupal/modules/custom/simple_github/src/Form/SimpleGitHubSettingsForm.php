@@ -5,7 +5,7 @@
  * Contains \Drupal\simple_gihub\Form\SimpleGitHbubSettingsForm.
  */
 
-namespace Drupal\simple_gihub\Form;
+namespace Drupal\simple_github\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
