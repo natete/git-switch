@@ -77,7 +77,7 @@ class SimpleGitHubSettingsForm extends ConfigFormBase {
 
     $form['app_url_redirect'] = array(
       '#type' => 'textfield',
-      '#title' => $this->t('GitHub App Secret'),
+      '#title' => $this->t('GitHub URL Redirect'),
       '#description' => $this->t('GitHub URL Redirect value'),
       '#default_value' => $config->get('app_url_redirect'),
     );
