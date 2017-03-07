@@ -14,6 +14,7 @@ import { httpFactory } from './core/http/http.factory';
 import 'hammerjs';
 import { AccountsModule } from './accounts/accounts.module';
 import { SharedModule } from './shared/shared.module';
+import { PullRequestsModule } from './pull-requests/pull-requests.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    PullRequestsModule,
     RoutesModule,
     SharedModule
   ],
