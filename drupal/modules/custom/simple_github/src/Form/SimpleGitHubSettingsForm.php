@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Provides a deletion confirmation form for the block instance deletion form.
  */
-class SimpleGithubSettingsForm extends ConfigFormBase {
+class SimpleGitHubSettingsForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
