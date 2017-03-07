@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HomePage } from '../home/home.page';
+import { HomePage } from '../pullRequests/pullRequests.page';
 import { SettingsPage } from '../settings/settings';
 import { AccountsPage } from '../accounts/accounts.page';
 
