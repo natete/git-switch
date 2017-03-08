@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
-import { PullRequest } from './pullRequests';
-import { PullRequestsService } from './pullRequests.service';
+import { LoadingController } from 'ionic-angular';
+import { PullRequest } from './pull-requests';
+import { PullRequestsService } from './pull-requests.service';
 
 @Component({
-  selector: 'page-pullrequests',
-  templateUrl: 'pullRequests.page.html'
+  selector: 'page-pull-requests',
+  templateUrl: 'pull-requests.page.html'
 })
 export class PullRequestsPage {
 
   pullRequests: PullRequest[];
 
-  constructor(private navCtrl: NavController,
-              private navParams: NavParams,
-              private loadingController: LoadingController,
+  constructor(private loadingController: LoadingController,
               private pullRequestsService: PullRequestsService) {}
 
   ionViewDidLoad() {
