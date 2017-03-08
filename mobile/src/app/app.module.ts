@@ -14,6 +14,7 @@ import { HttpFactory } from '../providers/http/http.factory';
 import { AccountsService } from '../pages/accounts/accounts.service';
 import { InMemoryDataService } from '../assets/database/in-memory-data.service';
 import { PullRequestsService } from '../pages/pull-requests/pull-requests.service';
+import { SettingsService } from '../pages/settings/settings.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PullRequestsService } from '../pages/pull-requests/pull-requests.servic
   providers: [
     AccountsService,
     PullRequestsService,
+    SettingsService,
     AuthService,
     TokenService,
     { provide: ErrorHandler, useClass: IonicErrorHandler },

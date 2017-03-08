@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { PullRequest } from './pull-requests';
+import { PullRequest } from './pull-request';
 
 @Injectable()
 export class PullRequestsService {
