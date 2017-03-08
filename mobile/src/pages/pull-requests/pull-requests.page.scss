@@ -1,6 +1,7 @@
 page-pull-requests {
-  ion-card-header {
+  .card-header {
     background-color: map-get($colors, primary);
+    font-weight: bold;
   }
 
   ion-card-content {
@@ -11,6 +12,7 @@ page-pull-requests {
     border-bottom: $border-style;
     padding-bottom: 1rem;
     padding-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .text-overflow {
@@ -19,13 +21,19 @@ page-pull-requests {
     text-overflow: ellipsis;
   }
 
-  .card-div-content {
+  .card-content-wrapper {
     height: 100%;
     margin-right: 2rem;
     font-weight: bold;
   }
   .branches-wrapper {
     max-width: calc(100% - 45px);
+
+    strong {
+      display: inline-block;
+      width: 40px;
+      text-align: center;
+    }
   }
 
   .color-primary {
