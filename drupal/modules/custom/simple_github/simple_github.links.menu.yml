@@ -1,0 +1,5 @@
+simple_github.admin_form:
+  title: Simple GitHub
+  description: 'Settings for GitHub.'
+  parent: system.admin_config_services
+  route_name: simple_github.admin_form

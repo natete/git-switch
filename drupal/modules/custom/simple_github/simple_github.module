@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * Hook implementations for Simple GitHub module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function  simple_github_help($route_name, RouteMatchInterface $route_match) {
+    switch ($route_name) {
+        case 'help.page':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('A Simple GitHub manager: accounts manager.') . '</p>';
+            return $output;
+        default:
+            return '';
+    }
+}

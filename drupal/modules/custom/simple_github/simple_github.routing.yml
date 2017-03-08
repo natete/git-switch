@@ -1,0 +1,6 @@
+simple_github.admin_form:
+  path: '/admin/config/services/simple_github'
+  defaults:
+    _form: '\Drupal\simple_github\Form\SimpleGitHubSettingsForm'
+  requirements:
+    _permission: 'administer simple_github'
