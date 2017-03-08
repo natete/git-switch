@@ -18,7 +18,23 @@
   color: map-get($colors, font);
 }
 
+[color="primary"] {
+  * {
+    color: map-get($colors, light);
+  }
+}
+
 ion-content.content,
 ion-list.list {
   background-color: map-get($colors, dark);
+}
+
+.tab-button {
+  .tab-button-icon {
+    font-size: 3.4rem;
+    min-width: 3.4rem;
+    height: 3.4rem;
+    font-weight: bold;
+    color: map-get($colors, font);
+  }
 }

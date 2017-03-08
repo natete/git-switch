@@ -1,28 +1,31 @@
-<!--
-  Generated template for the Home page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
     <ion-title>Pull requests</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content>
-  <ion-list [virtualScroll]="pullRequests" no-lines approxItemHeight="162px">
+  <ion-list [virtualScroll]="pullRequests" no-lines approxItemHeight="210px">
     <ion-item *virtualItem="let pullRequest" color="dark">
+
       <ion-card class="top-bottom-margin">
+
         <ion-card-header color="light" class="text-overflow">
           {{pullRequest.description}}
         </ion-card-header>
+
         <ion-card-content>
+
           <ion-row class="bottom-border color-primary">
-            <div text-center class="card-div-content">
+            <div text-center class="card-content-wrapper">
               <strong>
                 <ion-icon name="git-pull-request"></ion-icon>
               </strong>
@@ -52,7 +55,9 @@
               {{pullRequest.comments}}
             </ion-col>
           </ion-row>
+
         </ion-card-content>
+
       </ion-card>
     </ion-item>
   </ion-list>

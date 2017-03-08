@@ -3,5 +3,6 @@ export interface Account {
   type: string,
   name: string,
   avatar: string,
-  numOfRepos: number
+  numOfRepos: number,
+  company?: string
 }

@@ -11,16 +11,16 @@
 
 <ion-content padding>
 
-  <div class="input-container">
-    <ion-label stacked>Username</ion-label>
+  <div class="input-container" color="primary">
+    <ion-label stacked text-uppercase="">Username</ion-label>
     <ion-input type="text" [(ngModel)]="username"></ion-input>
   </div>
-  <div class="input-container">
-    <ion-label stacked>Password</ion-label>
+  <div class="input-container" color="primary">
+    <ion-label stacked text-uppercase="">Password</ion-label>
     <ion-input type="password" [(ngModel)]="password"></ion-input>
   </div>
 
   <div class="error-message" color="danger">{{errorMessage}}</div>
 
-  <button ion-button block (click)="login()" [disabled]="canLogIn()">Login in GitSwitch</button>
+  <button ion-button block (click)="login()" color="primary">Log in GitSwitch</button>
 </ion-content>

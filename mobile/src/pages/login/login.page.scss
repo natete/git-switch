@@ -9,10 +9,10 @@ page-login {
 
   .input-container {
     .label {
-      color: map-get($colors, light);
+      //color: map-get($colors, light);
     }
     input {
-      color: map-get($colors, light);
+      //color: map-get($colors, light);
       border-bottom: 1px solid map-get($colors, light);
 
       &.text-input-md {
