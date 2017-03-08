@@ -1,0 +1,17 @@
+page-repository-settings {
+  ion-card-header {
+    background-color: map-get($colors, primary);
+    font-weight: bold;
+  }
+
+  ion-card-content {
+    background-color: map-get($colors, light);
+  }
+
+  .ion-item-content{
+    ion-item{
+      background-color: map-get($colors, light);
+      font-size: 1.4rem;
+    }
+  }
+}

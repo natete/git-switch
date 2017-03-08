@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { LoadingController, NavController } from 'ionic-angular';
 import { Setting } from './setting';
 import { SettingsService } from './settings.service';
+import { RepositorySettingsPage } from '../repository-settings/repository-settings';
 
 /*
  Generated class for the Settings page.
@@ -17,7 +18,8 @@ export class SettingsPage {
 
   settings: Setting[];
 
-  constructor(private loadingController: LoadingController,
+  constructor(private navCtrl: NavController,
+              private loadingController: LoadingController,
               private settingsService: SettingsService) {}
 
   ionViewDidLoad() {
@@ -37,8 +39,8 @@ export class SettingsPage {
         });
   }
 
-  goToRepositorySettings(id: number){
-
+  goToRepositorySettings($event, setting){
+    this.navCtrl.push(RepositorySettingsPage, setting);
   }
 
 }
