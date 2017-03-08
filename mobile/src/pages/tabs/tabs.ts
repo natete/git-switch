@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PullRequestsPage } from '../pullRequests/pull-requests.page';
+import { PullRequestsPage } from '../pull-requests/pull-requests.page';
 import { SettingsPage } from '../settings/settings';
 import { AccountsPage } from '../accounts/accounts.page';
 

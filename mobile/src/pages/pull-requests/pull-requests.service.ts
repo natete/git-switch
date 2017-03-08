@@ -5,7 +5,7 @@ import { PullRequest } from './pull-requests';
 
 @Injectable()
 export class PullRequestsService {
-  private readonly PULLREQUEST_URL = 'api/pullRequests';
+  private readonly PULLREQUEST_URL = 'api/pull-requests';
 
   private pullRequestsStream = new BehaviorSubject<PullRequest[]>([]);
 
