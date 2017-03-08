@@ -1,0 +1,21 @@
+page-settings {
+  .color-primary {
+    ion-icon {
+      color: map-get($colors, font);
+    }
+
+    * {
+      color: map-get($colors, primary);
+    }
+  }
+
+  .arrow-forward-button.item-button {
+    font-size: 1.8rem;
+  }
+
+  .size-icon{
+    font-size: 3.8rem;
+  }
+
+
+}
