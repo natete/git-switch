@@ -9,9 +9,24 @@ import { NavController, NavParams } from 'ionic-angular';
  */
 @Component({
   selector: 'page-settings',
-  templateUrl: 'settings.html'
+  templateUrl: 'settings.page.html'
 })
 export class SettingsPage {
+
+  settings = [{
+    id: 1,
+    name: "Forked repository name",
+    fork: true, //git-network
+    alert: 12,
+    time: "2 years"
+  },
+    {
+      id: 2,
+      name: "Repository name",
+      fork: false, //book
+      alert: 7,
+      time: "10 months"
+    }];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 

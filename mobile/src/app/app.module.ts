@@ -5,7 +5,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { PullRequestsPage } from '../pages/pull-requests/pull-requests.page';
 import { TabsPage } from '../pages/tabs/tabs';
-import { SettingsPage } from '../pages/settings/settings';
+import { SettingsPage } from '../pages/settings/settings.page';
 import { AccountsPage } from '../pages/accounts/accounts.page';
 import { LoginPage } from '../pages/login/login.page';
 import { AuthService } from '../providers/auth/auth.service';
