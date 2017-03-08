@@ -18,7 +18,7 @@ export class AccountsService {
 
   /**
    * Get the observable of the accounts the user has.
-   * @returns {Observable<T>} the observable of the accounts the user has.
+   * @returns {Observable<Account[]>} the observable of the accounts the user has.
    */
   getAccounts(): Observable<Account[]> {
     if (this.accountsStream.getValue()) {
@@ -69,10 +69,10 @@ export class AccountsService {
    * @returns {string} The generated code.
    */
   private createNonce(): string {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    for (var i = 0; i < 40; i++) {
+    for (let i = 0; i < 40; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
@@ -130,7 +130,7 @@ export class AccountsService {
    * Auxiliary method to reduce an array of querystring values to an object
    * @param accumulator the accumulator where the results are stored.
    * @param param the param to be processed.
-   * @returns {any} the result of the accumulator with the new data added.
+   * @returns {Object} the result of the accumulator with the new data added.
    */
   private stringParamToObjectParam(accumulator, param: string) {
     const paramArray = param.split('=');
