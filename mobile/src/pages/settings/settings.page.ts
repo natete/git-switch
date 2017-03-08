@@ -16,16 +16,16 @@ export class SettingsPage {
   settings = [{
     id: 1,
     name: "Forked repository name",
-    fork: true, //git-network
+    fork: true,
     alert: 12,
     time: "2 years"
   },
     {
       id: 2,
       name: "Repository name",
-      fork: false, //book
+      fork: false,
       alert: 7,
-      time: "10 months"
+      time: "10 monthsngbkjnfgkbjnfgjbnfgbnjf"
     }];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}

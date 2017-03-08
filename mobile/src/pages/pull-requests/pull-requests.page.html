@@ -32,13 +32,13 @@
               <div><strong>{{pullRequest.count}}</strong></div>
             </div>
             <div class="branches-wrapper">
-              <h4 class="text-overflow"><strong>from</strong> {{pullRequest.from}}</h4>
-              <h4 class="text-overflow"><strong>to</strong> {{pullRequest.to}}</h4>
+              <h4 class="text-ellipsis"><strong>from</strong> {{pullRequest.from}}</h4>
+              <h4 class="text-ellipsis"><strong>to</strong> {{pullRequest.to}}</h4>
             </div>
           </ion-row>
 
           <ion-row color="primary" class="color-primary">
-            <ion-col col-8 col-sm class="text-overflow">
+            <ion-col col-8 col-sm class="text-ellipsis">
               <ion-icon name="contact" item-left></ion-icon>
               {{pullRequest.userName}}
             </ion-col>
@@ -46,8 +46,8 @@
               <ion-icon name="git-commit" item-left></ion-icon>
               {{pullRequest.commits}}
             </ion-col>
-            <ion-col col-8 col-sm class="text-overflow">
-              <ion-icon name="time" item-left></ion-icon>
+            <ion-col col-8 col-sm class="text-ellipsis">
+              <ion-icon ios="ios-time-outline" md="md-time" item-left></ion-icon>
               {{pullRequest.date}}
             </ion-col>
             <ion-col col-4 col-sm>
