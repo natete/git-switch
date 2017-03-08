@@ -37,6 +37,6 @@
 
   /* Class to use the accent color as text color */
   .accent-color-font {
-    color: mat-color($accentPalette, default);
+    color: mat-color($accentPalette, default) !important;
   }
 }
