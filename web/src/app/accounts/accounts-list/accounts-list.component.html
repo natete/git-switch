@@ -16,12 +16,11 @@
       <div *ngIf="accounts">
         <app-account *ngFor="let account of accounts" [account]="account"></app-account>
       </div>
-      <div *ngIf="!accounts">
+      <div *ngIf="accounts && accounts.length === 0" class="no-accounts-container accent-color-font">
         You have not added any account yet!
       </div>
 
-
-      <button md-raised-button color="accent" class="add-new-account-button" (click)="addAccount()">
+      <button *ngIf="accounts" md-raised-button color="accent" class="add-new-account-button" (click)="addAccount()">
         <md-icon>add</md-icon>
       </button>
 

@@ -2,12 +2,23 @@
 
 <app-nav-menu></app-nav-menu>
 
-<div *ngIf="pullRequests">
+<div class="main-content-dark-container">
 
-  <h1>List of open pull requests</h1>
+  <div class="content-wrapper">
 
-  <div>
-    <app-pull-request *ngFor="let pr of pullRequests" [pullRequest]="pr"></app-pull-request>
+    <div class="toolbar-container">
+      <!-- TODO: This should be in its own component with the filtering options -->
+      <h1 class="content-title">Pull Requests</h1>
+    </div>
+
+    <div *ngIf="pullRequests">
+        <app-pull-request *ngFor="let pr of pullRequests" [pullRequest]="pr"></app-pull-request>
+    </div>
+
+    <div *ngIf="pullRequests && pullRequests.length === 0" class="no-pull-request-container accent-color-font">
+      You do not have any open pull request!
+    </div>
+
   </div>
 
 </div>

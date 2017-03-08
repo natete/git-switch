@@ -1,8 +1,107 @@
-<md-card *ngIf="pullRequest">
+<md-card class="pull-request-container primary-color-bg" *ngIf="pullRequest">
 
-  <div fxLayout="row" fxLayoutAlign="start center" fxFill>
-    <div fxLayout="column" fxLayoutAlign="center center" fxFill>
-      {{pullRequest.description}}
+  <div fxLayout="row" fxFill>
+    <div fxLayout="column" fxFill>
+
+      <div fxLayout="row" class="pull-request-info-container" fxLayoutAlign="start center"
+           fxFlex="65" fxFlex.md="30" fxFlex.sm="30" fxFlex.xs="30">
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
+          <i class="fa fa-code-fork" fxHide.gt-md></i>
+          <i class="fa fa-4x fa-code-fork" fxHide.md fxHide.sm fxHide.xs></i>
+        </div>
+
+        <div fxLayout="column" class="pull-request-title" fxLayoutAlign="center start"
+             fxFlex="40" fxFlex.md="90" fxFlex.sm="90" fxFlex.xs="90">
+          {{pullRequest.title}}
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="15" fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row">
+            <i class="fa fa-user-circle pull-request-icon"></i>
+            <span class="accent-color-font">{{pullRequest.userName}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="15" fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row">
+            <i class="fa fa-clock-o pull-request-icon"></i>
+            <span class="accent-color-font">{{pullRequest.date}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10" fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row">
+            <i class="fa fa-circle-o pull-request-icon"></i>
+            <span class="accent-color-font">{{pullRequest.commits}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10" fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row">
+            <i class="fa fa-comments pull-request-icon"></i>
+            <span class="accent-color-font">{{pullRequest.comments}}</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div fxLayout="row" class="pull-request-info-container pull-request-branches"
+           fxLayoutAlign="start center"
+           fxFlex="35" fxHide.gt-md>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="30">
+          <div fxLayout="row">
+            <i class="fa fa-user-circle pull-request-icon"></i>
+            <span class="accent-color-font">{{pullRequest.userName}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="30">
+          <div fxLayout="row">
+            <i class="fa fa-clock-o pull-request-icon"></i>
+            <span class="accent-color-font">{{pullRequest.date}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="20">
+          <div fxLayout="row">
+            <i class="fa fa-circle-o pull-request-icon"></i>
+            <span class="accent-color-font">{{pullRequest.commits}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="20">
+          <div fxLayout="row">
+            <i class="fa fa-comments pull-request-icon"></i>
+            <span class="accent-color-font">{{pullRequest.comments}}</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div fxLayout="row" class="pull-request-info-container pull-request-branches" fxLayoutAlign="start center" fxFlex="35">
+
+        <div fxLayout="column" fxLayoutAlign="center start" fxFlex>
+          <div fxLayout="row">
+            <span class="pull-request-title pull-request-icon">From</span>
+            <span class="accent-color-font">{{pullRequest.from}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10" fxHide.sm fxHide.xs>
+          <i class="fa fa-2x fa-compress"></i>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center start" fxFlex>
+          <div fxLayout="row">
+            <span class="pull-request-title pull-request-icon">to</span>
+            <span class="accent-color-font">{{pullRequest.to}}</span>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 
