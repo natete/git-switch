@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth.service';
 
 /*
@@ -14,19 +13,24 @@ import { AuthService } from '../../providers/auth/auth.service';
 })
 export class LoginPage {
 
-  username: string;
-  password: string;
+  username = '';
+  password = '';
   errorMessage: string;
 
-  constructor(private navCtrl: NavController,
-              private navParams: NavParams,
-              private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
-  ionViewDidLoad() { }
+  /**
+   * @returns {boolean} true if the user has fullfiled username and password, false otherwise.
+   */
+  canLogIn(): boolean {
+    return this.username.trim() === '' || this.password.trim() === '';
+  }
 
+  /**
+   * Logs into the application and shows an error if the user cannot log in.
+   */
   login(): void {
     this.authService.login(this.username, this.password)
-        .then(() => console.log('logged in'))
         .catch(() => this.errorMessage = 'Invalid username and/or password');
   }
 }

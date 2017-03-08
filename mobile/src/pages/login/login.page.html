@@ -22,5 +22,5 @@
 
   <div class="error-message" color="danger">{{errorMessage}}</div>
 
-  <button ion-button block (click)="login()">Login in GitSwitch</button>
+  <button ion-button block (click)="login()" [disabled]="canLogIn()">Login in GitSwitch</button>
 </ion-content>

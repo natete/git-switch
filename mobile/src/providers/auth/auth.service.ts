@@ -8,20 +8,21 @@ import { Constants } from '../../shared/constants';
 @Injectable()
 export class AuthService {
 
-  private authSubject = new Subject<void>();
+  private authSubject = new Subject<boolean>();
 
   constructor(private http: Http,
               private tokenService: TokenService) {
+
     this.tokenService
         .getToken()
-        .then(token => this.authSubject.next())
-        .catch(() => this.authSubject.error(null));
+        .then(token => this.authSubject.next(true))
+        .catch(() => this.authSubject.next(false));
   }
 
   /**
    * @returns {Observable<void>} An observable of the auth state.
    */
-  getAuthStream(): Observable<void> {
+  getAuthStream(): Observable<boolean> {
     return this.authSubject.asObservable();
   }
 
@@ -31,15 +32,14 @@ export class AuthService {
    * @param password
    * @returns {Promise<void|void>} That resolves if everything goes fine or it's rejected otherwise.
    */
-  login(username: string, password: string): Promise<void> {
+  login(username: string, password: string): Promise<boolean> {
     const loginEndpoint = 'oauth/token';
     const requestBody = this.buildRequestBody(username, password);
 
     return this.http.post(`${Constants.BACKEND_URL}/${loginEndpoint}`, requestBody)
                .toPromise()
                .then(res => this.tokenService.setToken(res.json()))
-               .then(() => this.authSubject.next())
-               .catch(err => console.log(err));
+               .then(() => this.authSubject.next(true));
   }
 
   /**
@@ -47,10 +47,9 @@ export class AuthService {
    */
   logout(): void {
     // TODO: Logout in the backend.
-    this.tokenService.revokeToken()
-        .then(() => console.log('Logged out'))
-        .catch(() => console.log('Error'));
-    this.authSubject.error(null);
+    this.tokenService.revokeToken();
+
+    this.authSubject.next(false);
   }
 
   /**
