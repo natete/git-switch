@@ -1,5 +1,6 @@
 [
   {
+    "title": "Pull Request 1 Title",
     "description": "Pull Request description gfjdngfkjdnbjdkjnfvjdn",
     "userName": "UserName1",
     "date": "10 months",
@@ -10,6 +11,7 @@
     "to": "Master_branch_of_project"
   },
   {
+    "title": "Pull Request 2 Title",
     "description": "Pull Request description",
     "userName": "UserName1",
     "date": "10 months",
