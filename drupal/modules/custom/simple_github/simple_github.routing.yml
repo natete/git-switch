@@ -4,3 +4,11 @@ simple_github.admin_form:
     _form: '\Drupal\simple_github\Form\SimpleGitHubSettingsForm'
   requirements:
     _permission: 'administer simple_github'
+
+simple_github.user_repositories:
+  path: '/user/{user}/simple_github/repositories'
+  defaults:
+    _controller: '\Drupal\simple_github\Controller\SimpleGitHubController::repositories'
+  requirements:
+    _permission: 'administer simple_github'
+
