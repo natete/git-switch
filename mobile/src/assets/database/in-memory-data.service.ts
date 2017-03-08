@@ -1,5 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Account } from '../../pages/accounts/account';
+import { PullRequest } from '../../pages/pull-requests/pull-request';
+import { Setting } from '../../pages/settings/setting';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb(): {} {
@@ -22,7 +24,7 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    const pullRequests = [
+    const pullRequests: PullRequest[] = [
       {
         description: 'Pull Request description gfjdngfkjdnbjdkjnfvjdn',
         userName: 'UserName1',
@@ -75,9 +77,27 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
+    const settings: Setting[] = [
+      {
+        id: 1,
+        name: "Forked repository name",
+        fork: true,
+        alert: 12,
+        time: "2 years"
+      },
+      {
+        id: 2,
+        name: "Repository name",
+        fork: false,
+        alert: 7,
+        time: "10 monthsngbkjnfgkbjnfgjbnfgbnjf"
+      }
+    ];
+
     return {
       accounts: accounts,
       pullRequests: pullRequests,
+      settings: settings,
       user: {}
     };
   }

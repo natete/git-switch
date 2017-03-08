@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoadingController } from 'ionic-angular';
-import { PullRequest } from './pull-requests';
+import { PullRequest } from './pull-request';
 import { PullRequestsService } from './pull-requests.service';
 
 @Component({

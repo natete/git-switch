@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Setting } from './setting';
+import { SettingsService } from './settings.service';
 
 /*
  Generated class for the Settings page.
@@ -13,25 +15,30 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  settings = [{
-    id: 1,
-    name: "Forked repository name",
-    fork: true,
-    alert: 12,
-    time: "2 years"
-  },
-    {
-      id: 2,
-      name: "Repository name",
-      fork: false,
-      alert: 7,
-      time: "10 monthsngbkjnfgkbjnfgjbnfgbnjf"
-    }];
+  settings: Setting[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(private loadingController: LoadingController,
+              private settingsService: SettingsService) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+    const loader = this.loadingController.create({
+      content: 'Getting settings...'
+    });
+
+    loader.present();
+
+    this.settingsService
+        .getSettings()
+        .subscribe(settings => {
+          this.settings = settings;
+          loader
+            .dismiss()
+            .catch(() => console.log('Already dismissed'));
+        });
+  }
+
+  goToRepositorySettings(id: number){
+
   }
 
 }
