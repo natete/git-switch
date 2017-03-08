@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HomePage } from '../home/home.page';
+import { PullRequestsPage } from '../pull-requests/pull-requests.page';
 import { SettingsPage } from '../settings/settings';
 import { AccountsPage } from '../accounts/accounts.page';
 
@@ -9,7 +9,7 @@ import { AccountsPage } from '../accounts/accounts.page';
 export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
-  tab1Root: any = HomePage;
+  tab1Root: any = PullRequestsPage;
   tab2Root: any = SettingsPage;
   tab3Root: any = AccountsPage;
 

@@ -3,7 +3,7 @@ import { Http, XHRBackend, RequestOptions } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home.page';
+import { PullRequestsPage } from '../pages/pull-requests/pull-requests.page';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { AccountsPage } from '../pages/accounts/accounts.page';
@@ -13,12 +13,13 @@ import { TokenService } from '../providers/auth/token-service';
 import { HttpFactory } from '../providers/http/http.factory';
 import { AccountsService } from '../pages/accounts/accounts.service';
 import { InMemoryDataService } from '../assets/database/in-memory-data.service';
+import { PullRequestsService } from '../pages/pull-requests/pull-requests.service';
 
 @NgModule({
   declarations: [
     MyApp,
     AccountsPage,
-    HomePage,
+    PullRequestsPage,
     LoginPage,
     SettingsPage,
     TabsPage
@@ -31,13 +32,14 @@ import { InMemoryDataService } from '../assets/database/in-memory-data.service';
   entryComponents: [
     MyApp,
     AccountsPage,
-    HomePage,
+    PullRequestsPage,
     LoginPage,
     SettingsPage,
     TabsPage
   ],
   providers: [
     AccountsService,
+    PullRequestsService,
     AuthService,
     TokenService,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
