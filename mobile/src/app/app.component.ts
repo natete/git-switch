@@ -3,7 +3,7 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthService } from '../providers/auth/auth.service';
-import { LoginPage } from '../pages/login/login';
+import { LoginPage } from '../pages/login/login.page';
 
 @Component({
   templateUrl: 'app.html'
@@ -33,9 +33,6 @@ export class MyApp {
   initLoginSubscription() {
     this.authService
         .getAuthStream()
-        .subscribe(
-          () => this.nav.setRoot(TabsPage),
-          () => this.nav.setRoot(LoginPage)
-        );
+        .subscribe(isLoggedIn => isLoggedIn ? this.nav.setRoot(TabsPage) : this.nav.setRoot(LoginPage));
   }
 }

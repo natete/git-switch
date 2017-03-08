@@ -1,0 +1,29 @@
+page-login {
+
+  ion-title.title {
+    text-align: center;
+    ion-icon.icon {
+      font-size: 3.8rem;
+    }
+  }
+
+  .input-container {
+    .label {
+      color: map-get($colors, light);
+    }
+    input {
+      color: map-get($colors, light);
+      border-bottom: 1px solid map-get($colors, light);
+
+      &.text-input-md {
+        margin-right: 0;
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .error-message {
+    color: map-get($colors, 'danger');
+  }
+}

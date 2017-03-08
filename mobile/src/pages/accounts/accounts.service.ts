@@ -4,11 +4,11 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Account } from './account';
 import { InAppBrowser } from '@ionic-native/inappbrowser';
+import { Constants } from '../../shared/constants';
 
 @Injectable()
 export class AccountsService {
   private readonly IN_APP_BROWSER_PARAMS = 'location=no,clearcache=yes';
-  private readonly GITHUB_BASE_URL = 'https://github.com/login/oauth/authorize?';
   private readonly ACCOUNTS_URL = 'api/accounts';
 
   private accountsStream = new BehaviorSubject<Account[]>([]);
@@ -18,7 +18,7 @@ export class AccountsService {
 
   /**
    * Get the observable of the accounts the user has.
-   * @returns {Observable<T>} the observable of the accounts the user has.
+   * @returns {Observable<Account[]>} the observable of the accounts the user has.
    */
   getAccounts(): Observable<Account[]> {
     if (this.accountsStream.getValue()) {
@@ -42,7 +42,7 @@ export class AccountsService {
 
     const params: URLSearchParams = this.buildParams(redirectUri, nonce);
 
-    const browserRef = new InAppBrowser(this.GITHUB_BASE_URL + params.toString(), '_blank', this.IN_APP_BROWSER_PARAMS);
+    const browserRef = new InAppBrowser(Constants.GITHUB_API_URL + params.toString(), '_blank', this.IN_APP_BROWSER_PARAMS);
 
     browserRef.on('loadstart')
               .filter(event => event.url.indexOf(redirectUri) === 0)
@@ -69,10 +69,10 @@ export class AccountsService {
    * @returns {string} The generated code.
    */
   private createNonce(): string {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    for (var i = 0; i < 40; i++) {
+    for (let i = 0; i < 40; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
@@ -130,7 +130,7 @@ export class AccountsService {
    * Auxiliary method to reduce an array of querystring values to an object
    * @param accumulator the accumulator where the results are stored.
    * @param param the param to be processed.
-   * @returns {any} the result of the accumulator with the new data added.
+   * @returns {Object} the result of the accumulator with the new data added.
    */
   private stringParamToObjectParam(accumulator, param: string) {
     const paramArray = param.split('=');

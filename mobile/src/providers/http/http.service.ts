@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, XHRBackend } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { TokenService } from '../auth/token-service';
+import { TokenService } from '../auth/token.service';
 
 @Injectable()
 export class HttpService extends Http {
