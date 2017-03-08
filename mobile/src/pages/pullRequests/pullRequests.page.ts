@@ -4,10 +4,10 @@ import { PullRequest } from './pullRequests';
 import { PullRequestsService } from './pullRequests.service';
 
 @Component({
-  selector: 'page-home',
+  selector: 'page-pullrequests',
   templateUrl: 'pullRequests.page.html'
 })
-export class HomePage {
+export class PullRequestsPage {
 
   pullRequests: PullRequest[];
 

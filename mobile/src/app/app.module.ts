@@ -3,7 +3,7 @@ import { Http, XHRBackend, RequestOptions } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/pullRequests/pullRequests.page';
+import { PullRequestsPage } from '../pages/pullRequests/pullRequests.page';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
 import { AccountsPage } from '../pages/accounts/accounts.page';
@@ -13,14 +13,13 @@ import { TokenService } from '../providers/auth/token-service';
 import { HttpFactory } from '../providers/http/http.factory';
 import { AccountsService } from '../pages/accounts/accounts.service';
 import { InMemoryDataService } from '../assets/database/in-memory-data.service';
-import { PullRequest } from '../pages/pullRequests/pullRequests';
 import { PullRequestsService } from '../pages/pullRequests/pullRequests.service';
 
 @NgModule({
   declarations: [
     MyApp,
     AccountsPage,
-    HomePage,
+    PullRequestsPage,
     LoginPage,
     SettingsPage,
     TabsPage
@@ -33,7 +32,7 @@ import { PullRequestsService } from '../pages/pullRequests/pullRequests.service'
   entryComponents: [
     MyApp,
     AccountsPage,
-    HomePage,
+    PullRequestsPage,
     LoginPage,
     SettingsPage,
     TabsPage
