@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject, Subject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
+import { TokenService } from './token.service';
+import { Auth } from './auth';
 
 @Injectable()
 export class AuthService {
 
-  constructor() { }
+  constructor(private tokenService: TokenService) { }
 
+  /**
+   * Check if there is a token.
+   * @returns {Observable<boolean>}.
+   */
   isAuthenticated(): Observable<boolean> {
-    // TODO
-    let tempSubject = new Subject<boolean>();
+    let isAuthSubject = new ReplaySubject<boolean>();
 
-    setTimeout(()=> tempSubject.next(true), 3000);
+    isAuthSubject.next(!!this.tokenService.getToken());
 
-    return tempSubject.asObservable();
+    return isAuthSubject.asObservable();
   }
 
-  getAccessToken(): Observable<string> {
-    // TODO
-    let tempSubject = new Subject<string>();
-
-    setTimeout(()=> tempSubject.next('TODO'), 3000);
-
-    return tempSubject.asObservable();
+  /**
+   * Return the current token.
+   * @returns {Auth} string or undefined if no token has been set.
+   */
+  getAccessToken(): Auth {
+    return new Auth(this.tokenService.getToken());
   }
 }

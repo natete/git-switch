@@ -124,3 +124,4 @@ $git-switch-app-theme: mat-light-theme($gs-app-primary, $gs-app-accent, $gs-app-
 // Include the custom mixin using the palette colors
 @include primary-color-base-styles($git-switch-app-theme);
 @include accent-color-base-styles($git-switch-app-theme);
+@include warn-color-base-styles($git-switch-app-theme);
