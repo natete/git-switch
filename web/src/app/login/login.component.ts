@@ -23,7 +23,7 @@ export class LoginComponent {
    * Check if the login button must be disabled.
    * @returns {boolean} true if the username and password inputs have value.
    */
-  canLogin(): boolean {
+  isInvalid(): boolean {
     return this.username.trim() === '' || this.password.trim() === '';
   }
 

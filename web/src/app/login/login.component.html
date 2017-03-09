@@ -28,7 +28,7 @@
         </md-input-container>
 
         <div class="login-input-container login-button-container">
-          <button md-raised-button class="primary-color-font" [disabled]="canLogin()" (click)="login()">Go!</button>
+          <button md-raised-button class="primary-color-font" [disabled]="isInvalid()" (click)="login()">Go!</button>
         </div>
       </form>
 
