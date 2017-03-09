@@ -73,8 +73,9 @@ class SimpleGitHubController extends ControllerBase implements ContainerInjectio
      */
     public function repositories(UserInterface $user) {
         $list = array();
-
         $connector = new SimpleGitHubConnectorService;
+        $code = "3138369135be050d58af";
+        $state = "NNPSw2ZIeg0IwPLrx3mk9RMQllz08l1GNDXgCVQB";
 
 /*
         $list['#cache']['tags'] = array(
@@ -99,17 +100,19 @@ class SimpleGitHubController extends ControllerBase implements ContainerInjectio
                 'operations' => array(
                     'data' => $this->t('Operations'),
                 ),
-
+                'client' => array(
+                    'data' => $this->t('Client'),
+                ),
             ),
             '#rows' => array(),
         );
 
         // Add existing repositories to the table.
-        foreach ($result as $repository) {
+        //foreach ($result as $repository) {
             $list['table']['#rows'][] = array(
                 'data' => array(
-                    'repo_name' => $repository['repo_name'],
-                    'repo_location' => $repository['repo_location'],
+                    'repo_name' => 'Prueba',//$repository['repo_name'],
+                    'repo_location' => 'Aqui',//$repository['repo_location'],
                     'operations' => array(
                         'data' => array(
                             '#type' => 'operations',
@@ -121,9 +124,10 @@ class SimpleGitHubController extends ControllerBase implements ContainerInjectio
                             ),
                         ),
                     ),
+                    'client' => $connector->getAccessToken($code,$state),
                 ),
             );
-        }
+       // }
 
 
         $list['table']['#empty'] = $this->t('There are no repositories.');
