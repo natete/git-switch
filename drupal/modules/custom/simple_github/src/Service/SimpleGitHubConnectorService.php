@@ -5,7 +5,7 @@
  * Contains \Drupal\simple_github\Controller\SimpleGitHubConnectorController.
  */
 
-namespace Drupal\simple_github\Controller;
+namespace Drupal\simple_github\Service;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class SimpleGitHubConnectorController{
+class SimpleGitHubConnectorService {
 
     const CLIENT_ID ="cf0f72380b77a0ae16e9";
     const CLIENT_SECRET = "c6962314dc7945e8f2f09888d6ee61c352e867c8";
@@ -26,20 +26,16 @@ class SimpleGitHubConnectorController{
     protected $response_status;
     protected $access_token;
 
-    public function __construct(){
-
-    }
-    public static function create(ContainerInterface $container){
-
-    }
-
     public function getAccessToken($code, $state){
+
+        $config = \Drupal::config('simple_github.settings');
+
         //Url to attack
         $url = "https://github.com/login/oauth/access_token";
 
         //Set parameters
         $parameters = array(
-            "client_id" => CLIENT_ID,
+            "client_id" => $config->get('app_id'),
             "client_secret" => CLIENT_SECRET,
             "code" => $code,
             "redirect_uri" => "",
