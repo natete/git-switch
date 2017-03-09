@@ -19,8 +19,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SimpleGitHubConnetionController extends ControllerBase implements ContainerInjectionInterface{
 
-    const CLIENT_ID ="";
-    const CLIENT_SECRET = "";
+    const CLIENT_ID ="cf0f72380b77a0ae16e9";
+    const CLIENT_SECRET = "c6962314dc7945e8f2f09888d6ee61c352e867c8";
 
     protected $response;
     protected $response_status;
