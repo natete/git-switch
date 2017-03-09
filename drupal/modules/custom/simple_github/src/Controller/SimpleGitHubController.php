@@ -14,6 +14,7 @@ use Drupal\user\UserDataInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\simple_github\Controller\SimpleGitHubConnectorController;
 
 /**
  * Controller routines for simple_github routes.
@@ -72,6 +73,9 @@ class SimpleGitHubController extends ControllerBase implements ContainerInjectio
      */
     public function repositories(UserInterface $user) {
         $list = array();
+
+        $connector = new SimpleGitHubConnectorController;
+
 /*
         $list['#cache']['tags'] = array(
             'simple_github:' => $user->id(),
@@ -95,6 +99,7 @@ class SimpleGitHubController extends ControllerBase implements ContainerInjectio
                 'operations' => array(
                     'data' => $this->t('Operations'),
                 ),
+
             ),
             '#rows' => array(),
         );

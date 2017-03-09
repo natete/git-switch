@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\simple_github\Controller\SimpleGithubConnectorController.
+ * Contains \Drupal\simple_github\Controller\SimpleGitHubConnectorController.
  */
 
 namespace Drupal\simple_github\Controller;
@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class SimpleGitHubConnetionController extends ControllerBase implements ContainerInjectionInterface{
+class SimpleGitHubConnectorController{
 
     const CLIENT_ID ="cf0f72380b77a0ae16e9";
     const CLIENT_SECRET = "c6962314dc7945e8f2f09888d6ee61c352e867c8";
