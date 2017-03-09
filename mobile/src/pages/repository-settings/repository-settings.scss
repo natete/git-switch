@@ -1,4 +1,10 @@
 page-repository-settings {
+  ion-header{
+      * {
+        color: map-get($colors, primary);
+      }
+  }
+
   ion-card-header {
     background-color: map-get($colors, primary);
     font-weight: bold;

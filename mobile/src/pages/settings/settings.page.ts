@@ -39,7 +39,7 @@ export class SettingsPage {
         });
   }
 
-  goToRepositorySettings($event, setting){
+  goToRepositorySettings(setting){
     this.navCtrl.push(RepositorySettingsPage, setting);
   }
 

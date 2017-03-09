@@ -7,10 +7,10 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{setting.name}}</ion-title>
+    <ion-title *ngIf="setting">{{setting.name}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only>
-        <ion-icon color="primary" name="ios-checkmark-circle"></ion-icon>
+        <ion-icon name="ios-checkmark-circle"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -19,48 +19,50 @@
 
 
 <ion-content>
-  <ion-card>
+  <ng-container *ngIf="setting">
+    <ion-card>
 
-    <ion-card-header color="light" class="text-ellipsis">
-      Pull requests
-    </ion-card-header>
+      <ion-card-header color="light" class="text-ellipsis">
+        Pull requests
+      </ion-card-header>
 
-    <ion-card-content class="ion-item-content">
-      <ion-list no-lines>
-        <ion-item>
-          <ion-toggle [(ngModel)]="newOnesPull"></ion-toggle>
-          <ion-label>New ones</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-toggle [(ngModel)]="commitsPull"></ion-toggle>
-          <ion-label>Commits</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-toggle [(ngModel)]="commentsPull"></ion-toggle>
-          <ion-label>Comments</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
+      <ion-card-content class="ion-item-content">
+        <ion-list no-lines>
+          <ion-item>
+            <ion-toggle [(ngModel)]="newOnesPull"></ion-toggle>
+            <ion-label>New ones</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-toggle [(ngModel)]="commitsPull"></ion-toggle>
+            <ion-label>Commits</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-toggle [(ngModel)]="commentsPull"></ion-toggle>
+            <ion-label>Comments</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
 
-  </ion-card>
-  <ion-card>
+    </ion-card>
+    <ion-card>
 
-    <ion-card-header color="light" class="text-ellipsis">
-      Issues
-    </ion-card-header>
+      <ion-card-header color="light" class="text-ellipsis">
+        Issues
+      </ion-card-header>
 
-    <ion-card-content class="ion-item-content">
-      <ion-list no-lines>
-        <ion-item>
-          <ion-toggle [(ngModel)]="newOnesIssues"></ion-toggle>
-          <ion-label>New ones</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-toggle [(ngModel)]="commitsIssues"></ion-toggle>
-          <ion-label>Commits</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
+      <ion-card-content class="ion-item-content">
+        <ion-list no-lines>
+          <ion-item>
+            <ion-toggle [(ngModel)]="newOnesIssues"></ion-toggle>
+            <ion-label>New ones</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-toggle [(ngModel)]="commitsIssues"></ion-toggle>
+            <ion-label>Commits</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
 
-  </ion-card>
+    </ion-card>
+  </ng-container>
 </ion-content>

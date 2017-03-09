@@ -14,14 +14,13 @@ import { Setting } from '../settings/setting';
 })
 export class RepositorySettingsPage {
 
-  private setting: Setting
+  setting: Setting;
 
   constructor(private navParams: NavParams) {
-    this.setting = this.navParams.data;
   }
 
   ionViewDidLoad() {
-    //this.setting = this.navParams.data;
+    this.setting = this.navParams.data;
     console.log('ionViewDidLoad RepositorySettingsPage');
   }
 
