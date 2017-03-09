@@ -17,7 +17,7 @@
 
   /* Class to use the primary color as text color */
   .primary-color-font {
-    color: mat-color($primaryPalette, default);
+    color: mat-color($primaryPalette, default) !important;
   }
 }
 
@@ -38,5 +38,24 @@
   /* Class to use the accent color as text color */
   .accent-color-font {
     color: mat-color($accentPalette, default) !important;
+  }
+}
+
+/**
+ * Define common classes to use the default warn color.
+ */
+@mixin warn-color-base-styles($theme) {
+
+  /* Get the warn palette from the theme */
+  $warnPalette: map-get($theme, warn);
+
+  /* Class to use the warn color as background */
+  .warn-color-bg {
+    background-color: mat-color($warnPalette, default);
+  }
+
+  /* Class to use the warn color as text color */
+  .warn-color-font {
+    color: mat-color($warnPalette, default) !important;
   }
 }

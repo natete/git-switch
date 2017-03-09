@@ -17,6 +17,7 @@ body {
   width: 100%;
   padding: 2% 0;
   min-height: calc(100vh - 64px);
+  box-sizing: border-box;
 }
 
 /**
@@ -73,5 +74,43 @@ app-root:empty + .splash-logo-container {
   opacity: 1;
 }
 
+/**
+ * Material styles that need to be override
+ */
+.login-input-container {
+  .mat-input-wrapper {
+    background-color: white !important;
+    height: 35px;
+    padding-bottom: 0px;
+  }
+
+  .mat-input-underline {
+    margin-top: 1px;
+  }
+
+  .mat-input-table {
+    height: 100%;
+  }
+
+  input {
+    height: 35px;
+    padding: 0 5px;
+  }
+
+  .mat-input-placeholder-wrapper {
+    height: 100%;
+  }
+
+  .mat-input-placeholder {
+    line-height: 35px;
+    padding-left: 5px;
+    padding-top: 1em;
+  }
+
+  .mat-input-placeholder.mat-float.mat-focused, .mat-input-placeholder.mat-float:not(.mat-empty) {
+    height: 35px;
+    padding-top: 0.5em;
+  }
+}
 
 
