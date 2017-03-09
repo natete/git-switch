@@ -2,6 +2,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Account } from '../../pages/accounts/account';
 import { PullRequest } from '../../pages/pull-requests/pull-request';
 import { Setting } from '../../pages/settings/setting';
+import { RepositorySetting } from '../../pages/repository-settings/repository-setting';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb(): {} {
@@ -94,10 +95,38 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
+    const repositorySettings: RepositorySetting[] = [
+      {
+        id: 1,
+        pullRequest: {
+          newOnes: true,
+          commits: true,
+          comments: false
+        },
+        issues: {
+          newOnes: false,
+          commits:false
+        }
+      }, {
+        id: 2,
+        pullRequest: {
+          newOnes: true,
+          commits: true,
+          comments: true
+        },
+        issues: {
+          newOnes: true,
+          commits:true
+        }
+      }
+    ];
+
+
     return {
       accounts: accounts,
       pullRequests: pullRequests,
       settings: settings,
+      repositorySettings: repositorySettings,
       user: {}
     };
   }

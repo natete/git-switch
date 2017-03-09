@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoadingController, NavController } from 'ionic-angular';
 import { Setting } from './setting';
 import { SettingsService } from './settings.service';
-import { RepositorySettingsPage } from '../repository-settings/repository-settings';
+import { RepositorySettingsPage } from '../repository-settings/repository-settings.page';
 
 /*
  Generated class for the Settings page.
