@@ -11,4 +11,3 @@ simple_github.user_repositories:
     _controller: '\Drupal\simple_github\Controller\SimpleGitHubController::repositories'
   requirements:
     _permission: 'administer simple_github'
-

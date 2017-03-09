@@ -111,7 +111,7 @@ class SimpleGitHubController extends ControllerBase implements ContainerInjectio
                             '#links' => array(
                                 'delete' => array(
                                     'title' => $this->t('Delete'),
-                                    'url' => '#'//Url::fromRoute('oauth.user_consumer_delete', array('user' => $user->id(), 'key' => $key)),
+                                    'url' => '#'//Url::fromRoute('simple_github.user_consumer_delete', array('user' => $user->id(), 'key' => $key)),
                                 ),
                             ),
                         ),
