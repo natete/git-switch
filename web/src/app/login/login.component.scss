@@ -37,6 +37,8 @@
 .login-button-container {
   margin-top: 16px;
   z-index: 50;
+  margin-right: auto;
+  margin-left: auto;
 
   .mat-raised-button {
     width: 100%;
@@ -51,4 +53,8 @@
 
 .login-form {
   z-index: 50;
+
+  form {
+    text-align: center;
+  }
 }
