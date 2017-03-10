@@ -74,8 +74,8 @@ class SimpleGitHubController extends ControllerBase implements ContainerInjectio
     public function repositories(UserInterface $user) {
         $list = array();
         $connector = new SimpleGitHubConnectorService;
-        $code = "3138369135be050d58af";
-        $state = "NNPSw2ZIeg0IwPLrx3mk9RMQllz08l1GNDXgCVQB";
+        $code = "89f0cdc0a73061472248";
+        $state = "DlFPJIsvf7FOmBP6R8PPukX0igPgKoymBbRcFt5G";
 
 /*
         $list['#cache']['tags'] = array(
