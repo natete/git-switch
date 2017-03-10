@@ -2,6 +2,8 @@
 
 <app-nav-menu></app-nav-menu>
 
+<app-back-to-top></app-back-to-top>
+
 <div class="main-content-dark-container">
 
   <div class="content-wrapper">
@@ -13,6 +15,18 @@
 
     <div *ngIf="pullRequests">
         <app-pull-request *ngFor="let pr of pullRequests" [pullRequest]="pr"></app-pull-request>
+    </div>
+
+    <div *ngIf="pullRequests">
+      <app-pull-request *ngFor="let pr of pullRequests" [pullRequest]="pr"></app-pull-request>
+    </div>
+
+    <div *ngIf="pullRequests">
+      <app-pull-request *ngFor="let pr of pullRequests" [pullRequest]="pr"></app-pull-request>
+    </div>
+
+    <div *ngIf="pullRequests">
+      <app-pull-request *ngFor="let pr of pullRequests" [pullRequest]="pr"></app-pull-request>
     </div>
 
     <div *ngIf="pullRequests && pullRequests.length === 0" class="no-pull-request-container accent-color-font">
