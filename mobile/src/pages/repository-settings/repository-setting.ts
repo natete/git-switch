@@ -1,12 +1,8 @@
 export interface RepositorySetting {
   id: number,
-  pullRequest: {
-    newOnes: boolean,
-    commits: boolean,
-    comments: boolean
-  },
-  issues: {
-    newOnes: boolean,
-    commits:boolean
-  }
+  newOnesPull: boolean,
+  commitsPull: boolean,
+  commentsPull: boolean
+  newOnesIssues: boolean,
+  commitsIssues:boolean
 }

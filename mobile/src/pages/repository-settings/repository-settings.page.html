@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title *ngIf="setting">{{setting.name}}</ion-title>
+    <ion-title *ngIf="setting && repositorySetting">{{setting.name}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="updateRepositorySetting()">
         <ion-icon name="ios-checkmark-circle"></ion-icon>
@@ -19,7 +19,7 @@
 
 
 <ion-content>
-  <ng-container *ngIf="setting">
+  <ng-container *ngIf="setting && repositorySetting">
     <ion-card>
 
       <ion-card-header color="light" class="text-ellipsis">
@@ -29,15 +29,18 @@
       <ion-card-content class="ion-item-content">
         <ion-list no-lines>
           <ion-item>
-            <ion-toggle [(ngModel)]="newOnesPull" (ionChange)="newOnesPullChanged()"></ion-toggle>
+            <ion-toggle [ngModel]="getProp(toogle.newOnesPull)"
+                        (ngModelChange)="setProp(toogle.newOnesPull, $event)"></ion-toggle>
             <ion-label>New ones</ion-label>
           </ion-item>
           <ion-item>
-            <ion-toggle [(ngModel)]="commitsPull" (ionChange)="commitsPullChanged()"></ion-toggle>
+            <ion-toggle [ngModel]="getProp(toogle.commitsPull)"
+                        (ngModelChange)="setProp(toogle.commitsPull, $event)"></ion-toggle>
             <ion-label>Commits</ion-label>
           </ion-item>
           <ion-item>
-            <ion-toggle [(ngModel)]="commentsPull" (ionChange)="commentsPullChanged()"></ion-toggle>
+            <ion-toggle [ngModel]="getProp(toogle.commentsPull)"
+                        (ngModelChange)="setProp(toogle.commentsPull, $event)"></ion-toggle>
             <ion-label>Comments</ion-label>
           </ion-item>
         </ion-list>
@@ -53,11 +56,13 @@
       <ion-card-content class="ion-item-content">
         <ion-list no-lines>
           <ion-item>
-            <ion-toggle [(ngModel)]="newOnesIssues" (ionChange)="newOnesIssuesChanged()"></ion-toggle>
+            <ion-toggle [ngModel]="getProp(toogle.newOnesIssues)"
+                        (ngModelChange)="setProp(toogle.newOnesIssues, $event)"></ion-toggle>
             <ion-label>New ones</ion-label>
           </ion-item>
           <ion-item>
-            <ion-toggle [(ngModel)]="commitsIssues" (ionChange)="commitsIssuesChanged()"></ion-toggle>
+            <ion-toggle [ngModel]="getProp(toogle.commitsIssues)"
+                        (ngModelChange)="setProp(toogle.commitsIssues, $event)"></ion-toggle>
             <ion-label>Commits</ion-label>
           </ion-item>
         </ion-list>

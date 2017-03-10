@@ -18,15 +18,18 @@ export class RepositorySettingsPage {
 
   setting: Setting;
   repositorySetting: RepositorySetting;
-  newOnesPull: boolean = false;
-  commitsPull: boolean = false;
-  commentsPull: boolean = false;
-  newOnesIssues: boolean = false;
-  commitsIssues: boolean = false;
+  toogle = {
+    newOnesPull: 'newOnesPull',
+    commentsPull: 'commentsPull',
+    commitsPull: 'commitsPull',
+    newOnesIssues: 'newOnesIssues',
+    commitsIssues: 'commitsIssues',
+  }
 
   constructor(private navParams: NavParams,
               private loadingController: LoadingController,
               private repositorySettingsService: RepositorySettingsService) {
+
   }
 
   ionViewDidLoad() {
@@ -40,42 +43,42 @@ export class RepositorySettingsPage {
 
     this.repositorySettingsService
         .getRepositorySettings(this.setting.id)
-        .subscribe(RepositorySetting => {
-          this.repositorySetting = RepositorySetting;
+        .filter(repoSettings => !!repoSettings)
+        .subscribe(repositorySetting => {
+          this.repositorySetting = repositorySetting;
           loader
             .dismiss()
             .catch(() => console.log('Already dismissed'));
         });
-
-    this.newOnesPull = this.repositorySetting.pullRequest.newOnes;
-    this.commitsPull = this.repositorySetting.pullRequest.commits;
-    this.commentsPull = this.repositorySetting.pullRequest.comments;
-    this.newOnesIssues = this.repositorySetting.issues.newOnes;
-    this.commitsIssues = this.repositorySetting.issues.commits;
   }
 
-  newOnesPullChanged(){
-    this.repositorySetting.pullRequest.newOnes = this.newOnesPull;
+  getProp(prop) {
+    switch (prop){
+      case'newOnesPull': return this.repositorySetting.newOnesPull;
+      case 'commentsPull': return this.repositorySetting.commentsPull;
+      case 'commitsPull': return this.repositorySetting.commitsPull;
+      case 'newOnesIssues': return this.repositorySetting.newOnesIssues;
+      case 'commitsIssues': return this.repositorySetting.commitsIssues;
+    }
   }
 
-  commitsPullChanged(){
-    this.repositorySetting.pullRequest.commits = this.commitsPull;
-  }
-
-  commentsPullChanged(){
-    this.repositorySetting.pullRequest.comments = this.commentsPull;
-  }
-
-  newOnesIssuesChanged(){
-    this.repositorySetting.issues.newOnes = this.newOnesIssues;
-  }
-
-  commitsIssuesChanged(){
-    this.repositorySetting.issues.commits = this.commitsIssues;
+  setProp(prop, value) {
+    switch (prop) {
+      case'newOnesPull':
+        this.repositorySetting.newOnesPull = value;
+      case 'commentsPull':
+        this.repositorySetting.commentsPull = value;
+      case 'commitsPull':
+        this.repositorySetting.commitsPull = value;
+      case 'newOnesIssues':
+        this.repositorySetting.newOnesIssues = value;
+      case 'commitsIssues':
+        this.repositorySetting.commitsIssues = value;
+    }
   }
 
   updateRepositorySetting(){
-    this.repositorySettingsService.updateRepositorySettings(this.repositorySetting);
+    //this.repositorySettingsService.updateRepositorySettings(this.repositorySetting);
   }
 
 }

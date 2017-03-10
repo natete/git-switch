@@ -98,26 +98,18 @@ export class InMemoryDataService implements InMemoryDbService {
     const repositorySettings: RepositorySetting[] = [
       {
         id: 1,
-        pullRequest: {
-          newOnes: true,
-          commits: true,
-          comments: false
-        },
-        issues: {
-          newOnes: false,
-          commits:false
-        }
+        newOnesPull: true,
+        commitsPull: true,
+        commentsPull: false,
+        newOnesIssues: false,
+        commitsIssues:false
       }, {
         id: 2,
-        pullRequest: {
-          newOnes: true,
-          commits: true,
-          comments: true
-        },
-        issues: {
-          newOnes: true,
-          commits:true
-        }
+        newOnesPull: true,
+        commitsPull: true,
+        commentsPull: true,
+        newOnesIssues: true,
+        commitsIssues:true
       }
     ];
 
