@@ -76,6 +76,7 @@ class SimpleGitHubConnectorService {
     $url = "https://api.github.com/user/repos";
     $ch = $this->getConfiguredCURL($url, $user);
     $response = curl_exec($ch);
+    curl_close($ch);
 
     return $response;
   }
@@ -84,6 +85,7 @@ class SimpleGitHubConnectorService {
     $url = "https://api.github.com/" . $user->username . "/" . $name;
     $ch = $this->getConfiguredCURL($url, $user);
     $response = curl_exec($ch);
+    curl_close($ch);
 
     return $response;
   }
@@ -92,6 +94,7 @@ class SimpleGitHubConnectorService {
     $url = "https://api.github.com/repos/" . $user->username . "/" . $repo . "/pulls";
     $ch = $this->getConfiguredCURL($url, $user);
     $response = curl_exec($ch);
+    curl_close($ch);
 
     return $response;
   }
@@ -100,6 +103,7 @@ class SimpleGitHubConnectorService {
     $url = "https://api.github.com/repos/" . $user->username . "/" . $repo . "/pulls/" . $id;
     $ch = $this->getConfiguredCURL($url, $user);
     $response = curl_exec($ch);
+    curl_close($ch);
 
     return $response;
   }
@@ -108,6 +112,34 @@ class SimpleGitHubConnectorService {
     $url = "https://api.github.com/users/" . $user->username;
     $ch = $this->getConfiguredCURL($url, $user);
     $response = curl_exec($ch);
+    curl_close($ch);
+
+    return $response;
+  }
+
+  public function getLoggedUser($user) {
+    $url = "https://api.github.com/user/";
+    $ch = $this->getConfiguredCURL($url, $user);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    return $response;
+  }
+
+  public function getPullRequestCommits($user, $repo, $pr_id) {
+    $url = "https://api.github.com/repos/" . $user->usermname . "/" . $repo . "/pulls/" . $pr_id . "/commits";
+    $ch = $this->getConfiguredCURL($url, $user);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    return $response;
+  }
+
+  public function getPullRequestComments($user, $repo, $pr_id) {
+    $url = "https://api.github.com/repos/" . $user->usermname . "/" . $repo . "/pulls/" . $pr_id . "/comments";
+    $ch = $this->getConfiguredCURL($url, $user);
+    $response = curl_exec($ch);
+    curl_close($ch);
 
     return $response;
   }
