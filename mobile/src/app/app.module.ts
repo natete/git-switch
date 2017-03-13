@@ -15,6 +15,8 @@ import { AccountsService } from '../pages/accounts/accounts.service';
 import { InMemoryDataService } from '../assets/database/in-memory-data.service';
 import { PullRequestsService } from '../pages/pull-requests/pull-requests.service';
 import { SettingsService } from '../pages/settings/settings.service';
+import { RepositorySettingsPage } from '../pages/repository-settings/repository-settings.page';
+import { RepositorySettingsService } from '../pages/repository-settings/repository-settings.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { SettingsService } from '../pages/settings/settings.service';
     PullRequestsPage,
     LoginPage,
     SettingsPage,
-    TabsPage
+    TabsPage,
+    RepositorySettingsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -39,12 +42,14 @@ import { SettingsService } from '../pages/settings/settings.service';
     PullRequestsPage,
     LoginPage,
     SettingsPage,
-    TabsPage
+    TabsPage,
+    RepositorySettingsPage
   ],
   providers: [
     AccountsService,
     PullRequestsService,
     SettingsService,
+    RepositorySettingsService,
     AuthService,
     TokenService,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
