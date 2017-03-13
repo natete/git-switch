@@ -69,20 +69,31 @@ class AccountResource extends ResourceBase {
   }
 
   /*
-   * Responds to GET requests.
+   * Responds to POST requests.
    *
-   * Returns the defined connector.
+   * It connects with GitHub with the given information, returning the account data.
+   *
+   * @param array $data
+   *  Request data.
    *
    * @return \Drupal\rest\ResourceResponse
-   *   The response containing a list of connectors.
+   *   The response containing the GitHub account data.
    */
-  public function get() {
+  public function post($data) {
     $config = \Drupal::config('simple_github.settings');
-    $connectors = array(
-      'app_id' => $config->get('app_id'),
-      'user' => $this->current_user
+    // TODO: Link to github and validate $data information
+    $user_data = array(
+      'id' => 3,
+      'fullname' => 'Alejandro Gómez Morón',
+      'username' => 'agomezmoron',
+      'email' => 'agommor@gmail.com',
+      'photoUrl' => 'http://lorempixel.com/200/200/',
+      'repoNumber' => 10,
+      'organization' => 'Emergya',
+      'location' => 'Sevilla',
     );
-    return new ResourceResponse($connectors);
+
+    return new ResourceResponse($user_data);
   }
 
 }

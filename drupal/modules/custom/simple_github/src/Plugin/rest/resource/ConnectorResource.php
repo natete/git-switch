@@ -70,8 +70,6 @@ class ConnectorResource extends ResourceBase {
   /*
    * Responds to the GET request.
    *
-   *
-   *
    * @return \Drupal\rest\ResourceResponse
    *   The response containing the configured connector.
    */
