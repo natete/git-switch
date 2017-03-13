@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { RepositorySetting } from './repository-setting';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Http, Headers } from '@angular/http';
+import { Observable} from 'rxjs';
 
 @Injectable()
 export class RepositorySettingsService {
   private readonly REPOSITORYSETTINGS_URL = 'api/repositorySettings';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
   }
@@ -17,8 +18,12 @@ export class RepositorySettingsService {
         .map(response => response.json().data as RepositorySetting)
   }
 
-  updateRepositorySettings(repositorySetting: RepositorySetting): void {
-
+  updateRepositorySettings(repositorySetting: RepositorySetting):  Promise<RepositorySetting>{
+    const url = `${this.REPOSITORYSETTINGS_URL}/${repositorySetting.id}`;
+    return this.http
+      .put(url, JSON.stringify(repositorySetting), {headers: this.headers})
+      .toPromise()
+      .then(() => repositorySetting);
   }
 
 }

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavParams, LoadingController } from 'ionic-angular';
+import { NavParams, LoadingController, NavController } from 'ionic-angular';
 import { Setting } from '../settings/setting';
 import { RepositorySetting } from './repository-setting';
 import { RepositorySettingsService } from './repository-settings.service';
+import { SettingsPage } from '../settings/settings.page';
 
 /*
   Generated class for the RepositorySettings page.
@@ -23,10 +24,11 @@ export class RepositorySettingsPage {
     commentsPull: 'commentsPull',
     commitsPull: 'commitsPull',
     newOnesIssues: 'newOnesIssues',
-    commitsIssues: 'commitsIssues',
-  }
+    commitsIssues: 'commitsIssues'
+  };
 
-  constructor(private navParams: NavParams,
+  constructor(private navCtrl: NavController,
+              private navParams: NavParams,
               private loadingController: LoadingController,
               private repositorySettingsService: RepositorySettingsService) {
 
@@ -65,20 +67,24 @@ export class RepositorySettingsPage {
   setProp(prop, value) {
     switch (prop) {
       case'newOnesPull':
-        this.repositorySetting.newOnesPull = value;
+        this.repositorySetting.newOnesPull = value; break;
       case 'commentsPull':
-        this.repositorySetting.commentsPull = value;
+        this.repositorySetting.commentsPull = value; break;
       case 'commitsPull':
-        this.repositorySetting.commitsPull = value;
+        this.repositorySetting.commitsPull = value; break;
       case 'newOnesIssues':
-        this.repositorySetting.newOnesIssues = value;
+        this.repositorySetting.newOnesIssues = value; break;
       case 'commitsIssues':
-        this.repositorySetting.commitsIssues = value;
+        this.repositorySetting.commitsIssues = value; break;
     }
   }
 
-  updateRepositorySetting(){
-    //this.repositorySettingsService.updateRepositorySettings(this.repositorySetting);
+  updateRepositorySetting(): void{
+    this.repositorySettingsService.updateRepositorySettings(this.repositorySetting).then(() => this.goToSettings());
+  }
+
+  private goToSettings(){
+    this.navCtrl.push(SettingsPage);
   }
 
 }
