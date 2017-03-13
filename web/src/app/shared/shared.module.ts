@@ -7,6 +7,7 @@ import { SpinnerService } from './providers/spinner.service';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { BackToTopComponent } from './back-to-top/back-to-top.component';
 import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
@@ -22,9 +23,10 @@ import { LogoutComponent } from './logout/logout.component';
     HeaderComponent,
     MaterialModule,
     NavMenuComponent,
+    BackToTopComponent,
     LogoutComponent
   ],
-  declarations: [HeaderComponent, NavMenuComponent, LogoutComponent],
+  declarations: [HeaderComponent, NavMenuComponent, BackToTopComponent, LogoutComponent],
   providers: [SpinnerService]
 })
 export class SharedModule { }
