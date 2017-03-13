@@ -96,4 +96,25 @@ class AccountResource extends ResourceBase {
     return new ResourceResponse($user_data);
   }
 
+  /*
+   * Responds to DELETE requests.
+   *
+   * It deletes the sent account.
+   *
+   * @param array $data
+   *  Request data.
+   *
+   * @return \Drupal\rest\ResourceResponse
+   *   The response with the result status.
+   */
+  public function delete($data) {
+    $config = \Drupal::config('simple_github.settings');
+    // TODO: Link to github and validate $data information
+    $response_data = array(
+      'message' => _('Account removed successfully')
+    );
+
+    return new ResourceResponse($response_data);
+  }
+
 }
