@@ -7,6 +7,7 @@ import { SpinnerService } from './providers/spinner.service';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   imports: [
@@ -20,9 +21,10 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     FlexLayoutModule,
     HeaderComponent,
     MaterialModule,
-    NavMenuComponent
+    NavMenuComponent,
+    LogoutComponent
   ],
-  declarations: [HeaderComponent, NavMenuComponent],
+  declarations: [HeaderComponent, NavMenuComponent, LogoutComponent],
   providers: [SpinnerService]
 })
 export class SharedModule { }
