@@ -22,8 +22,7 @@ export class RepositorySettingsService {
     const url = `${this.REPOSITORYSETTINGS_URL}/${repositorySetting.id}`;
     return this.http
       .put(url, JSON.stringify(repositorySetting), {headers: this.headers})
-      .toPromise()
-      .then(() => repositorySetting);
+      .toPromise();
   }
 
 }
