@@ -19,13 +19,6 @@ export class RepositorySettingsPage {
 
   setting: Setting;
   repositorySetting: RepositorySetting;
-  toogle = {
-    newOnesPull: 'newOnesPull',
-    commentsPull: 'commentsPull',
-    commitsPull: 'commitsPull',
-    newOnesIssues: 'newOnesIssues',
-    commitsIssues: 'commitsIssues'
-  };
 
   constructor(private navCtrl: NavController,
               private navParams: NavParams,
@@ -52,31 +45,6 @@ export class RepositorySettingsPage {
             .dismiss()
             .catch(() => console.log('Already dismissed'));
         });
-  }
-
-  getProp(prop) {
-    switch (prop){
-      case'newOnesPull': return this.repositorySetting.newOnesPull;
-      case 'commentsPull': return this.repositorySetting.commentsPull;
-      case 'commitsPull': return this.repositorySetting.commitsPull;
-      case 'newOnesIssues': return this.repositorySetting.newOnesIssues;
-      case 'commitsIssues': return this.repositorySetting.commitsIssues;
-    }
-  }
-
-  setProp(prop, value) {
-    switch (prop) {
-      case'newOnesPull':
-        this.repositorySetting.newOnesPull = value; break;
-      case 'commentsPull':
-        this.repositorySetting.commentsPull = value; break;
-      case 'commitsPull':
-        this.repositorySetting.commitsPull = value; break;
-      case 'newOnesIssues':
-        this.repositorySetting.newOnesIssues = value; break;
-      case 'commitsIssues':
-        this.repositorySetting.commitsIssues = value; break;
-    }
   }
 
   updateRepositorySetting(): void{
