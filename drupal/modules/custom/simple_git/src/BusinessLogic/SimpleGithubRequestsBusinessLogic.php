@@ -6,7 +6,7 @@
  * Date: 13/03/17
  * Time: 10:05
  */
-class SimpleGithubRequestsBusinessLogic {
+class SimpleGitRequestsBusinessLogic {
 
   private function getUser() {
     //Obtain username and token from drupal user
