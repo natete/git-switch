@@ -1,0 +1,60 @@
+@import '../../assets/scss/variables';
+
+.login-container {
+  display: block;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+.login-form-wrapper {
+  min-height: 100vh;
+  height: 100%;
+  //width: 65%;
+  //margin: 0 auto;
+}
+
+.login-logo {
+  max-width: 65%;
+}
+
+.login-logo-sm {
+  max-width: 75px;
+}
+
+.login-motto {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5%;
+  padding: 0 10px;
+}
+
+.login-input-container {
+  width: 60%;
+}
+
+.login-button-container {
+  margin-top: 16px;
+  z-index: 50;
+  margin-right: auto;
+  margin-left: auto;
+
+  .mat-raised-button {
+    width: 100%;
+    background-color: $dark-background;
+    font-weight: bold;
+  }
+}
+
+.login-small-logo-container {
+  margin-bottom: 25px;
+}
+
+.login-form {
+  z-index: 50;
+
+  form {
+    text-align: center;
+  }
+}

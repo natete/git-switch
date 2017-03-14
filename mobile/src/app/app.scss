@@ -13,3 +13,34 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+* {
+  color: map-get($colors, font);
+}
+
+[color="primary"] {
+  * {
+    color: map-get($colors, light);
+  }
+}
+
+ion-content.content,
+ion-list.list {
+  background-color: map-get($colors, dark);
+}
+
+.tab-button {
+  .tab-button-icon {
+    font-size: 3.4rem;
+    min-width: 3.4rem;
+    height: 3.4rem;
+    font-weight: bold;
+    color: map-get($colors, font);
+  }
+}
+
+.text-ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

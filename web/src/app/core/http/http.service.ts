@@ -14,25 +14,25 @@ export class HttpService extends Http {
 
   request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
 
-    const s = new Subject<Response>();
+    // const s = new Subject<Response>();
 
-    this.authService.getAccessToken()
-        .subscribe(accessToken => {
+    const authData = this.authService.getAccessToken();
 
-          if (typeof url === 'string') {
-            if (!options) {
-              options = {headers: new Headers()};
-            }
-            options.headers.set('Authorization', `token ${accessToken}`);
-          } else {
-            // we have to add the token to the url object
-            url.headers.set('Authorization', `token ${accessToken}`);
-          }
+    if (authData && authData.tokenType) {
+      if (typeof url === 'string') {
+        if (!options) {
+          options = { headers: new Headers() };
+        }
+        options.headers.set('Authorization', `${authData.tokenType} ${authData.accessToken}`);
+      } else {
+        // we have to add the token to the url object
+        url.headers.set('Authorization', `${authData.tokenType} ${authData.accessToken}`);
+      }
+    }
 
-          super.request(url, options)
-              .subscribe(resp => s.next(resp.json()));
-        });
+    return super.request(url, options)
+        .map(res => res.json());
 
-    return s.asObservable();
+    // return s.asObservable();
   }
 }

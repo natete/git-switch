@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "fullname": "Myname Mysurname",
+    "username": "nice_username",
+    "type": "GITHUB",
+    "email": "migit1@test.com",
+    "photoUrl": "http://lorempixel.com/200/200/",
+    "repoNumber": 7,
+    "organization": "Emergya",
+    "location": "Sevilla"
+  },
+  {
+    "id": 2,
+    "fullname": "Myname Mysurname 2",
+    "username": "nice_username 2",
+    "email": "migit2@test.com",
+    "type": "BITBUCKET",
+    "photoUrl": "http://lorempixel.com/200/200/",
+    "repoNumber": 32,
+    "organization": "Emergya",
+    "location": "Sevilla"
+  }
+]
