@@ -15,7 +15,7 @@ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-use Drupal\simple_github\Service\SimpleGitHubConnectorService;
+use Drupal\simple_git\Service\SimpleGitConnectorService;
 
 /**
  * Controller routines for oauth routes.
@@ -75,7 +75,7 @@ class SimpleGitController extends ControllerBase implements ContainerInjectionIn
    */
   public function repositories(UserInterface $user) {
     $list = array();
-    $connector = new SimpleGitHubConnectorService;
+    $connector = new SimpleGitConnectorService;
     $code = "89f0cdc0a73061472248";
     $state = "DlFPJIsvf7FOmBP6R8PPukX0igPgKoymBbRcFt5G";
 
