@@ -6,18 +6,32 @@
  * Date: 13/03/17
  * Time: 10:05
  */
+
+namespace Drupal\simple_github\BusinessLogic;
+
+
 class SimpleGithubRequestsBusinessLogic {
+
+  /**
+   * @var \Drupal\simple_github\Service\SimpleGitHubConnectorService
+   */
+  protected $gitHubService;
+
+  public function __construct() {
+    $this->gitHubService = \Drupal::service('simple_github_connector.service');
+    //Example of usage json_decode($this->gitHubService->getRepositoriesByUser($this->user))[0]->owner->login
+  }
 
   private function getUser() {
     //Obtain username and token from drupal user
-    $user = test;
-    return $user;
+    $user = get_current_user();
+    return $user->account;
   }
 
-  public function ListAllRepositories() {
+  public function listAllRepositories() {
 
     $user = $this->getUser();
-    $repos = getRepositoriesByUser($user);
+    $repos = $this->gitHubService->getRepositoriesByUser($user);
     $response = array();
 
     foreach ($repos as $repo) {
@@ -27,10 +41,10 @@ class SimpleGithubRequestsBusinessLogic {
     return $response;
   }
 
-  public function ListAllPullRequest($repo) {
+  public function listAllPullRequest($repo) {
 
     $user = $this->getUser();
-    $prs = getPullRequestList($user, $repo);
+    $prs = $this->gitHubService->getPullRequestList($user, $repo);
     $response = array();
 
     foreach ($prs as $pr) {
@@ -43,7 +57,7 @@ class SimpleGithubRequestsBusinessLogic {
   public function getRepositoryDetail($repo_name) {
 
     $this->getUser();
-    $repo = getRepositoryByName($repo_name);
+    $repo = $this->gitHubService->getRepositoryByName($repo_name);
     $response = $this->configureRepositoryFields($repo);
 
     return $response;
@@ -51,7 +65,7 @@ class SimpleGithubRequestsBusinessLogic {
 
   public function getPullRequestDetail($repo_name, $pr_id) {
     $user = $this->getUser();
-    $pr = getPullRequestById($user, $repo_name, $pr_id);
+    $pr = $this->gitHubService->getPullRequestById($user, $repo_name, $pr_id);
     $response = $this->configurePullRequestFields($pr);
 
     return $response;
@@ -59,7 +73,7 @@ class SimpleGithubRequestsBusinessLogic {
 
   public function getAccountDetail() {
     $user = $this->getUser();
-    $account = getLoggedUser($user);
+    $account = $this->gitHubService->getLoggedUser($user);
     $response = $this->configureAccountRequestFields($account);
 
     return $response;
@@ -107,6 +121,6 @@ class SimpleGithubRequestsBusinessLogic {
       "repos" => $account->total_private_repos + $account->public_repos
     );
 
-    return response;
+    return $response;
   }
 }

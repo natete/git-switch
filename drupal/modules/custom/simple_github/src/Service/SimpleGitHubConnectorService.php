@@ -22,6 +22,8 @@ class SimpleGitHubConnectorService {
   const CLIENT_ID = "cf0f72380b77a0ae16e9";
   const CLIENT_SECRET = "c6962314dc7945e8f2f09888d6ee61c352e867c8";
 
+  public $user = array('username' => 'carlosraigadaherrera', 'token' => 'bb38660926b371ec8c967f68bad02ae1deb95d11');
+
   protected $response;
   protected $response_status;
   protected $access_token;
@@ -42,13 +44,10 @@ class SimpleGitHubConnectorService {
       "state" => $state
     );
 
-//        $this->response = $this->request('POST', $url, $parameters);
-//        ?access_token=e72e16c7e42f292c6912e7710c838347ae178b4a&scope=user%2Cgist&token_type=bearer
-
 //Open curl stream
     $ch = $this->getConfiguredCURL($url);
 //set the url, number of POST vars, POST data
-    curl_setopt($ch, CURLOPT_URL, $url);
+//    curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, count($parameters));
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
 
@@ -58,9 +57,6 @@ class SimpleGitHubConnectorService {
 
 //Close curl stream
     curl_close($ch);
-
-//Parse get-type response
-
 
     error_log('>>>' . print_r(json_decode($response), TRUE));
 //Exposing the access token if it's necessary
@@ -144,12 +140,13 @@ class SimpleGitHubConnectorService {
     return $response;
   }
 
-  protected function getHeaders() {
-    $headers[] = 'Accept: application/json';
+  public function getHeaders() {
+    $headers[] = ['Accept: application/json'];
+    array_push($headers, 'User-Agent: Gitswitch-App');
 // if we have the security token
-    if (!empty($this->token_type)) {
-      $headers[] = 'Bearer ' . $this->access_token;
-    }
+//    if (!empty($this->token_type)) {
+//      array_push($headers,'Bearer ' . $this->user['token']);
+//    }
     return $headers;
   }
 
@@ -160,14 +157,14 @@ class SimpleGitHubConnectorService {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
     $headers = $this->getHeaders();
-
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-
-    if ($user != NULL) {
-      curl_setopt($ch, CURLOPT_USERPWD, "$user->username:$user->token");
+    if($user!=null){
+      $test = $user['username'].':'.$user['token'];
     }
+    curl_setopt($ch, CURLOPT_USERPWD, $test);
 
     return $ch;
   }
