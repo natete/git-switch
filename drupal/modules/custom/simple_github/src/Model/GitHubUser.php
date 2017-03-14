@@ -2,18 +2,18 @@
 
 /**
  * @file
- * Contains \Drupal\simple_github\Model\GithubUser.php
+ * Contains \Drupal\simple_github\Model\GitHubUser.php
  */
 namespace Drupal\simple_github\Model;
 
-class GithubUser {
+class GitHubUser {
 
   protected $id_github;
   protected $username;
   protected $token;
 
   /**
-   * githubUser constructor.
+   * GitHubUser constructor.
    */
   public function __construct() {
 

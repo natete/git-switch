@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Contains \Drupal\simple_github\Service\GithubUserService.php
+ * Contains \Drupal\simple_github\Service\GitHubUserService.php
  */
 
 namespace Drupal\simple_github\Service;
@@ -9,7 +9,7 @@ namespace Drupal\simple_github\Service;
 
 use Drupal\simple_github\Model\GithubUser;
 
-class GithubUserService {
+class GitHubUserService {
 
 
   protected $module = 'simple_github';
