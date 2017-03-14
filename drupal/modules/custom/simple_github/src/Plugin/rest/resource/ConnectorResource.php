@@ -27,7 +27,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class ConnectorResource extends ResourceBase {
 
   /**
-   *  A curent user instance.
+   *  A current user instance.
    *
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
@@ -71,15 +71,36 @@ class ConnectorResource extends ResourceBase {
    * Responds to the GET request.
    *
    * @return \Drupal\rest\ResourceResponse
-   *   The response containing the configured connector.
+   *   The response containing all the Pull Requests available.
    */
   public function get() {
-    $config = \Drupal::config('simple_github.settings');
-    $connectors = array(
-      'app_id' => $config->get('app_id'),
-      'user' => $this->current_user
+    $pull_requests = array();
+
+    $pull_requests[] = array(
+      'title' =>  'Pull Request 1 Title',
+      'description' => 'Pull Request description gfjdngfkjdnbjdkjnfvjdn',
+      'userName' => 'UserName1',
+      'date' => '10 months',
+      'commits' => 312,
+      'comment' => 129,
+      'count' => 582,
+      'from' => 'MB-1685-DEV_Fix',
+      'to' => 'Master_branch_of_project',
     );
-    return new ResourceResponse($connectors);
+
+    $pull_requests[] = array(
+      'title' =>  'Pull Request 2 Title',
+      'description' => 'Pull Request description gfjdngfkjdnbjdkjnfvjdn',
+      'userName' => 'UserName2',
+      'date' => '13 months',
+      'commits' => 312,
+      'comment' => 129,
+      'count' => 582,
+      'from' => 'MBs-1685-DEV_Fix',
+      'to' => 'Master_branch_of_project',
+    );
+
+    return new ResourceResponse($pull_requests);
   }
 
 }

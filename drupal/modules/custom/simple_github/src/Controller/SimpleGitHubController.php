@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\simple_github\Controller\SimpleGitHubController.
+ * Contains \Drupal\simple_github\Controller\SimpleGithubController.
  */
 
 namespace Drupal\simple_github\Controller;
@@ -14,12 +14,14 @@ use Drupal\user\UserDataInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+
 use Drupal\simple_github\Service\SimpleGitHubConnectorService;
 
 /**
- * Controller routines for simple_github routes.
+ * Controller routines for oauth routes.
  */
-class SimpleGitHubController extends ControllerBase implements ContainerInjectionInterface {
+class SimpleGithubController extends ControllerBase implements ContainerInjectionInterface {
+
 
   /**
    * The URL generator service.

@@ -1,0 +1,5 @@
+services:
+  simple_github_connector.service:
+    class: 'Drupal\simple_github\Service\SimpleGitHubConnectorService'
+    calls:
+      - [getRepositoriesByUser]

@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Accounts</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list [virtualScroll]="accounts" approxItemHeight="115px">
+    <ion-item *virtualItem="let account" margin-bottom>
+      <ion-avatar item-left><img [src]="account.avatar"></ion-avatar>
+
+      <div class="item-content">
+        <h2>
+          <ion-icon item-left name="logo-github"></ion-icon>
+          {{account.name}}
+        </h2>
+        <ion-row>
+          <ion-col col-4 class="repo-info-container">
+            <ion-icon name="book" item-left></ion-icon>
+            {{account.numOfRepos}}
+          </ion-col>
+          <ion-col col-8 class="repo-info-container">
+            <ion-icon name="people" item-left></ion-icon>
+            {{account.company}}
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <button class="remove-account-button" (click)="deleteAccount(account.id)" item-right ion-button clear>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block icon-only large color="primary" (click)="addAccount()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+
+</ion-content>

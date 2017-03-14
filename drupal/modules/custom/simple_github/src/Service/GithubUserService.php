@@ -13,12 +13,6 @@ class GithubUserService {
 
 
   protected $module = 'simple_github';
-  /**
-   *  A curent user instance.
-   *
-   * @var \Drupal\Core\Session\AccountProxyInterface
-   */
-  //protected $current_user;
 
   /**
    * The user data service.

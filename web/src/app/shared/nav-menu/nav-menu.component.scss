@@ -1,0 +1,13 @@
+.nav-menu-container {
+  width: 90px;
+  height: 300px;
+  display: inline-block;
+  position: fixed;
+  top: calc(100% - 50% - 150px);
+  z-index: 20;
+}
+
+.nav-menu-button {
+  height: 100%;
+  width: 100%;
+}
