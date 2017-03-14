@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<app-nav-menu></app-nav-menu>
+
+<app-back-to-top></app-back-to-top>
+
+<div class="main-content-dark-container">
+
+  <div class="content-wrapper">
+
+    <div class="toolbar-container">
+      <h1 class="content-title">Configuration</h1>
+    </div>
+
+    <div class="repo-list-container">
+
+      <div *ngIf="repositories">
+        <app-repository *ngFor="let repository of repositories" [repository]="repository"></app-repository>
+      </div>
+      <div *ngIf="repositories && repositories.length === 0" class="no-repositories-container accent-color-font">
+        You have no repositories!
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

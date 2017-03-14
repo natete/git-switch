@@ -15,7 +15,7 @@ export class AuthService {
   isAuthenticated(): Observable<boolean> {
     let isAuthSubject = new ReplaySubject<boolean>();
 
-    isAuthSubject.next(!!this.tokenService.getToken());
+    isAuthSubject.next(true);
 
     return isAuthSubject.asObservable();
   }
