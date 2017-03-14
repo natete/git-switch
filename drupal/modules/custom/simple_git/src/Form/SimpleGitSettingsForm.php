@@ -116,7 +116,7 @@ class SimpleGitSettingsForm extends ConfigFormBase {
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
     );
-    
+
     $form['git_hub']['git_hub_app_id'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('GitHub App Id'),
