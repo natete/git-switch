@@ -36,4 +36,4 @@ REST service to link and retrieve accounts information.
 
 | Method  | Parameters | Response | Description |
 | ------------- | ------------- | ------------- | ------------- |
-| GET  | None  | {"client_id": "XXXX"} | Returns the GitHub App Client ID.  |
+| GET  | None  | [{"title": "Pull Request 1 Title", "description": "Pull Request description gfjdngfkjdnbjdkjnfvjdn", "userName": "UserName1", "date": "10 months", "commits": 312, "comments": 129, "count": 582, "from": "MB-1685-DEV_Fix", "to": "Master_branch_of_project" }] | Returns all the available Pull Requests.  |

@@ -72,7 +72,7 @@ class PullRequestResource extends ResourceBase {
   * Responds to the GET request.
   *
   * @return \Drupal\rest\ResourceResponse
-  *   The response containing all available Pull Requests.
+  *   The response containing all the available Pull Requests.
   */
   public function get() {
     $accounts = array();
