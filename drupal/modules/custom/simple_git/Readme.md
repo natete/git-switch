@@ -1,12 +1,12 @@
-# Simple GitHub Module
+# Simple Git Module
 
-Module to work with the GitHub REST API from Drupal exposing a REST service to be used from another clients (Angular, Ionic, etc).
+Module to work with the GitHub, GitLab, etc REST API from Drupal exposing a REST service to be used from another clients (Angular, Ionic, etc).
 
 It also supports OAuth integrations.
 
 ## REST Services exposed
 
-The REST API base PATH will be: **/simple_github_api**
+The REST API base PATH will be: **/simple_git_api**
 
 ### Connector
 
