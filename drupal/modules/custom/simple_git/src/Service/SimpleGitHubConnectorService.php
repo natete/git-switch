@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class SimpleGitConnectorService implements SimpleGitConnectorInterface {
+class SimpleGitHubConnectorService implements SimpleGitConnectorInterface {
 
 // AVANGELIO: https://gist.github.com/aaronpk/3612742
 
