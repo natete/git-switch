@@ -27,7 +27,7 @@ class SimpleGitHubSettingsForm extends ConfigFormBase {
   }
 
   /**
-   * Constructs an SimpleGitHubSettingsForm object.
+   * Constructs a SimpleGitHubSettingsForm object.
    *
    * @param \Drupal\Core\Config\ConfigFactory $config_factory
    *   The config service.

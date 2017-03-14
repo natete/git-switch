@@ -119,7 +119,7 @@ class OAuthController extends ControllerBase implements ContainerInjectionInterf
         ),
       );
     }
-
+    
     $list['table']['#empty'] = $this->t('There are no OAuth consumers.');
 
     return $list;
