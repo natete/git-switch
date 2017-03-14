@@ -20,7 +20,7 @@ use Drupal\simple_github\Service\SimpleGitHubConnectorService;
 /**
  * Controller routines for oauth routes.
  */
-class SimpleGithubController extends ControllerBase implements ContainerInjectionInterface {
+class SimpleGitHubController extends ControllerBase implements ContainerInjectionInterface {
 
 
   /**
