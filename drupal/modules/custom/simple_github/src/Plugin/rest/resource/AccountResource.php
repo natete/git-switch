@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\simple_github\Plugin\rest\resource\AccountsResource.php
+ * Contains \Drupal\simple_github\Plugin\rest\resource\AccountResource.php
  */
 
 namespace Drupal\simple_github\Plugin\rest\resource;
@@ -29,7 +29,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class AccountResource extends ResourceBase {
 
   /**
-   *  A curent user instance.
+   *  A current user instance.
    *
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
