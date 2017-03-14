@@ -3,7 +3,9 @@
  * @file
  * Contains \Drupal\simple_git\Service\SimpleGitConnectorService.
  */
-namespace Drupal\simple_github\Service;
+
+namespace Drupal\simple_git\Service;
+
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
 use Drupal\Core\Utility\LinkGeneratorInterface;

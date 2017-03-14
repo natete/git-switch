@@ -5,7 +5,7 @@
  * Contains \Drupal\simple_git\Plugin\rest\resource\PullRequestResource.php
  */
 
-namespace Drupal\simple_github\Plugin\rest\resource;
+namespace Drupal\simple_git\Plugin\rest\resource;
 
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\rest\Plugin\ResourceBase;
