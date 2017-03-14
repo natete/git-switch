@@ -117,26 +117,23 @@ class SimpleGitSettingsForm extends ConfigFormBase {
       '#collapsed' => FALSE,
     );
     print_r($git_settings->get('github'));
-    $form['git_hub']['app_id'] = array(
+    $form['git_hub']['git_hub_app_id'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('GitHub App Id'),
-      '#name' => 'git_hub_app_id',
       '#description' => $this->t('GitHub App Id value'),
       '#default_value' => $git_settings->get('github')['app_id'],
     );
 
-    $form['git_hub']['app_secret'] = array(
+    $form['git_hub']['git_hub_app_secret'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('GitHub App Secret'),
-      '#name' => 'git_hub_app_secret',
       '#description' => $this->t('GitHub App Secret value'),
       '#default_value' => $git_settings->get('github')['app_secret'],
     );
 
-    $form['git_hub']['app_url_redirect'] = array(
+    $form['git_hub']['git_hub_app_url_redirect'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('GitHub URL Redirect'),
-      '#name' => 'git_hub_app_url_redirect',
       '#description' => $this->t('GitHub URL Redirect value'),
       '#default_value' => $git_settings->get('github')['app_url_redirect'],
     );
@@ -159,26 +156,23 @@ class SimpleGitSettingsForm extends ConfigFormBase {
       '#collapsed' => FALSE,
     );
 
-    $form['git_lab']['app_id'] = array(
+    $form['git_lab']['git_lab_app_id'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('GitLab App Id'),
-      '#name' => 'git_lab_app_id',
       '#description' => $this->t('GitLab App Id value'),
       '#default_value' => $git_settings->get('gitlab')['app_id']
     );
 
-    $form['git_lab']['app_secret'] = array(
+    $form['git_lab']['git_lab_app_secret'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('GitLab App Secret'),
-      '#name' => 'git_lab_app_secret',
       '#description' => $this->t('GitLab App Secret value'),
       '#default_value' =>$git_settings->get('gitlab')['app_secret'],
     );
 
-    $form['git_lab']['app_url_redirect'] = array(
+    $form['git_lab']['git_lab_app_url_redirect'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('GitLab URL Redirect'),
-      '#name' => 'git_lab_app_url_redirect',
       '#description' => $this->t('GitLab URL Redirect value'),
       '#default_value' =>$git_settings->get('gitlab')['app_url_redirect'],
     );
