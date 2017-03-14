@@ -1,0 +1,64 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Pull requests</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list [virtualScroll]="pullRequests" no-lines approxItemHeight="210px">
+    <ion-item *virtualItem="let pullRequest" color="dark">
+
+      <ion-card class="top-bottom-margin">
+
+        <ion-card-header color="light" class="text-ellipsis">
+          {{pullRequest.description}}
+        </ion-card-header>
+
+        <ion-card-content>
+
+          <ion-row class="bottom-border color-primary">
+            <div text-center class="card-content-wrapper">
+              <strong>
+                <ion-icon name="git-pull-request"></ion-icon>
+              </strong>
+              <div><strong>{{pullRequest.count}}</strong></div>
+            </div>
+            <div class="branches-wrapper">
+              <h4 class="text-ellipsis"><strong>from</strong> {{pullRequest.from}}</h4>
+              <h4 class="text-ellipsis"><strong>to</strong> {{pullRequest.to}}</h4>
+            </div>
+          </ion-row>
+
+          <ion-row color="primary" class="color-primary">
+            <ion-col col-8 col-sm class="text-ellipsis">
+              <ion-icon name="contact" item-left></ion-icon>
+              {{pullRequest.userName}}
+            </ion-col>
+            <ion-col col-4 col-sm>
+              <ion-icon name="git-commit" item-left></ion-icon>
+              {{pullRequest.commits}}
+            </ion-col>
+            <ion-col col-8 col-sm class="text-ellipsis">
+              <ion-icon ios="ios-time-outline" md="md-time" item-left></ion-icon>
+              {{pullRequest.date}}
+            </ion-col>
+            <ion-col col-4 col-sm>
+              <ion-icon name="chatboxes" item-left></ion-icon>
+              {{pullRequest.comments}}
+            </ion-col>
+          </ion-row>
+
+        </ion-card-content>
+
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

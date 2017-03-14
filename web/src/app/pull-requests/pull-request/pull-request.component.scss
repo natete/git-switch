@@ -1,0 +1,24 @@
+@import '../../../assets/scss/variables';
+
+.pull-request-container {
+  height: 120px;
+  margin: 10px 0;
+  padding: 0px;
+}
+
+.pull-request-info-container {
+  padding: 10px;
+  border-bottom: 1px solid $dark-background;
+}
+
+.pull-request-branches {
+  padding: 10px 3%;
+}
+
+.pull-request-title {
+  font-weight: bold;
+}
+
+.pull-request-icon {
+  margin-right: 5px;
+}

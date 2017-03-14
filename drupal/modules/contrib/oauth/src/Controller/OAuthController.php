@@ -119,19 +119,7 @@ class OAuthController extends ControllerBase implements ContainerInjectionInterf
         ),
       );
     }
-$repositories = array(
-    array(
-        'repo_name' => 'git-switch',
-        'location' => 'http://github.com/natete/git-switch'
-    ),
-    array(
-        'repo_name' => 'git-switch-2',
-        'location' => 'http://github.com/agomezmoron/git-switch'
-    ),
-);
-
-
-
+    
     $list['table']['#empty'] = $this->t('There are no OAuth consumers.');
 
     return $list;

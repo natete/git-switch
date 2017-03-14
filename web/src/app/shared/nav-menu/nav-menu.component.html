@@ -1,0 +1,28 @@
+<div class="nav-menu-container primary-color-bg">
+
+  <div fxLayout="column" fxFill>
+    <div fxLayout="row" fxFlex fxLayoutAlign="center center">
+      <button md-icon-button class="nav-menu-button"
+              [routerLink]="['/home']"
+              routerLinkActive="accent-color-font">
+        <i class="fa fa-4x fa-code-fork"></i>
+      </button>
+    </div>
+
+    <div fxLayout="row" fxFlex fxLayoutAlign="center center">
+      <button md-icon-button class="nav-menu-button"
+              routerLinkActive="accent-color-font">
+        <i class="fa fa-4x fa-cog"></i>
+      </button>
+    </div>
+
+    <div fxLayout="row" fxFlex fxLayoutAlign="center center">
+      <button md-icon-button class="nav-menu-button"
+              [routerLink]="['/accounts']"
+              routerLinkActive="accent-color-font">
+        <i class="fa fa-4x fa-user-circle"></i>
+      </button>
+    </div>
+  </div>
+
+</div>
