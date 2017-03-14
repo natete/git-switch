@@ -1,3 +1,38 @@
-<p>
-  login works!
-</p>
+<div class="login-container primary-color-bg">
+
+  <div fxLayout="row" fxLayoutAlign="center center" class="login-form-wrapper">
+
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="30" fxHide.sm fxHide.xs>
+      <img class="login-logo" src="/assets/img/creamy.png"/>
+    </div>
+
+    <div fxLayout="column" class="login-form" fxLayoutAlign="center center" fxFlex="30" fxFlex.sm="100" fxFlex.xs="100">
+
+      <div class="login-small-logo-container" fxHide.gt-sm>
+        <img class="login-logo-sm" src="/assets/img/creamy.png"/>
+      </div>
+
+      <div class="login-motto accent-color-font">
+        "With great repo comes great responsibility."
+      </div>
+
+      <form #form (ngSubmit)="login()">
+        <div class="warn-color-font">{{errorMessage}}</div>
+
+        <md-input-container class="login-input-container" dividerColor="accent">
+          <input mdInput type="text" [(ngModel)]="username" name="username" placeholder="Username"/>
+        </md-input-container>
+
+        <md-input-container class="login-input-container" dividerColor="accent">
+          <input mdInput [(ngModel)]="password" name="password" type="password" placeholder="Password"/>
+        </md-input-container>
+
+        <div class="login-input-container login-button-container">
+          <button md-raised-button class="primary-color-font" [disabled]="isInvalid()" (click)="login()">Go!</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>

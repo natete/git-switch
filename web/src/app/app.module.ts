@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
-import { MaterialModule } from '@angular/material';
 
 import { RoutesModule } from './core/routes/routes.module';
 import { AppComponent } from './app.component';
@@ -13,7 +12,11 @@ import { AuthService } from './core/auth/auth.service';
 import { httpFactory } from './core/http/http.factory';
 
 import 'hammerjs';
-
+import { AccountsModule } from './accounts/accounts.module';
+import { SharedModule } from './shared/shared.module';
+import { PullRequestsModule } from './pull-requests/pull-requests.module';
+import { LoginService } from './login/login.service';
+import { TokenService } from './core/auth/token.service';
 
 @NgModule({
   declarations: [
@@ -22,20 +25,25 @@ import 'hammerjs';
     HomeComponent
   ],
   imports: [
+    AccountsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
-    RoutesModule
+    PullRequestsModule,
+    RoutesModule,
+    SharedModule
   ],
   providers: [
-      AuthService,
+    AuthService,
     {
       provide: Http,
       useFactory: httpFactory,
       deps: [XHRBackend, RequestOptions, AuthService]
-    }
+    },
+    LoginService,
+    TokenService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
