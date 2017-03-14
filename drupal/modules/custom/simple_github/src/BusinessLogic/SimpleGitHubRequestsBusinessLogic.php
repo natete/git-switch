@@ -10,7 +10,7 @@
 namespace Drupal\simple_github\BusinessLogic;
 
 
-class SimpleGithubRequestsBusinessLogic {
+class SimpleGitHubRequestsBusinessLogic {
 
   /**
    * @var \Drupal\simple_github\Service\SimpleGitHubConnectorService
