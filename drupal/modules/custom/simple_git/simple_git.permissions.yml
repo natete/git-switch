@@ -1,7 +1,7 @@
 access own consumers:
-  title: 'Access own GitHub users'
+  title: 'Access own Git users'
   restrict access: TRUE
 
 administer simple_github:
-  title: 'Administer Simple GitHub'
+  title: 'Administer Simple Git'
   restrict access: TRUE

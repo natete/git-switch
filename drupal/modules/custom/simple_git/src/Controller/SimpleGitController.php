@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\simple_github\Controller\SimpleGithubController.
+ * Contains \Drupal\simple_git\Controller\SimpleGitController.
  */
 
-namespace Drupal\simple_github\Controller;
+namespace Drupal\simple_git\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
@@ -20,7 +20,7 @@ use Drupal\simple_github\Service\SimpleGitHubConnectorService;
 /**
  * Controller routines for oauth routes.
  */
-class SimpleGithubController extends ControllerBase implements ContainerInjectionInterface {
+class SimpleGitController extends ControllerBase implements ContainerInjectionInterface {
 
 
   /**

@@ -1,7 +1,0 @@
-name: Simple GitHub Module
-type: module
-description: "Module to handle GitHub accounts"
-package: Web services
-core: 8.x
-configure: simple_github.form
-dependencies:
