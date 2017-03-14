@@ -82,6 +82,7 @@ class SimpleGitSettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
 
+    $values = array();
     $values['git_hub'] = array(
       'app_id' => $form_state->getValue('git_hub_app_id'),
       'app_secret' => $form_state->getValue('git_hub_app_secret'),
@@ -115,7 +116,7 @@ class SimpleGitSettingsForm extends ConfigFormBase {
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
     );
-print_r($git_settings['github']);
+    print_r($git_settings->get('github'));
     $form['git_hub']['app_id'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('GitHub App Id'),
