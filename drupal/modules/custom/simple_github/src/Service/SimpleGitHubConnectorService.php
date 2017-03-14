@@ -42,11 +42,9 @@ class SimpleGitHubConnectorService {
       "state" => $state
     );
 
-//        $this->response = $this->request('POST', $url, $parameters);
-//        ?access_token=e72e16c7e42f292c6912e7710c838347ae178b4a&scope=user%2Cgist&token_type=bearer
-
     //Open curl stream
     $ch = $this->getConfiguredCURL($url);
+
     //set the url, number of POST vars, POST data
     curl_setopt($ch,CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_POST, count($parameters));
@@ -59,14 +57,12 @@ class SimpleGitHubConnectorService {
     //Close curl stream
     curl_close($ch);
 
-    //Parse get-type response
-
-
     error_log('>>>'.print_r(json_decode($response), true));
+
     //Exposing the access token if it's necessary
     $this->access_token = $response['access_token'];
     $this->token_type = $response['token_type'];
-//    error_log('>>>'.print_r(json_decode($this->access_token), true));
+
     //Return the obtained token3
     return $this->access_token;
   }
@@ -82,6 +78,7 @@ class SimpleGitHubConnectorService {
 
   protected function getConfiguredCURL($url) {
     $ch = curl_init($url);
+
     //set the url, number of POST vars, POST data
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
