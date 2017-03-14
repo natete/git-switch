@@ -26,5 +26,6 @@ REST service to link and retrieve accounts information.
 
 | Method  | Parameters | Response | Description |
 | ------------- | ------------- | ------------- | ------------- |
+| GET  | None  | [{ "id": 1, "fullname": "Alejandro Gómez Morón", "username": "agomezmoron", "email": "amoron@emergya.com", "photoUrl": "http://lorempixel.com/200/200/", "repoNumber": 10, "organization": "Emergya", "location": "Sevilla" }] | It returns all the associated accounts  |
 | POST  | { "code": "ABCD", "nonce": "EDFG" } | { "id": 3, "fullname": "Alejandro Gómez Morón", "username": "agomezmoron", "email": "amoron@emergya.com", "photoUrl": "http://lorempixel.com/200/200/", "repoNumber": 10, "organization": "Emergya", "location": "Sevilla" } | It connects to GitHub and returns the linked account information.  | 
 | DELETE  | None  | {"client_id": "XXXX"} | Returns the GitHub App Client ID.  |
