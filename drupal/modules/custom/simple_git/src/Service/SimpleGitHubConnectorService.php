@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\simple_git\Service\SimpleGitConnectorService.
+ * Contains \Drupal\simple_git\Service\SimpleGitHubConnectorService.
  */
 
 namespace Drupal\simple_git\Service;
@@ -165,6 +165,7 @@ class SimpleGitHubConnectorService extends SimpleGitConnector {
   }
 
   protected function buildCustomMappings() {
+
     $this->mappings[self::PULL_REQUEST] = array(
       'pr_number' => 'number',
       'pr_name' => 'title',
@@ -187,14 +188,13 @@ class SimpleGitHubConnectorService extends SimpleGitConnector {
       'repos' => 'number_of_repos' // it is autocalculated on getAccount method.
     );
 
-    $this->mappings[self::REPOSITORY] = array (
+    $this->mappings[self::REPOSITORY] = array(
       'repo_name' => 'name',
       'owner_user' => 'owner->login',
-        'issues' => 'open_issues_count',
-        'language' => 'language',
-        'updated' => 'pushed_at',
-        'forked_origin' => 'parent'
-      );
+      'issues' => 'open_issues_count',
+      'language' => 'language',
+      'updated' => 'pushed_at',
+      'forked_origin' => 'parent'
     );
   }
 
