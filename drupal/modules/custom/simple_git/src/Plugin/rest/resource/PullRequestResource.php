@@ -77,6 +77,8 @@ class PullRequestResource extends ResourceBase {
   public function get() {
     $accounts = array();
 
+
+
     $accounts[] = array(
       'id' => 1,
       'fullname' => 'Alejandro Gómez Morón',
