@@ -65,8 +65,11 @@ class SimpleGitController extends ControllerBase implements ContainerInjectionIn
   public function repositories(UserInterface $user) {
     $list = array();
     $connector = new SimpleGitHubConnectorService;
+
     $code = "89f0cdc0a73061472248";
     $state = "DlFPJIsvf7FOmBP6R8PPukX0igPgKoymBbRcFt5G";
+    $params['code'] = $code;
+    array_push($params['state'] = $state);
     /*
             $list['#cache']['tags'] = array(
                 'simple_github:' => $user->id(),
@@ -112,7 +115,7 @@ class SimpleGitController extends ControllerBase implements ContainerInjectionIn
             ),
           ),
         ),
-        'client' => $connector->getAccessToken($code, $state),
+        'client' => $connector->authorize($params),
       ),
     );
     // }

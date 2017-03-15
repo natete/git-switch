@@ -16,8 +16,6 @@ const GIT_TYPE_GITHUB = 'GITHUB';
  */
 const GIT_TYPE_GITLAB = 'GITLAB';
 
-
-
 /**
  * Implements hook_help().
  */

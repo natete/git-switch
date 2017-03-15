@@ -9,8 +9,6 @@
 namespace Drupal\simple_git\Service;
 
 interface SimpleGitConnectorInterface {
-  const CLIENT_ID = 'cf0f72380b77a0ae16e9';
-  const CLIENT_SECRET = 'c6962314dc7945e8f2f09888d6ee61c352e867c8';
 
   public function authorize($params);
 
