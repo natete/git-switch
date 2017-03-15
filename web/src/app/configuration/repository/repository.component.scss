@@ -1,0 +1,47 @@
+.repository-container {
+  margin: 30px 0 10px 0;
+  padding: 10px;
+  border-radius: 0px;
+  height: 80px;
+}
+
+.sub {
+  margin-top: -10px;
+  padding: 0 0 20px 0;
+  span, a {
+    color: white;
+    font-size: 14pt;
+    font-weight: bold;
+  }
+}
+
+.repository-icon {
+  margin-right: 5px;
+  height: 70px;
+}
+
+.repository-icon-sm {
+  border-radius: 50%;
+  max-width: 25px;
+}
+
+.repository-name {
+  margin-right: 2em;
+  font-weight: bold;
+}
+
+.issues-icon, .code-icon, .time-icon {
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+.unfold-arrow {
+ font-size: 54pt;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.subtitle {
+  display: block;
+  padding: 3px 0 3px 35px;
+}

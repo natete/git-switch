@@ -4,13 +4,15 @@
     "name": "My First Repo",
     "issues": "8",
     "type": "Angular 2",
-    "age": "9 months"
+    "age": "9 months",
+    "username": "user1"
   },
   {
     "id": 2,
     "name": "My Second Repo",
     "issues": "7",
     "type": "Drupal 8",
-    "age": "8 months"
+    "age": "8 months",
+    "username": "user2"
   }
 ]

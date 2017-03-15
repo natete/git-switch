@@ -8,9 +8,45 @@
 
   <div class="content-wrapper">
 
-    <div class="toolbar-container">
-      <h1 class="content-title">Configuration</h1>
-    </div>
+
+      <div class="configuration-header" fxLayout="row" fxFlex.xs="90" fxFlex.md="90" fxFlex.sm="90">
+
+          <div fxLayout="column" fxLayoutAlign="left left" fxFlex="10" fxFlex.xs="10">
+            <h1 class="content-title">Configuration</h1>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="end end" fxFlex="75" fxFlex.xs="75">
+
+              <md-menu y-position="below" x-position="before" [overlapTrigger]="false" #appMenu1="mdMenu" class="config-menu">
+              <button md-menu-item> Item 1</button>
+              <button md-menu-item> Item 2</button>
+              </md-menu>
+
+              <button md-icon-button [mdMenuTriggerFor]="appMenu1" class="accent-color-bg menu-button">
+                <span>Repository</span>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+              </button>
+
+            </div>
+
+        <div fxLayout="column" fxLayoutAlign="end end" fxFlex="20" fxFlex.xs="20">
+
+          <md-menu y-position="below" x-position="before" [overlapTrigger]="false" #appMenu2="mdMenu" class="config-menu">
+            <button md-menu-item> Item 1</button>
+            <button md-menu-item> Item 2</button>
+          </md-menu>
+
+          <button md-icon-button [mdMenuTriggerFor]="appMenu2" class="accent-color-bg menu-button">
+            <span>Sort By</span>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+
+
+
+        </div>
+
+      </div>
+
 
     <div class="repo-list-container">
 

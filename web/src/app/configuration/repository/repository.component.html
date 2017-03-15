@@ -1,3 +1,128 @@
-<p>
-  repository works!
-</p>
+<md-card class="repository-container primary-color-bg" *ngIf="repository">
+  <div fxLayout="row" fxFill>
+    <div fxLayout="column" fxFlex.xs="90" fxFlex.md="90" fxFlex.sm="90">
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex.md="50" fxFlex.sm="33" fxFlex.xs="33">
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="10" fxFlex.xs="15">
+          <i class="fa fa-4x fa-code-fork"></i>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center start"
+             fxFlex.lg="20" fxFlex.xl="30" fxFlex.md="70" fxFlex.sm="70" fxFlex.xs="90">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFill>
+            <span class="repository-name">{{repository.name}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center start"
+             fxFlex.lg="20" fxFlex.xl="10" fxFlex.md="70" fxFlex.sm="70" fxFlex.xs="90">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFill>
+            <span class="accent-color-font" fxHide.xs fxHide.sm>{{repository.username}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center"
+             fxFlex="5"
+             fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+            <i class="fa fa-exclamation-circle issues-icon"></i>
+            <span class="accent-color-font">{{repository.issues}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center"
+             fxFlex="15"
+             fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+            <i class="fa fa-code code-icon" aria-hidden="true"></i>
+            <span class="accent-color-font">{{repository.type}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center"
+             fxFlex="15"
+             fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+            <i class="fa fa-clock-o time-icon" aria-hidden="true"></i>
+            <span class="accent-color-font">{{repository.age}}</span>
+          </div>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center"
+             fxFlex="15"
+             fxHide.md fxHide.sm fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="end center" fxFill class="unfold-arrow accent-color-font">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</md-card>
+
+
+<md-card class="repository-container sub primary-color-bg" *ngIf="repository">
+  <span class="subtitle accent-color-bg">Pull requests</span>
+  <div fxLayout="row" fxFill>
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33" fxFlex.xs="33">
+      <md-slide-toggle
+        class="example-margin"
+        [color]="color"
+        [checked]="checked"
+        [disabled]="disabled">
+        New ones
+      </md-slide-toggle>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33" fxFlex.xs="33">
+      <md-slide-toggle
+        class="example-margin"
+        [color]="color"
+        [checked]="checked"
+        [disabled]="disabled">
+        Comments
+      </md-slide-toggle>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33" fxFlex.xs="33">
+      <md-slide-toggle
+        class="example-margin"
+        [color]="color"
+        [checked]="checked"
+        [disabled]="disabled">
+        Commits
+      </md-slide-toggle>
+    </div>
+  </div>
+  <span class="subtitle accent-color-bg">Pull requests</span>
+</md-card>
+
+<md-card class="repository-container sub primary-color-bg" *ngIf="repository">
+  <span class="subtitle accent-color-bg">Issues</span>
+  <div fxLayout="row" fxFill>
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33" fxFlex.xs="33">
+      <md-slide-toggle
+        class="example-margin"
+        [color]="color"
+        [checked]="checked"
+        [disabled]="disabled">
+        New ones
+      </md-slide-toggle>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33" fxFlex.xs="33">
+      <md-slide-toggle
+        class="example-margin"
+        [color]="color"
+        [checked]="checked"
+        [disabled]="disabled">
+        Comments
+      </md-slide-toggle>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33" fxFlex.xs="33">
+      <a class="accent-color-bg" md-raised-button routerLink=".">Apply</a>
+    </div>
+  </div>
+</md-card>

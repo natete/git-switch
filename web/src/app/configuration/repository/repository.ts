@@ -4,6 +4,7 @@ export class Repository {
   issues: number;
   type: string;
   age: string;
+  username: string;
 
   constructor(repository?: any) {
     // TODO: Adapt this to the information received from the BE
@@ -13,6 +14,7 @@ export class Repository {
       this.issues = repository.fullname;
       this.type = repository.email;
       this.age = repository.age;
+      this.username = repository.username;
     }
   }
 }
