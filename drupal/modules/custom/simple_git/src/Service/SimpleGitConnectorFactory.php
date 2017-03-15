@@ -2,8 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\simple_git\Service\SimpleGitConnectorFactory
- * .
+ * Contains \Drupal\simple_git\Service\SimpleGitConnectorFactory.php
  */
 
 namespace Drupal\simple_git\Service;
@@ -28,16 +27,18 @@ abstract class SimpleGitConnectorFactory {
    *
    * @param $type
    *  Depending on the type, the factory will return a different instance of \Drupal\simple_git\Service\SimpleGitConnectorService.
+   * @return \Drupal\simple_git\Service\SimpleGitConnectorInterface
+   *  Instance that matches with the given $type.
    */
   static function getConnector($type) {
     $connector = null;
 
     switch ($type) {
       case GIT_TYPE_GITHUB:
-        $connector = new SimpleGitHubConnectorService;
+        $connector = \Drupal::service('simple_git.github_connector.service');
         break;
       default:
-        $connector = new SimpleGitHubConnectorService;
+        $connector = \Drupal::service('simple_git.github_connector.service');
     }
     return $connector;
   }
