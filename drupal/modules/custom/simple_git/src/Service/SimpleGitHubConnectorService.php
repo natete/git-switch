@@ -16,7 +16,9 @@ use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\Core\Utility\Error;
-class SimpleGitConnectorService implements SimpleGitConnectorInterface {
+
+class SimpleGitHubConnectorService implements SimpleGitConnectorInterface {
+
 // AVANGELIO: https://gist.github.com/aaronpk/3612742
   protected $response;
   protected $response_status;

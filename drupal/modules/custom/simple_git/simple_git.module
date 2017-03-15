@@ -7,6 +7,18 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
+ * Defining the GitHub type.
+ */
+const GIT_TYPE_GITHUB = 'GITHUB';
+
+/**
+ * Defining the GitLab type.
+ */
+const GIT_TYPE_GITLAB = 'GITLAB';
+
+
+
+/**
  * Implements hook_help().
  */
 function  simple_github_help($route_name, RouteMatchInterface $route_match) {

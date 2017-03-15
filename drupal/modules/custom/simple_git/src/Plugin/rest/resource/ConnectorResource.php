@@ -74,33 +74,27 @@ class ConnectorResource extends ResourceBase {
    *   The configured connectors.
    */
   public function get() {
-    $pull_requests = array();
+    $connectors = array();
 
-    $pull_requests[] = array(
-      'title' =>  'Pull Request 1 Title',
-      'description' => 'Pull Request description gfjdngfkjdnbjdkjnfvjdn',
-      'userName' => 'UserName1',
-      'date' => '10 months',
-      'commits' => 312,
-      'comment' => 129,
-      'count' => 582,
-      'from' => 'MB-1685-DEV_Fix',
-      'to' => 'Master_branch_of_project',
-    );
+    $git_settings = \Drupal::config('simple_git.settings');
 
-    $pull_requests[] = array(
-      'title' =>  'Pull Request 2 Title',
-      'description' => 'Pull Request description gfjdngfkjdnbjdkjnfvjdn',
-      'userName' => 'UserName2',
-      'date' => '13 months',
-      'commits' => 312,
-      'comment' => 129,
-      'count' => 582,
-      'from' => 'MBs-1685-DEV_Fix',
-      'to' => 'Master_branch_of_project',
-    );
+    // GitHub connector
+    if (!empty($git_settings->get('github')['app_id'])) {
+      $connectors[] = array(
+        'client_id' => $git_settings->get('github')['app_id'],
+        'type' => GIT_TYPE_GITHUB
+      );
+    }
 
-    return new ResourceResponse($pull_requests);
+    // GitLab connector
+    if (!empty($git_settings->get('gitlab')['app_id'])) {
+      $connectors[] = array(
+        'client_id' => $git_settings->get('gitlab')['app_id'],
+        'type' => GIT_TYPE_GITLAB
+      );
+    }
+
+    return new ResourceResponse($connectors);
   }
 
 }
