@@ -109,7 +109,13 @@ class SimpleGitHubConnectorService implements SimpleGitConnectorInterface {
       curl_close($ch);
       $response = array();
       foreach($prs as $pr){
-        array_push($response,$this->configureRepositoryFields($pr));
+        array_push($response, $this->getPullRequest(
+          array(
+            "userInfo" => $user,
+            "repo" => $repo,
+            "id" => $pr['id'])
+          )
+        );
       }
       return $response;
     }
