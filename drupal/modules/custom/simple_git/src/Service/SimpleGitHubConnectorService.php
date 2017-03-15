@@ -288,7 +288,7 @@ class SimpleGitHubConnectorService extends SimpleGitConnector {
     $headers[] = 'Accept: application/json';
 // if we have the security token
     if (!empty($this->token_type)) {
-      $headers[] = 'Bearer ' . $this->access_token;
+     array_push($headers[], 'Authorization: token ' . $this->access_token);
     }
     return $headers;
   }
@@ -300,7 +300,7 @@ class SimpleGitHubConnectorService extends SimpleGitConnector {
    * These params are 'optional'. (By the moment the only exception is the authorize method).
    * @return resource
    */
-  protected function getConfiguredCURL($url, $username = NULL, $token = NULL) {
+  protected function getConfiguredCURL($url) {
     $ch = curl_init($url);
 
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
@@ -311,10 +311,6 @@ class SimpleGitHubConnectorService extends SimpleGitConnector {
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-
-    if ($username != NULL) {
-      curl_setopt($ch, CURLOPT_USERPWD, "$username:$token");
-    }
 
     return $ch;
   }
