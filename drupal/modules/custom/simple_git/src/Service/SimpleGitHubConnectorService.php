@@ -15,6 +15,7 @@ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Drupal\Core\Utility\Error;
 class SimpleGitConnectorService implements SimpleGitConnectorInterface {
 // AVANGELIO: https://gist.github.com/aaronpk/3612742
   protected $response;
@@ -51,6 +52,8 @@ class SimpleGitConnectorService implements SimpleGitConnectorInterface {
 //    error_log('>>>'.print_r(json_decode($this->access_token), true));
 //Return the obtained token3
       return $this->access_token;
+    }else{
+      _drupal_exception_handler('hasta luego maricarmen');
     }
   }
   public function getRepositoriesList($params) {
