@@ -22,7 +22,6 @@ use Drupal\simple_git\Service\SimpleGitHubConnectorService;
  */
 class SimpleGitController extends ControllerBase implements ContainerInjectionInterface {
 
-
   /**
    * The URL generator service.
    *
