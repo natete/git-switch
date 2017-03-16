@@ -1,5 +1,5 @@
 <?php
-
+namespace Drupal\simple_git\BusinessLogic;
 use \Drupal\simple_git\Service;
 abstract class SimpleGitAccountBusinessLogic {
 
@@ -13,7 +13,7 @@ abstract class SimpleGitAccountBusinessLogic {
 
     $result = array();
 
-    // we have to check if there is an account with the given $git_account['name'] for this $connector_type
+    // we have to check if there is an account with the given $account['account_id'] for this $account_id
     foreach ($accounts as &$account) {
       // if it exists, we have to update it
       if ($account['account_id'] == $account_id) {
