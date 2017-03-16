@@ -3,11 +3,13 @@
   padding: 10px;
   border-radius: 0px;
   height: 80px;
+  z-index: 10;
 }
 
 .sub {
   margin-top: -10px;
   padding: 0 0 20px 0;
+  z-index: 1;
   span, a {
     color: white;
     font-size: 14pt;
@@ -35,8 +37,8 @@
   margin-bottom: 2px;
 }
 
-.unfold-arrow {
- font-size: 54pt;
+.unfold-arrow i{
+  font-size: 54pt;
   padding-right: 20px;
   cursor: pointer;
 }
@@ -44,4 +46,33 @@
 .subtitle {
   display: block;
   padding: 3px 0 3px 35px;
+}
+
+.spin {
+  transform: rotate(90deg);
+  transform-origin: 25% 50% 0;
+  animation:spin 200ms linear;
+}
+
+.spinOut {
+  transform: rotate(0deg);
+  transform-origin: 25% 50% 0;
+  animation:spinOut 200ms linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+@keyframes spinOut {
+  from {
+    transform:rotate(90deg);
+  }
+  to {
+    transform:rotate(0deg);
+  }
 }

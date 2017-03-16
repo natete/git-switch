@@ -52,7 +52,7 @@
              fxFlex="15"
              fxHide.md fxHide.sm fxHide.xs>
           <div fxLayout="row" fxLayoutAlign="end center" fxFill class="unfold-arrow accent-color-font">
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <i (click)="toggleSubsection()" class="fa fa-angle-right" [ngClass]="{ 'spin': unfolded, 'spinOut': unfolded === false }" aria-hidden="true"></i>
           </div>
         </div>
 
@@ -61,7 +61,7 @@
   </div>
 </md-card>
 
-
+<div class="subsection" *ngIf="unfolded" [@slideInOut]>
 <md-card class="repository-container sub primary-color-bg" *ngIf="repository">
   <span class="subtitle accent-color-bg">Pull requests</span>
   <div fxLayout="row" fxFill>
@@ -126,3 +126,4 @@
     </div>
   </div>
 </md-card>
+</div>
