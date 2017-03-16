@@ -4,6 +4,9 @@
  * @file
  * Contains \Drupal\simple_git\BusinessLogic\SimpleGitDataBaseBusinnesLogic
  */
+
+namespace Drupal\simple_git\BusinessLogic;
+
 abstract class SimpleGitDataBaseBusinnesLogic {
 
   /**
