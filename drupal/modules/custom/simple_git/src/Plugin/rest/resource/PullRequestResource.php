@@ -2,29 +2,31 @@
 
 /**
  * @file
- * Contains \Drupal\simple_github\Plugin\rest\resource\ConnectorResource.php
+ * Contains \Drupal\simple_git\Plugin\rest\resource\PullRequestResource.php
  */
 
-namespace Drupal\simple_github\Plugin\rest\resource;
+namespace Drupal\simple_git\Plugin\rest\resource;
 
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
 use Drupal\Core\Session\AccountProxyInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Provides a Connector Resource
+ * Provides a Pull Request Resource
  *
  * @RestResource(
- *   id = "simple_github_connector_resource",
- *   label = @Translation("GitHub Connector Resource"),
+ *   id = "simple_git_pull_request_resource",
+ *   label = @Translation("Git Pull Request Resource"),
  *   uri_paths = {
- *     "canonical" = "/simple_github_api/connector"
+ *     "canonical" = "/simple_git_api/pull_request"
  *   }
  * )
  */
-class ConnectorResource extends ResourceBase {
+class PullRequestResource extends ResourceBase {
 
   /**
    *  A current user instance.
@@ -32,7 +34,6 @@ class ConnectorResource extends ResourceBase {
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
   protected $current_user;
-
 
   /**
    * {@inheritdoc}
@@ -68,39 +69,42 @@ class ConnectorResource extends ResourceBase {
   }
 
   /*
-   * Responds to the GET request.
-   *
-   * @return \Drupal\rest\ResourceResponse
-   *   The response containing all the Pull Requests available.
-   */
+  * Responds to the GET request.
+  *
+  * @return \Drupal\rest\ResourceResponse
+  *   The response containing all the available Pull Requests.
+  */
   public function get() {
-    $pull_requests = array();
+    $accounts = array();
 
-    $pull_requests[] = array(
-      'title' =>  'Pull Request 1 Title',
-      'description' => 'Pull Request description gfjdngfkjdnbjdkjnfvjdn',
-      'userName' => 'UserName1',
-      'date' => '10 months',
-      'commits' => 312,
-      'comment' => 129,
-      'count' => 582,
-      'from' => 'MB-1685-DEV_Fix',
-      'to' => 'Master_branch_of_project',
+
+
+    $accounts[] = array(
+      'id' => 1,
+      'fullname' => 'Alejandro Gómez Morón',
+      'username' => 'agomezmoron',
+      'email' => 'agommor@gmail.com',
+      'type' => 'GITHUB',
+      'photoUrl' => 'http://lorempixel.com/200/200/',
+      'repoNumber' => 10,
+      'organization' => 'Emergya',
+      'location' => 'Sevilla',
     );
 
-    $pull_requests[] = array(
-      'title' =>  'Pull Request 2 Title',
-      'description' => 'Pull Request description gfjdngfkjdnbjdkjnfvjdn',
-      'userName' => 'UserName2',
-      'date' => '13 months',
-      'commits' => 312,
-      'comment' => 129,
-      'count' => 582,
-      'from' => 'MBs-1685-DEV_Fix',
-      'to' => 'Master_branch_of_project',
+    $accounts[] = array(
+      'id' => 3,
+      'fullname' => 'Alejandro Gómez Morón',
+      'username' => 'agomezmoron',
+      'email' => 'agommor@gmail.com',
+      'type' => 'BITBUCKET',
+      'photoUrl' => 'http://lorempixel.com/200/200/',
+      'repoNumber' => 10,
+      'organization' => 'Emergya',
+      'location' => 'Sevilla',
     );
 
-    return new ResourceResponse($pull_requests);
+
+    return new ResourceResponse($accounts);
   }
 
 }

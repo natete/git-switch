@@ -1,4 +1,0 @@
-simple_github.user_repositories:
-  title: 'User Repositories'
-  route_name: simple_github.user_repositories
-  base_route: entity.user.canonical

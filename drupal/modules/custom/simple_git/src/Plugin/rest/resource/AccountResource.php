@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\simple_github\Plugin\rest\resource\AccountResource.php
+ * Contains \Drupal\simple_git\Plugin\rest\resource\AccountResource.php
  */
 
-namespace Drupal\simple_github\Plugin\rest\resource;
+namespace Drupal\simple_git\Plugin\rest\resource;
 
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\rest\Plugin\ResourceBase;
@@ -19,10 +19,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * Provides a Connector Resource
  *
  * @RestResource(
- *   id = "simple_github_account_resource",
- *   label = @Translation("GitHub Account Resource"),
+ *   id = "simple_git_account_resource",
+ *   label = @Translation("Git Account Resource"),
  *   uri_paths = {
- *     "canonical" = "/simple_github_api/account"
+ *     "canonical" = "/simple_git_api/account"
  *   }
  * )
  */
@@ -71,27 +71,18 @@ class AccountResource extends ResourceBase {
   /*
    * Responds to POST requests.
    *
-   * It connects with GitHub with the given information, returning the account data.
+   * It connects with the Git Service given using the given information, returning the account data.
    *
    * @param array $data
    *  Request data.
    *
    * @return \Drupal\rest\ResourceResponse
-   *   The response containing the GitHub account data.
+   *   The response containing the Git account data.
    */
   public function post($data) {
-    $config = \Drupal::config('simple_github.settings');
     // TODO: Link to github and validate $data information
-    $user_data = array(
-      'id' => 3,
-      'fullname' => 'Alejandro Gómez Morón',
-      'username' => 'agomezmoron',
-      'email' => 'agommor@gmail.com',
-      'photoUrl' => 'http://lorempixel.com/200/200/',
-      'repoNumber' => 10,
-      'organization' => 'Emergya',
-      'location' => 'Sevilla',
-    );
+
+    $user_data = SimpleGitAuthorizationBusinessLogic::authorize($this->current_user, $data);
 
     return new ResourceResponse($user_data);
   }
@@ -108,7 +99,6 @@ class AccountResource extends ResourceBase {
    *   The response with the result status.
    */
   public function delete($data) {
-    $config = \Drupal::config('simple_github.settings');
     // TODO: Link to github and validate $data information
     $response_data = array(
       'message' => _('Account removed successfully')

@@ -2,31 +2,29 @@
 
 /**
  * @file
- * Contains \Drupal\simple_github\Plugin\rest\resource\PullRequestResource.php
+ * Contains \Drupal\simple_git\Plugin\rest\resource\ConnectorResource.php
  */
 
-namespace Drupal\simple_github\Plugin\rest\resource;
+namespace Drupal\simple_git\Plugin\rest\resource;
 
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
 use Drupal\Core\Session\AccountProxyInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Provides a Pull Request Resource
+ * Provides a Connector Resource
  *
  * @RestResource(
- *   id = "simple_github_pull_request_resource",
- *   label = @Translation("GitHub Pull Request Resource"),
+ *   id = "simple_git_connector_resource",
+ *   label = @Translation("Git Connector Resource"),
  *   uri_paths = {
- *     "canonical" = "/simple_github_api/pull_request"
+ *     "canonical" = "/simple_git_api/connector"
  *   }
  * )
  */
-class PullRequestResource extends ResourceBase {
+class ConnectorResource extends ResourceBase {
 
   /**
    *  A current user instance.
@@ -34,6 +32,7 @@ class PullRequestResource extends ResourceBase {
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
   protected $current_user;
+
 
   /**
    * {@inheritdoc}
@@ -69,40 +68,33 @@ class PullRequestResource extends ResourceBase {
   }
 
   /*
-  * Responds to the GET request.
-  *
-  * @return \Drupal\rest\ResourceResponse
-  *   The response containing all the available Pull Requests.
-  */
+   * Responds to the GET request.
+   *
+   * @return \Drupal\rest\ResourceResponse
+   *   The configured connectors.
+   */
   public function get() {
-    $accounts = array();
+    $connectors = array();
 
-    $accounts[] = array(
-      'id' => 1,
-      'fullname' => 'Alejandro Gómez Morón',
-      'username' => 'agomezmoron',
-      'email' => 'agommor@gmail.com',
-      'type' => 'GITHUB',
-      'photoUrl' => 'http://lorempixel.com/200/200/',
-      'repoNumber' => 10,
-      'organization' => 'Emergya',
-      'location' => 'Sevilla',
-    );
+    $git_settings = \Drupal::config('simple_git.settings');
 
-    $accounts[] = array(
-      'id' => 3,
-      'fullname' => 'Alejandro Gómez Morón',
-      'username' => 'agomezmoron',
-      'email' => 'agommor@gmail.com',
-      'type' => 'BITBUCKET',
-      'photoUrl' => 'http://lorempixel.com/200/200/',
-      'repoNumber' => 10,
-      'organization' => 'Emergya',
-      'location' => 'Sevilla',
-    );
+    // GitHub connector
+    if (!empty($git_settings->get('github')['app_id'])) {
+      $connectors[] = array(
+        'client_id' => $git_settings->get('github')['app_id'],
+        'type' => GIT_TYPE_GITHUB
+      );
+    }
 
+    // GitLab connector
+    if (!empty($git_settings->get('gitlab')['app_id'])) {
+      $connectors[] = array(
+        'client_id' => $git_settings->get('gitlab')['app_id'],
+        'type' => GIT_TYPE_GITLAB
+      );
+    }
 
-    return new ResourceResponse($accounts);
+    return new ResourceResponse($connectors);
   }
 
 }
