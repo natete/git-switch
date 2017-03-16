@@ -111,6 +111,7 @@ abstract class SimpleGitConnector {
           $response[$responseKey] = $data[$connectorKey];
         }
       }
+      $response['type'] = $this->getConnectorType();
     }
     return $response;
   }
