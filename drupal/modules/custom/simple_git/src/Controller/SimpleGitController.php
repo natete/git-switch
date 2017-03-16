@@ -18,6 +18,7 @@ use Drupal\simple_git\Service\SimpleGitHubConnectorService;
  * Controller routines for oauth routes.
  */
 class SimpleGitController extends ControllerBase implements ContainerInjectionInterface {
+
   /**
    * The URL generator service.
    *

@@ -3,7 +3,11 @@
  * @file
  * Contains \Drupal\simple_git\BusinessLogic\SimpleGitAuthorizationBusinessLogic
  */
+
+namespace Drupal\simple_git\BusinessLogic;
+
 use \Drupal\simple_git\Service;
+use \Drupal\simple_git\BusinessLogic\SimpleGitDataBaseBusinessLogic;
 
 abstract class SimpleGitAuthorizationBusinessLogic extends SimpleGitDataBaseBusinnesLogic {
 

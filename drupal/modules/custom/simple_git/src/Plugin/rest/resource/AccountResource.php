@@ -13,7 +13,8 @@ use Drupal\rest\ResourceResponse;
 use Drupal\Core\Session\AccountProxyInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Drupal\simple_git\BusinessLogic\SimpleGitAuthorizationBusinessLogic;
+use Drupal\simple_git\BusinessLogic\SimpleGitAccountBusinessLogic;
 
 /**
  * Provides a Connector Resource
@@ -22,7 +23,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  *   id = "simple_git_account_resource",
  *   label = @Translation("Git Account Resource"),
  *   uri_paths = {
- *     "canonical" = "/simple_git_api/account"
+ *     "canonical" = "/simple_git_api/account/{account_id}",
+ *     "https://www.drupal.org/link-relations/create" = "/simple_git_api/account",
  *   }
  * )
  */
@@ -79,12 +81,16 @@ class AccountResource extends ResourceBase {
    * @return \Drupal\rest\ResourceResponse
    *   The response containing the Git account data.
    */
-  public function post($data) {
-    // TODO: Link to github and validate $data information
-
+  public function post(array $data = []) {
     $user_data = SimpleGitAuthorizationBusinessLogic::authorize($this->current_user, $data);
 
-    return new ResourceResponse($user_data);
+    // an error occurred authenticating
+    if (empty($user_data)) {
+      throw new HttpException(401, t('An error occurred authorizing the user.'));
+    }
+    else {
+      return new ResourceResponse($user_data);
+    }
   }
 
   /*
@@ -113,8 +119,15 @@ class AccountResource extends ResourceBase {
   * @return \Drupal\rest\ResourceResponse
   *   The response containing all the linked accounts
   */
-  public function get() {
+  public function get($account_id = NULL) {
     $accounts = array();
+
+    if ($account_id == REST_ALL_OPTION) {
+      // should be reviewed once it is pushed!
+      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+    } else {
+      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+    }
 
     $accounts[] = array(
       'id' => 1,

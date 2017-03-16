@@ -79,17 +79,17 @@ class ConnectorResource extends ResourceBase {
     $git_settings = \Drupal::config('simple_git.settings');
 
     // GitHub connector
-    if (!empty($git_settings->get('github')['app_id'])) {
+    if (!empty($git_settings->get(GIT_TYPE_GITHUB)['app_id'])) {
       $connectors[] = array(
-        'client_id' => $git_settings->get('github')['app_id'],
+        'client_id' => $git_settings->get(GIT_TYPE_GITHUB)['app_id'],
         'type' => GIT_TYPE_GITHUB
       );
     }
 
     // GitLab connector
-    if (!empty($git_settings->get('gitlab')['app_id'])) {
+    if (!empty($git_settings->get(GIT_TYPE_GITLAB)['app_id'])) {
       $connectors[] = array(
-        'client_id' => $git_settings->get('gitlab')['app_id'],
+        'client_id' => $git_settings->get(GIT_TYPE_GITLAB)['app_id'],
         'type' => GIT_TYPE_GITLAB
       );
     }
