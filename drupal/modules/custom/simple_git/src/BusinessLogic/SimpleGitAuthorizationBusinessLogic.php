@@ -4,7 +4,11 @@ use \Drupal\simple_git\Service;
 
 abstract class SimpleGitAuthorizationBusinessLogic extends SimpleGitDataBaseBusinnesLogic {
 
-
+  /**
+   * @param $user
+   * @param $params
+   * @return array|mixed
+   */
   static function authorize($user, $params) {
 
     $git_service = Service\SimpleGitConnectorFactory::getConnector($params['type']);
@@ -28,6 +32,12 @@ abstract class SimpleGitAuthorizationBusinessLogic extends SimpleGitDataBaseBusi
     return $result;
   }
 
+  /**
+   * @param $user
+   * @param $git_account
+   * @param $connector_type
+   * @return array
+   */
   static protected function addOrUpdateAccount($user, $git_account, $connector_type) {
     // get user_data, variable "accounts"
     $accounts = SimpleGitDataBaseBusinnesLogic::getAccounts($user);
@@ -58,6 +68,12 @@ abstract class SimpleGitAuthorizationBusinessLogic extends SimpleGitDataBaseBusi
     return $result;
   }
 
+  /**
+   * @param $accounts
+   * @param $git_account
+   * @param $connector_type
+   * @return array
+   */
   static protected function createAccount($accounts, $git_account, $connector_type) {
     $account = array();
 

@@ -3,7 +3,10 @@ namespace Drupal\simple_git\BusinessLogic;
 use \Drupal\simple_git\Service;
 abstract class SimpleGitAccountBusinessLogic {
 
-
+  /**
+   * @param $account_id
+   * @return array
+   */
   static function getAccountByAccountId($account_id) {
 
     // get user_data, variable "accounts"
