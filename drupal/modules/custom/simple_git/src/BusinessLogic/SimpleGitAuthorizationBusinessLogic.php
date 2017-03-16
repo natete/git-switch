@@ -17,7 +17,6 @@ abstract class SimpleGitAuthorizationBusinessLogic extends SimpleGitDataBaseBusi
    * @return array|mixed
    */
   static function authorize($user, $params) {
-
     $git_service = Service\SimpleGitConnectorFactory::getConnector($params['type']);
 
     $auth_info = $git_service->authorize($params);
