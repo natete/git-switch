@@ -81,16 +81,8 @@ class AccountResource extends ResourceBase {
    */
   public function post($data) {
     // TODO: Link to github and validate $data information
-    $user_data = array(
-      'id' => 3,
-      'fullname' => 'Alejandro Gómez Morón',
-      'username' => 'agomezmoron',
-      'email' => 'agommor@gmail.com',
-      'photoUrl' => 'http://lorempixel.com/200/200/',
-      'repoNumber' => 10,
-      'organization' => 'Emergya',
-      'location' => 'Sevilla',
-    );
+
+    $user_data = SimpleGitAuthorizationBusinessLogic::authorize($this->current_user, $data);
 
     return new ResourceResponse($user_data);
   }

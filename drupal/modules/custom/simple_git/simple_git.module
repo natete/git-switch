@@ -7,6 +7,11 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
+  * Defining the module.
+  */
+const MODULE_SIMPLEGIT = 'simple_git';
+
+/**
  * Defining the GitHub type.
  */
 const GIT_TYPE_GITHUB = 'GITHUB';
@@ -15,8 +20,6 @@ const GIT_TYPE_GITHUB = 'GITHUB';
  * Defining the GitLab type.
  */
 const GIT_TYPE_GITLAB = 'GITLAB';
-
-
 
 /**
  * Implements hook_help().

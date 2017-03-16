@@ -27,7 +27,7 @@ abstract class SimpleGitConnectorFactory {
    *
    * @param $type
    *  Depending on the type, the factory will return a different instance of \Drupal\simple_git\Service\SimpleGitConnectorService.
-   * @return \Drupal\simple_git\Service\SimpleGitConnectorInterface
+   * @return \Drupal\simple_git\Service\SimpleGitConnector
    *  Instance that matches with the given $type.
    */
   static function getConnector($type) {
