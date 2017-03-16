@@ -245,11 +245,13 @@ class SimpleGitHubConnectorService extends SimpleGitConnector {
   /** Include the headers into the curl request
    * @return array
    */
-  protected function getHeaders() {
+  protected function getHeaders($token = NULL) {
+    $headers = [];
     $headers[] = 'Accept: application/json';
 // if we have the security token
-    if (!empty($this->token_type)) {
-      array_push($headers[], 'Authorization: token ' . $this->access_token);
+
+    if (is_null($token)) {
+     $headers[] = 'Authorization: token ' . $token;
     }
     return $headers;
   }
@@ -260,11 +262,17 @@ class SimpleGitHubConnectorService extends SimpleGitConnector {
    * These params are 'optional'. (By the moment the only exception is the authorize method).
    * @return resource
    */
-  protected function getConfiguredCURL($url) {
+  protected function getConfiguredCURL($url, $user = NULL) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    $headers = $this->getHeaders();
+
+    if(!is_null($user) && isset($user['token'])){
+      $headers = $this->getHeaders($user['token']);
+    }else{
+      $headers = $this->getHeaders();
+    }
+
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
