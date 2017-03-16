@@ -63,7 +63,7 @@ abstract class SimpleGitAuthorizationBusinessLogic extends SimpleGitDataBaseBusi
     }
 
     // save user_data
-    SimpleGitDataBaseBusinnesLogic::setAccounts($user,$accounts);
+    SimpleGitDataBaseBusinnesLogic::setAccounts($user, $accounts);
 
     return $result;
   }

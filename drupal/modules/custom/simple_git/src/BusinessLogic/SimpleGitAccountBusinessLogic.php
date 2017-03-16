@@ -1,6 +1,8 @@
 <?php
 namespace Drupal\simple_git\BusinessLogic;
+
 use \Drupal\simple_git\Service;
+
 abstract class SimpleGitAccountBusinessLogic {
 
   /**

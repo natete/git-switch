@@ -1,6 +1,8 @@
 <?php
 namespace Drupal\simple_git\BusinessLogic;
+
 use \Drupal\simple_git\Service;
+
 class SimpleGitRepositoriesBusinessLogic {
   /**
    * @param $account_id
@@ -12,7 +14,7 @@ class SimpleGitRepositoriesBusinessLogic {
     if (!empty($account)) {
       $params['userInfo'] = $account;
       $git_service = Service\SimpleGitConnectorFactory::getConnector($account['type']);
-      $repositories=$git_service->getRepositoriesList($params);
+      $repositories = $git_service->getRepositoriesList($params);
     }
     return $repositories;
   }
@@ -28,9 +30,9 @@ class SimpleGitRepositoriesBusinessLogic {
     $account = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
     if (!empty($account)) {
       $params['userInfo'] = $account;
-      $params['repo']=$repo;
+      $params['repo'] = $repo;
       $git_service = Service\SimpleGitConnectorFactory::getConnector($account['type']);
-      $repository=$git_service->getRepositoriesList($params);
+      $repository = $git_service->getRepositoriesList($params);
     }
     return $repository;
   }
