@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\simple_git\BusinessLogic\SimpleGitAccountBusinessLogic
+ */
 namespace Drupal\simple_git\BusinessLogic;
 
 use \Drupal\simple_git\Service;

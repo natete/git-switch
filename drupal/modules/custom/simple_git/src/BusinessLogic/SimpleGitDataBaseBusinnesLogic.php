@@ -1,10 +1,7 @@
 <?php
-
 /**
- * Created by PhpStorm.
- * User: ebarrera
- * Date: 15/03/17
- * Time: 14:38
+ * @file
+ * Contains \Drupal\simple_git\BusinessLogic\SimpleGitDataBaseBusinnesLogic
  */
 abstract class SimpleGitDataBaseBusinnesLogic {
 

@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @file
+ * Contains \Drupal\simple_git\BusinessLogic\SimpleGitAuthorizationBusinessLogic
+ */
 use \Drupal\simple_git\Service;
 
 abstract class SimpleGitAuthorizationBusinessLogic extends SimpleGitDataBaseBusinnesLogic {
