@@ -318,6 +318,10 @@ class SimpleGitHubConnectorService extends SimpleGitConnector {
     return $ch;
   }
 
+  /** Perform the curl request, close the stream and return the response
+   * @param $ch
+   * @return mixed
+   */
   protected function performCURL(&$ch) {
     $data = curl_exec($ch);
     curl_close($ch);
