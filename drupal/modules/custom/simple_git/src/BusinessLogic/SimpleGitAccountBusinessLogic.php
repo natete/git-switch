@@ -11,7 +11,7 @@ abstract class SimpleGitAccountBusinessLogic {
    * @param $account_id
    * @return array
    */
-  static function getAccountByAccountId($user,$account_id) {
+  static function getAccountByAccountId($user, $account_id) {
 
     // get user_data, variable "accounts"
     $accounts = array();
@@ -34,61 +34,51 @@ abstract class SimpleGitAccountBusinessLogic {
 
 
   /**
-   * @param $user
-   * @param $git_account
-   * @param $connector_type
-   * @return array
-   */
-  static function addOrUpdateAccount($user, $git_account, $connector_type) {
-    // get user_data, variable "accounts"
-    $accounts = self::getAccounts($user);
-
-    $result = array();
-
-    $found = FALSE;
-    // we have to check if there is an account with the given $git_account['name'] for this $connector_type
-    foreach ($accounts as &$account) {
-      // if it exists, we have to update it
-      if ($account['name'] == $git_account['name'] && $account['type'] == $connector_type) {
-        $account['access_info'] = $git_account;
-        $result = $account;
-        $found = TRUE;
-        break;
-      }
-    }
-
-    if (!$found) {
-      // we have to create it
-      $result = self::createAccount($accounts, $git_account, $connector_type);
-      $accounts[] = $result;
-    }
-
-    // save user_data
-    self::setAccounts($user, $accounts);
-
-    return $result;
-  }
-
-  /**
    * @param $accounts
    * @param $git_account
    * @param $connector_type
    * @return array
    */
-  static function createAccount($accounts, $git_account, $connector_type) {
-    $account = array();
-
+  static function createAccount($accounts, $request_account) {
     // getting the maximim account_id
     $max_account_id = max(array_column($accounts, 'account_id'));
 
     $account = array(
       'account_id' => $max_account_id + 1,
-      'type' => $connector_type,
-      'name' => $git_account['name'],
-      'access_info' => $git_account
+      'type' => $request_account['type'],
+      'name' => $request_account['name'],
+      'access_info' => setAccessInfo($request_account),
     );
 
     return $account;
+  }
+
+  /**
+   * @param $account
+   * @return array
+   */
+  static function setAccessInfo($account) {
+    $access_info = array();
+    switch ($account['type']) {
+      case GIT_TYPE_GITHUB:
+        $access_info = array(
+          'token' => $account['token'],
+        );
+        break;
+      case GIT_TYPE_GITLAB:
+        $access_info = array(
+          'token' => $account['token'],
+          'expires_in' => $account['expires_in'],
+          'refresh_token' => $account['refresh_token'],
+        );
+        break;
+      default:
+        $access_info = array(
+          'token' => $account['token'],
+        );
+        break;
+    }
+    return $access_info;
   }
 
   /**
@@ -108,15 +98,22 @@ abstract class SimpleGitAccountBusinessLogic {
   static function setAccount($user, $account) {
     $db_accounts = self::getAccounts($user);
 
-    $accounts = self::checkUserData($db_accounts,$account);
+    $new_account = self::createAccount($db_accounts, $account);
+
+    $accounts = self::checkUserData($db_accounts, $new_account);
 
     return Drupal::service('user.data')
       ->set(MODULE_SIMPLEGIT, $user->id(), 'accounts', $accounts);
   }
 
-  static function setAccounts($user, $accounts){
-    foreach($accounts as $account){
-      $last_accounts_list = self::setAccount($user,$account);
+  /**
+   * @param $user
+   * @param $accounts
+   * @return mixed
+   */
+  static function setAccounts($user, $accounts) {
+    foreach ($accounts as $account) {
+      $last_accounts_list = self::setAccount($user, $account);
     }
     return $last_accounts_list;
   }
@@ -128,17 +125,53 @@ abstract class SimpleGitAccountBusinessLogic {
    */
   static function checkUserData($db_users, $new_user) {
     $exist = FALSE;
+
     foreach ($db_users as $db_user) {
       if ($db_user['username'] == $new_user['username']) {
         $exist = TRUE;
-        if (isset($new_user['token']) && !is_null($new_user['token']) && $db_user['token'] != $new_user['token']) {
-          $db_user['token'] = $new_user['token'];
+        if ($db_user['type'] == $new_user['type']) {
+          $checked_user = checkAccessInfo($db_user, $new_user);
+          if (isset($checked_user)) {
+            $db_user = $checked_user;
+          }
         }
       }
     }
+
     if (!$exist) {
       $db_users[] = $new_user;
     }
+
     return $db_users;
+  }
+
+  /**
+   * @param $db_user
+   * @param $new_user
+   * @return null
+   */
+  static function checkAccessInfo($db_user, $new_user) {
+    switch ($new_user['type']) {
+      case GIT_TYPE_GITHUB:
+        if ($db_user['access_info']['token'] != $new_user['access_info']['token']) {
+          $db_user['access_info']['token'] = $new_user['access_info']['token'];
+        }
+        else {
+          $db_user = NULL;
+        }
+        break;
+      case GIT_TYPE_GITLAB:
+        // TODO: Pending to implement Gitlab connector
+        break;
+      default:
+        if ($db_user['access_info']['token'] != $new_user['access_info']['token']) {
+          $db_user['access_info']['token'] = $new_user['access_info']['token'];
+        }
+        else {
+          $db_user = NULL;
+        }
+        break;
+    }
+    return $db_user;
   }
 }

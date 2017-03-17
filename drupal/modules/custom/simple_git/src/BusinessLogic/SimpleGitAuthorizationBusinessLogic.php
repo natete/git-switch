@@ -39,5 +39,4 @@ abstract class SimpleGitAuthorizationBusinessLogic extends SimpleGitDataBaseBusi
   }
 
 
-
 }
