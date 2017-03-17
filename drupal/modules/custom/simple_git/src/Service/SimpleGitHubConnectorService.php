@@ -283,8 +283,8 @@ class SimpleGitHubConnectorService extends SimpleGitConnector {
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
-    if (!is_null($user) && isset($user['token'])) {
-      $headers = $this->getHeaders($user['token']);
+    if (!is_null($user) && !is_null($user['access_info']) && isset($user['access_info']['token'])) {
+      $headers = $this->getHeaders($user['access_info']['token']);
     }
     else {
       $headers = $this->getHeaders();
