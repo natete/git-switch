@@ -41,7 +41,7 @@ abstract class SimpleGitAccountBusinessLogic {
    */
   static function addOrUpdateAccount($user, $git_account, $connector_type) {
     // get user_data, variable "accounts"
-    $accounts = SimpleGitDataBaseBusinnesLogic::getAccounts($user);
+    $accounts = self::getAccounts($user);
 
     $result = array();
 
@@ -105,9 +105,40 @@ abstract class SimpleGitAccountBusinessLogic {
    * @param $accounts
    * @return mixed
    */
-  static function setAccounts($user, $accounts) {
+  static function setAccount($user, $account) {
+    $db_accounts = self::getAccounts($user);
+
+    $accounts = self::checkUserData($db_accounts,$account);
+
     return Drupal::service('user.data')
       ->set(MODULE_SIMPLEGIT, $user->id(), 'accounts', $accounts);
   }
 
+  static function setAccounts($user, $accounts){
+    foreach($accounts as $account){
+      $last_accounts_list = self::setAccount($user,$account);
+    }
+    return $last_accounts_list;
+  }
+
+  /**
+   * @param $db_users
+   * @param $new_user
+   * @return array
+   */
+  static function checkUserData($db_users, $new_user) {
+    $exist = FALSE;
+    foreach ($db_users as $db_user) {
+      if ($db_user['username'] == $new_user['username']) {
+        $exist = TRUE;
+        if (isset($new_user['token']) && !is_null($new_user['token']) && $db_user['token'] != $new_user['token']) {
+          $db_user['token'] = $new_user['token'];
+        }
+      }
+    }
+    if (!$exist) {
+      $db_users[] = $new_user;
+    }
+    return $db_users;
+  }
 }
