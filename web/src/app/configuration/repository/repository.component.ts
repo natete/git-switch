@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, style, animate, sequence, transition, trigger} from '@angular/core';
+import {Component, OnInit, Input, style, animate, transition, trigger} from '@angular/core';
 import {Repository} from "./repository";
 
 @Component({
@@ -9,15 +9,11 @@ import {Repository} from "./repository";
     trigger('slideInOut', [
       transition(':enter', [
         style({ height: '0', opacity: '0', transform: 'translateY(-100px)' }),
-        sequence([
-          animate(".7s ease", style({ height: '*', opacity: '1', transform: 'translateY(0)' }))
-        ])
+        animate(".7s ease", style({ height: '*', opacity: '1', transform: 'translateY(0px)' }))
       ]),
       transition(':leave', [
         style({ height: '*', opacity: '1', transform: 'translateX(0)'}),
-        sequence([
-          animate(".7s ease", style({ height: '0', opacity: 0, transform: 'translateY(-100px)' }))
-        ])
+        animate(".7s ease", style({ height: '0', opacity: 0, transform: 'translateY(-100px)' }))
       ])
     ])
   ]
