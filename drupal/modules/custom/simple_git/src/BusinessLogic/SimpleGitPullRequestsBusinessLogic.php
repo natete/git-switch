@@ -14,9 +14,9 @@ class SimpleGitPullRequestsBusinessLogic {
    * @param $repo
    * @return array
    */
-  function getPullRequests($account_id, $repo) {
+  function getPullRequests($account_id, $repo, $user) {
     $pr = array();
-    $account = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+    $account = SimpleGitAccountBusinessLogic::getAccountByAccountId($user, $account_id);
     if (!empty($account)) {
       $params['userInfo'] = $account;
       $params['repo'] = $repo;
@@ -32,9 +32,9 @@ class SimpleGitPullRequestsBusinessLogic {
    * @param $id
    * @return array
    */
-  function getPullRequest($account_id, $repo, $id) {
+  function getPullRequest($account_id, $repo, $id, $user) {
     $pr = array();
-    $account = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+    $account = SimpleGitAccountBusinessLogic::getAccountByAccountId($user,$account_id);
     if (!empty($account)) {
       $params['userInfo'] = $account;
       $params['repo'] = $repo;
