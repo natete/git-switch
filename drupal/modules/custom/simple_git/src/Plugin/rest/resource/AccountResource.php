@@ -23,8 +23,8 @@ use Drupal\simple_git\BusinessLogic\SimpleGitAccountBusinessLogic;
  *   id = "simple_git_account_resource",
  *   label = @Translation("Git Account Resource"),
  *   uri_paths = {
- *     "canonical" = "/simple_git_api/account/{account_id}",
- *     "https://www.drupal.org/link-relations/create" = "/simple_git_api/account",
+ *     "canonical" = "/api/simple_git/account/{account_id}",
+ *     "https://www.drupal.org/link-relations/create" = "/api/simple_git/account",
  *   }
  * )
  */

@@ -22,7 +22,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  *   id = "simple_git_pull_request_resource",
  *   label = @Translation("Git Pull Request Resource"),
  *   uri_paths = {
- *     "canonical" = "/simple_git_api/pull_request"
+ *     "canonical" = "/api/simple_git/pull_request"
  *   }
  * )
  */
