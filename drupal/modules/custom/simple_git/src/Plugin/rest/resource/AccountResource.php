@@ -88,9 +88,9 @@ class AccountResource extends ResourceBase {
     if (empty($user_data)) {
       throw new HttpException(401, t('An error occurred authorizing the user.'));
     }
-    else {
-      return new ResourceResponse($user_data);
-    }
+
+    return new ResourceResponse($user_data);
+
   }
 
   /*
