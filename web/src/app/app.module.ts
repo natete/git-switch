@@ -16,13 +16,18 @@ import { AccountsModule } from './accounts/accounts.module';
 import { SharedModule } from './shared/shared.module';
 import { PullRequestsModule } from './pull-requests/pull-requests.module';
 import { LoginService } from './login/login.service';
+import { ConfigurationService } from './configuration/configuration.service';
 import { TokenService } from './core/auth/token.service';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { RepositoryComponent } from './configuration/repository/repository.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ConfigurationComponent,
+    RepositoryComponent
   ],
   imports: [
     AccountsModule,
@@ -41,7 +46,8 @@ import { TokenService } from './core/auth/token.service';
       deps: [XHRBackend, RequestOptions, AuthService]
     },
     LoginService,
-    TokenService
+    TokenService,
+    ConfigurationService
   ],
   bootstrap: [AppComponent]
 })
