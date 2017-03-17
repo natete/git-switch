@@ -124,9 +124,9 @@ class AccountResource extends ResourceBase {
 
     if ($account_id == REST_ALL_OPTION) {
       // should be reviewed once it is pushed!
-      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($this->current_user,$account_id);
     } else {
-      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($this->current_user, $account_id);
     }
 
     $accounts[] = array(
