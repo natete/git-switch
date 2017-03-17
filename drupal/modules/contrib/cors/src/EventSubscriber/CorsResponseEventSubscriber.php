@@ -119,9 +119,17 @@ class CorsResponseEventSubscriber implements EventSubscriberInterface {
       if ($method === 'all' || $method === $current_method) {
         foreach ($allowed as $header => $values) {
           if (!empty($values)) {
+            $response->headers->set($header, implode(',',$values), TRUE);
+            /*
             foreach ($values as $value) {
+              error_log($header.'='.print_r($value, true));
+              $old_value = $response->headers->get($header);
+              if (!empty($old_value)) {
+                $value = $old_value.','.$value;
+              }
               $response->headers->set($header, $value, TRUE);
             }
+            */
           }
         }
       }
