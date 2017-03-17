@@ -7,15 +7,7 @@
 
 namespace Drupal\simple_git\Service;
 
-use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Url;
-use Drupal\Core\Utility\LinkGeneratorInterface;
 use Drupal\simple_git\Service\SimpleGitConnectorInterface;
-use Drupal\user\UserDataInterface;
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\user\UserInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Connector Simple Factory.

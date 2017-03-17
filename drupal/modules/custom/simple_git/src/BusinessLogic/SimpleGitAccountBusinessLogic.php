@@ -5,8 +5,6 @@
  */
 namespace Drupal\simple_git\BusinessLogic;
 
-use \Drupal\simple_git\Service;
-
 abstract class SimpleGitAccountBusinessLogic {
 
   /**
@@ -17,7 +15,7 @@ abstract class SimpleGitAccountBusinessLogic {
 
     // get user_data, variable "accounts"
     $accounts = array();
-    $accounts = $data = Drupal::service('user.data')
+    $accounts = $data = \Drupal::service('user.data')
       ->get(MODULE_SIMPLEGIT, NULL, 'accounts');
 
     $result = array();

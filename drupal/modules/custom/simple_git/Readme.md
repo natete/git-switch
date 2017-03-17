@@ -6,7 +6,7 @@ It also supports OAuth integrations.
 
 ## REST Services exposed
 
-The REST API base PATH will be: **/simple_git_api**
+The REST API base PATH will be: **/api/simple_git**
 
 ### Connector
 

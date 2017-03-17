@@ -7,9 +7,9 @@
 
 namespace Drupal\simple_git\Form;
 
+use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Config\ConfigFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
