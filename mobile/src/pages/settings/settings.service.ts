@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Setting } from './setting';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
+import { TokenService } from '../../providers/auth/token.service';
 
 @Injectable()
 export class SettingsService {
@@ -9,7 +10,7 @@ export class SettingsService {
 
   private settingsStream = new BehaviorSubject<Setting[]>([]);
 
-  constructor(private http: Http){}
+  constructor(private http: Http, private tokenService:TokenService){}
 
   /**
    * Get the observable of the settings the user has.
@@ -19,8 +20,7 @@ export class SettingsService {
     if(this.settingsStream.getValue()){
       this.http
           .get(this.SETTINGS_URL)
-          .map(response => response.json().data as Setting[])
-          .subscribe(setting => this.settingsStream.next(setting));
+          .subscribe((setting: any) => this.settingsStream.next(setting as Setting[]));
     }
 
     return this.settingsStream.asObservable();

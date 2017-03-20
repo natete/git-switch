@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams, Headers } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Account } from './account';
 import { InAppBrowser } from '@ionic-native/inappbrowser';
 import { Constants } from '../../shared/constants';
+import { TokenService } from '../../providers/auth/token.service';
+import { HttpService } from '../../providers/http/http.service';
 
 @Injectable()
 export class AccountsService {
   private readonly IN_APP_BROWSER_PARAMS = 'location=no,clearcache=yes';
-  private readonly ACCOUNTS_URL = 'api/accounts';
+  private readonly ACCOUNTS_URL = '/api/simple_git/account';
 
   private accountsStream = new BehaviorSubject<Account[]>([]);
 
-
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   /**
    * Get the observable of the accounts the user has.
@@ -23,9 +24,8 @@ export class AccountsService {
   getAccounts(): Observable<Account[]> {
     if (this.accountsStream.getValue()) {
       this.http
-          .get(this.ACCOUNTS_URL)
-          .map(response => response.json().data as Account[])
-          .subscribe(accounts => this.accountsStream.next(accounts));
+          .get(`${this.ACCOUNTS_URL}/all`)
+          .subscribe((accounts: any) => this.accountsStream.next(accounts as Account[]));
     }
 
     return this.accountsStream.asObservable();
