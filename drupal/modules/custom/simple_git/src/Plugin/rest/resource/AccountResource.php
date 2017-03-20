@@ -23,8 +23,8 @@ use Drupal\simple_git\BusinessLogic\SimpleGitAccountBusinessLogic;
  *   id = "simple_git_account_resource",
  *   label = @Translation("Git Account Resource"),
  *   uri_paths = {
- *     "canonical" = "/simple_git_api/account/{account_id}",
- *     "https://www.drupal.org/link-relations/create" = "/simple_git_api/account",
+ *     "canonical" = "/api/simple_git/account/{account_id}",
+ *     "https://www.drupal.org/link-relations/create" = "/api/simple_git/account",
  *   }
  * )
  */
@@ -73,7 +73,7 @@ class AccountResource extends ResourceBase {
   /*
    * Responds to POST requests.
    *
-   * It connects with the Git Service given using the given information, returning the account data.
+   * It conneccuado ts with the Git Service given using the given information, returning the account data.
    *
    * @param array $data
    *  Request data.
@@ -88,9 +88,9 @@ class AccountResource extends ResourceBase {
     if (empty($user_data)) {
       throw new HttpException(401, t('An error occurred authorizing the user.'));
     }
-    else {
-      return new ResourceResponse($user_data);
-    }
+
+    return new ResourceResponse($user_data);
+
   }
 
   /*
@@ -124,9 +124,9 @@ class AccountResource extends ResourceBase {
 
     if ($account_id == REST_ALL_OPTION) {
       // should be reviewed once it is pushed!
-      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($this->current_user,$account_id);
     } else {
-      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+      $accounts = SimpleGitAccountBusinessLogic::getAccountByAccountId($this->current_user, $account_id);
     }
 
     $accounts[] = array(

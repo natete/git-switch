@@ -12,9 +12,9 @@ class SimpleGitRepositoriesBusinessLogic {
    * @param $account_id
    * @return array|mixed
    */
-  function getRepositories($account_id) {
+  function getRepositories($user, $account_id) {
     $repositories = array();
-    $account = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+    $account = SimpleGitAccountBusinessLogic::getAccountByAccountId($user, $account_id);
     if (!empty($account)) {
       $params['userInfo'] = $account;
       $git_service = Service\SimpleGitConnectorFactory::getConnector($account['type']);
@@ -29,9 +29,9 @@ class SimpleGitRepositoriesBusinessLogic {
    * @param $repo
    * @return array|mixed
    */
-  function getRepository($account_id, $repo) {
+  function getRepository($account_id, $repo, $user) {
     $repository = array();
-    $account = SimpleGitAccountBusinessLogic::getAccountByAccountId($account_id);
+    $account = SimpleGitAccountBusinessLogic::getAccountByAccountId($user, $account_id);
     if (!empty($account)) {
       $params['userInfo'] = $account;
       $params['repo'] = $repo;

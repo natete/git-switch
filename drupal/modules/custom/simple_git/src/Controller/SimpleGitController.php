@@ -5,14 +5,13 @@
  */
 namespace Drupal\simple_git\Controller;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Utility\LinkGeneratorInterface;
+use Drupal\simple_git\Service\SimpleGitHubConnectorService;
 use Drupal\user\UserDataInterface;
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
-use Drupal\simple_git\Service\SimpleGitHubConnectorService;
 
 /**
  * Controller routines for oauth routes.

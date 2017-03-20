@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   id = "simple_git_connector_resource",
  *   label = @Translation("Git Connector Resource"),
  *   uri_paths = {
- *     "canonical" = "/simple_git_api/connector"
+ *     "canonical" = "/api/simple_git/connector"
  *   }
  * )
  */
