@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { TokenService } from './token.service';
-import { Subject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { Constants } from '../../shared/constants';
 
 @Injectable()
 export class AuthService {
 
-  private authSubject = new Subject<boolean>();
+  private authSubject = new ReplaySubject<boolean>();
 
   constructor(private http: Http,
               private tokenService: TokenService) {
@@ -38,7 +38,7 @@ export class AuthService {
 
     return this.http.post(`${Constants.BACKEND_URL}/${loginEndpoint}`, requestBody)
                .toPromise()
-               .then(res => this.tokenService.setToken(res.json()))
+               .then(res => this.tokenService.setToken(res))
                .then(() => this.authSubject.next(true));
   }
 

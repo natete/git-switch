@@ -3,10 +3,11 @@ import { Http, Headers } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { PullRequest } from './pull-request';
 import { TokenService } from '../../providers/auth/token.service';
+import { Constants } from '../../shared/constants';
 
 @Injectable()
 export class PullRequestsService {
-  private readonly PULLREQUEST_URL = 'api/pull_request';
+  private readonly PULLREQUEST_URL = 'api/simple_git/pull_request';
 
   private pullRequestsStream = new BehaviorSubject<PullRequest[]>([]);
 
@@ -19,7 +20,7 @@ export class PullRequestsService {
   getPullRequests(): Observable<PullRequest[]> {
     if(this.pullRequestsStream.getValue()){
       this.http
-        .get(this.PULLREQUEST_URL)
+        .get(`${Constants.BACKEND_URL}/${this.PULLREQUEST_URL}`)
         .subscribe((pullrequest: any) => this.pullRequestsStream.next(pullrequest as PullRequest[]));
     }
 

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Setting } from './setting';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Http, Headers } from '@angular/http';
-import { TokenService } from '../../providers/auth/token.service';
+import { Http} from '@angular/http';
+import { Constants } from '../../shared/constants';
 
 @Injectable()
 export class SettingsService {
-  private readonly SETTINGS_URL = 'api/settings';
+  private readonly SETTINGS_URL = 'api/simple_git/settings';
 
   private settingsStream = new BehaviorSubject<Setting[]>([]);
 
-  constructor(private http: Http, private tokenService:TokenService){}
+  constructor(private http: Http){}
 
   /**
    * Get the observable of the settings the user has.
@@ -19,7 +19,7 @@ export class SettingsService {
   getSettings(): Observable<Setting[]> {
     if(this.settingsStream.getValue()){
       this.http
-          .get(this.SETTINGS_URL)
+          .get(`${Constants.BACKEND_URL}/${this.SETTINGS_URL}`)
           .subscribe((setting: any) => this.settingsStream.next(setting as Setting[]));
     }
 

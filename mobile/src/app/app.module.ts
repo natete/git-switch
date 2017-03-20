@@ -29,11 +29,11 @@ import { RepositorySettingsService } from '../pages/repository-settings/reposito
     RepositorySettingsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    InMemoryWebApiModule.forRoot(InMemoryDataService, {
-      host: 'localhost',
-      passThruUnknownUrl: true
-    } as InMemoryBackendConfigArgs)
+    IonicModule.forRoot(MyApp)
+    // InMemoryWebApiModule.forRoot(InMemoryDataService, {
+    //   host: 'localhost',
+    //   passThruUnknownUrl: true
+    // } as InMemoryBackendConfigArgs)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

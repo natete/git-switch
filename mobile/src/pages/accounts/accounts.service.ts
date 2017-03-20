@@ -24,7 +24,7 @@ export class AccountsService {
   getAccounts(): Observable<Account[]> {
     if (this.accountsStream.getValue()) {
       this.http
-          .get(`${this.ACCOUNTS_URL}/all`)
+          .get(`${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}/all`)
           .subscribe((accounts: any) => this.accountsStream.next(accounts as Account[]));
     }
 
@@ -54,7 +54,7 @@ export class AccountsService {
    * @param accountId the id  of account to be deleted
    */
   deleteAccount(accountId: number): void {
-    const url = `${this.ACCOUNTS_URL}/${accountId}`;
+    const url = `${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}/${accountId}`;
     this.http
         .delete(url)
         .subscribe(() => this.accountsStream.next(
