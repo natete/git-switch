@@ -1,0 +1,11 @@
+{
+  "id": 3,
+  "fullname": "Myname Mysurname New",
+  "username": "nice_username_new",
+  "email": "migitnuevo@test.com",
+  "photoUrl": "http://lorempixel.com/200/200/",
+  "repoNumber": 10,
+  "organization": "Emergya",
+  "location": "Sevilla",
+  "type": "gitlab"
+}

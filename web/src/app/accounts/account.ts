@@ -18,7 +18,7 @@ export class Account {
       this.email = account.email;
       this.photoUrl = account.photoUrl;
       this.repoNumber = account.repoNumber;
-      this.type = account.type || 'git';
+      this.type = account.type || 'github';
       this.organization = account.organization;
       this.location = account.location;
     }

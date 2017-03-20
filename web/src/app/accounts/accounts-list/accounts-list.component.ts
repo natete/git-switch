@@ -29,9 +29,9 @@ export class AccountsListComponent implements OnInit {
     this.activatedRoute.queryParams
         .filter((params: Params) => params['code'] && params['state'])
         .map((params: Params) => {
-            return {code: params['code'], nonce: params['state']}
+            return {code: params['code'], nonce: params['state'], type: params['account']}
         })
-        .flatMap((params) => (this.accountService.authorizeAccount(params.code, params.nonce)))
+        .flatMap((params) => (this.accountService.authorizeAccount(params.code, params.nonce, params.type)))
         .subscribe(() => this.snackBar.open('Account successfully added', null, {duration: 2000}));
 
     // Get the list of accounts
@@ -49,7 +49,12 @@ export class AccountsListComponent implements OnInit {
    */
   addAccount(): void {
     this.spinnerService.showSpinner();
-    this.accountService.addAccount();
+    this.accountService.addAccountGitHub();
+  }
+
+  addAccount2(): void {
+    this.spinnerService.showSpinner();
+    this.accountService.addAccountGitLab();
   }
 
 
