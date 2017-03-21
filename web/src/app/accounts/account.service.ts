@@ -1,19 +1,15 @@
-import {Injectable} from '@angular/core';
-import {Observable, Subject, BehaviorSubject} from 'rxjs';
-import {Account} from './account';
-import {Http, Response, URLSearchParams, Headers} from '@angular/http';
-import {Constants} from '../shared/constants';
-import {TokenService} from '../core/auth/token.service';
-
+import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Account } from './account';
+import { Http, URLSearchParams } from '@angular/http';
 
 @Injectable()
 export class AccountService {
 
   private storage: Storage = localStorage;
   private accounts = new BehaviorSubject<Account[]>(null);
-  private headers: Headers = new Headers();
 
-  constructor(private http: Http, private tokenService: TokenService) {
+  constructor(private http: Http) {
     this.refreshConnectedAccounts()
       .subscribe((res: Account[]) => this.accounts.next(res));
   }
@@ -53,14 +49,12 @@ export class AccountService {
     const nonce = this.createNonce();
     this.storage.setItem('GitLabNonce', nonce);
 
-    //yyCaoHpa4Pkav5R7zMzN
-
     this.http.get('/assets/json/gitlab-client.json')
       .subscribe(
         (gitHubClient: any) => {
           const params = new URLSearchParams();
 
-          params.set('client_id', gitHubClient.app_id);
+          params.set('client_id', gitHubClient.client_id);
           params.set('redirect_uri', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/accounts?account=lab`);
           params.set('state', nonce);
           params.set('response_type', 'code');
