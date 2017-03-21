@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Account } from './account';
-import { Http, Response, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 
 @Injectable()
 export class AccountService {
@@ -11,7 +11,7 @@ export class AccountService {
 
   constructor(private http: Http) {
     this.refreshConnectedAccounts()
-        .subscribe((res: Account[]) => this.accounts.next(res));
+      .subscribe((res: Account[]) => this.accounts.next(res));
   }
 
   /**
@@ -25,24 +25,42 @@ export class AccountService {
   /**
    * Initiate the process for getting a git login code.
    */
-  addAccount(): void {
+  addAccountGitHub(): void {
     const nonce = this.createNonce();
-    this.storage.setItem('GitNonce', nonce);
+    this.storage.setItem('GitHubNonce', nonce);
 
     this.http.get('/assets/json/github-client.json')
-        .subscribe(
-          (gitHubClient: any) => {
-            const params = new URLSearchParams();
+      .subscribe(
+        (gitHubClient: any) => {
+          const params = new URLSearchParams();
 
-            params.set('client_id', gitHubClient.client_id);
-            params.set('redirect_uri', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/accounts`);
-            params.set('state', nonce);
-            params.set('scope', 'user, repo');
-            params.set('allow_signup', 'false');
+          params.set('client_id', gitHubClient.client_id);
+          params.set('redirect_uri', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/accounts?account=hub`);
+          params.set('state', nonce);
+          params.set('scope', 'user, repo');
+          params.set('allow_signup', 'false');
 
-            location.href = 'https://github.com/login/oauth/authorize?' + params.toString();
-          }
-        )
+          location.href = 'https://github.com/login/oauth/authorize?' + params.toString();
+        }
+      )
+  }
+
+  addAccountGitLab(): void {
+    const nonce = this.createNonce();
+    this.storage.setItem('GitLabNonce', nonce);
+
+    this.http.get('/assets/json/gitlab-client.json')
+      .subscribe(
+        (gitHubClient: any) => {
+          const params = new URLSearchParams();
+
+          params.set('client_id', gitHubClient.client_id);
+          params.set('redirect_uri', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/accounts?account=lab`);
+          params.set('state', nonce);
+          params.set('response_type', 'code');
+          location.href = 'https://gitlab.com/oauth/authorize?' + params.toString();
+        }
+      )
   }
 
   /**
@@ -57,12 +75,12 @@ export class AccountService {
 
     // return this.http.post('', params) // TODO User the correct endpoint and method
     return this.http.get('/assets/json/github-client.json')
-               .map(() => {
-                 let currentValue: Account[] = this.accounts.getValue();
-                 const accountIndex = currentValue.indexOf(account);
-                 currentValue.splice(accountIndex, 1);
-                 this.accounts.next(currentValue);
-               });
+      .map(() => {
+        let currentValue: Account[] = this.accounts.getValue();
+        const accountIndex = currentValue.indexOf(account);
+        currentValue.splice(accountIndex, 1);
+        this.accounts.next(currentValue);
+      });
   }
 
   /**
@@ -71,23 +89,33 @@ export class AccountService {
    * @param nonce The nonce to check if the petition has been compromised.
    * @return {Observable<void>}.
    */
-  authorizeAccount(code: string, nonce: string): Observable<void> {
-    if (this.storage.getItem('GitNonce') === nonce) {
+  authorizeAccount(code: string, nonce: string, type: string): Observable<void> {
+    let currentNonce, api: string = null;
+    if (type === 'hub') {
+      currentNonce = this.storage.getItem('GitHubNonce');
+      api = '/assets/json/new-account-hub.json';
+
+    }
+    if (type === 'lab') {
+      currentNonce = this.storage.getItem('GitLabNonce');
+      api = '/assets/json/new-account-lab.json';
+    }
+    if (currentNonce === nonce) {
       const params = new URLSearchParams();
       params.set('code', code);
       params.set('nonce', nonce);
 
       //this.http.post('', params); // TODO
-      return this.http.get('/assets/json/new-account.json')
-                 .map((res) => {
-                   const currentValue: Account[] = this.accounts.getValue();
-                   currentValue.push(new Account(res));
-                   this.accounts.next(currentValue);
-                 })
-                 .catch((err: any) => {
-                    console.log('error');
-                    return Observable.throw(err)
-                 });
+      return this.http.get(api)
+        .map((res) => {
+          const currentValue: Account[] = this.accounts.getValue();
+          currentValue.push(new Account(res));
+          this.accounts.next(currentValue);
+        })
+        .catch((err: any) => {
+          console.log('error');
+          return Observable.throw(err)
+        });
     }
   }
 
@@ -104,11 +132,14 @@ export class AccountService {
    * @returns {Observable<R>}.
    */
   private refreshConnectedAccounts(): Observable<Account[]> {
-    return this.http.get('/assets/json/accounts.json') //TODO use the proper endpoint
+
+    const accountEndpoint = 'api/simple_git';
+    return this.http.get('/assets/json/accounts.json')
+    //return this.http.get(`${Constants.BACKEND_URL}/${accountEndpoint}/account/all?_format=json`)
     // .map((res: Response) => {
     //   res.json()
     // })
-               .catch((err: any) => Observable.throw(err));
+      .catch((err: any) => Observable.throw(err));
   }
 
   /**

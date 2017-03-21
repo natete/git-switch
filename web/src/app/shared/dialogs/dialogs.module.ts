@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmDialog } from './confirm-dialog/confirm-dialog.component';
+import { SelectDialog } from './select-dialog/select-dialog.component';
 import { DialogsService } from './dialogs.service';
 import { MaterialModule } from '@angular/material';
 
@@ -9,8 +10,8 @@ import { MaterialModule } from '@angular/material';
     CommonModule,
     MaterialModule
   ],
-  declarations: [ConfirmDialog],
+  declarations: [ConfirmDialog, SelectDialog],
   providers: [DialogsService],
-  entryComponents: [ConfirmDialog]
+  entryComponents: [ConfirmDialog, SelectDialog]
 })
 export class DialogsModule { }
