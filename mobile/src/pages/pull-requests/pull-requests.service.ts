@@ -20,7 +20,7 @@ export class PullRequestsService {
   getPullRequests(): Observable<PullRequest[]> {
     if(this.pullRequestsStream.getValue()){
       this.http
-        .get(`${Constants.BACKEND_URL}/${this.PULLREQUEST_URL}`)
+        .get(`${Constants.BACKEND_URL}/${this.PULLREQUEST_URL}?_format=json`)
         .subscribe((pullrequest: any) => this.pullRequestsStream.next(pullrequest as PullRequest[]));
     }
 

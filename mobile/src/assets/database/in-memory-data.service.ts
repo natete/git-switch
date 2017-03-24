@@ -9,19 +9,25 @@ export class InMemoryDataService implements InMemoryDbService {
     const accounts: Account[] = [
       {
         id: 1,
+        fullname: 'Nacho Gonzalez',
         type: 'github',
-        name: 'natete',
-        avatar: 'https://avatars2.githubusercontent.com/u/4098303?v=3&s=40',
-        numOfRepos: 21,
-        company: 'Emergya'
+        username: 'natete',
+        email: 'igonzalez@emergya.com',
+        photoUrl: 'https://avatars2.githubusercontent.com/u/4098303?v=3&s=40',
+        repoNumber: 21,
+        organization: 'Emergya',
+        location: 'Sevilla'
       },
       {
         id: 2,
+        fullname: 'Mercedes Jimenez',
         type: 'github',
-        name: 'manju',
-        avatar: 'https://avatars1.githubusercontent.com/u/11319302?v=3&s=40',
-        numOfRepos: 2,
-        company: 'Emergya'
+        username: 'manju',
+        email: 'mjimenez@emergya.com',
+        photoUrl: 'https://avatars1.githubusercontent.com/u/11319302?v=3&s=40',
+        repoNumber: 2,
+        organization: 'Emergya',
+        location: 'Sevilla'
       }
     ];
 

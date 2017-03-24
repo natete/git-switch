@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams, Headers } from '@angular/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Http, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Account } from './account';
 import { InAppBrowser } from '@ionic-native/inappbrowser';
 import { Constants } from '../../shared/constants';
-import { TokenService } from '../../providers/auth/token.service';
-import { HttpService } from '../../providers/http/http.service';
 
 @Injectable()
 export class AccountsService {
   private readonly IN_APP_BROWSER_PARAMS = 'location=no,clearcache=yes';
-  private readonly ACCOUNTS_URL = '/api/simple_git/account';
+  private readonly ACCOUNTS_URL = 'api/simple_git/account';
 
   private accountsStream = new BehaviorSubject<Account[]>([]);
 
@@ -24,7 +22,7 @@ export class AccountsService {
   getAccounts(): Observable<Account[]> {
     if (this.accountsStream.getValue()) {
       this.http
-          .get(`${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}/all`)
+          .get(`${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}/all?_format=json`)
           .subscribe((accounts: any) => this.accountsStream.next(accounts as Account[]));
     }
 
@@ -107,20 +105,18 @@ export class AccountsService {
     const params: any = urlParams
       .split('&')
       .reduce((acc, param) => this.stringParamToObjectParam(acc, param), {});
+    const url = `${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}`;
 
     if (params.state === nonce) {
-      // TODO: send code and state to BE to get token
-      console.warn(`TODO send code to BE to get auth token ${JSON.stringify(params)}`);
-      this.accountsStream.next(this.accountsStream.getValue()
-                                   .concat([
-                                     {
-                                       id: (new Date()).getTime(),
-                                       type: 'github',
-                                       name: 'ale',
-                                       avatar: 'https://avatars1.githubusercontent.com/u/4848998?v=3&s=40',
-                                       numOfRepos: 20
-                                     }
-                                   ]));
+      this.http
+          .post(url, JSON.stringify(params))
+          .subscribe((account: any) => {
+            const accounts: Account[] = this.accountsStream.getValue();
+            accounts.push(account as Account);
+            this.accountsStream.next(accounts);
+          });
+          /*.subscribe((account: any) => this.accountsStream.next(this.accountsStream.getValue()
+                                         .concat(account as Account)));*/
     }
 
     browserRef.close();

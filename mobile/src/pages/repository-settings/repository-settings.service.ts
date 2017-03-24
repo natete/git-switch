@@ -14,7 +14,7 @@ export class RepositorySettingsService {
     const url = `${Constants.BACKEND_URL}/${this.REPOSITORYSETTINGS_URL}/${settingId}`;
     return this.http
         .get(url)
-        .map(response => response.json().data as RepositorySetting)
+        .map(response => response.json().data as RepositorySetting);
   }
 
   updateRepositorySettings(repositorySetting: RepositorySetting):  Promise<RepositorySetting>{

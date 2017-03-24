@@ -8,6 +8,7 @@ import { Auth } from '../auth/auth';
 @Injectable()
 export class HttpService extends Http {
 
+  authData: Auth = new Auth();
   constructor(backend: XHRBackend,
               options: RequestOptions,
               private tokenService: TokenService) {
@@ -18,17 +19,24 @@ export class HttpService extends Http {
 
     // const s = new Subject<Response>();
 
-    const authData = new Auth(this.tokenService.getToken());
+    this.tokenService
+        .getToken()
+        .then(token => this.authData =  new Auth(token));
 
-    if (authData && authData.tokenType) {
+    if (this.authData && this.authData.tokenType) {
       if (typeof url === 'string') {
         if (!options) {
           options = { headers: new Headers() };
         }
-        options.headers.set('Authorization', `${authData.tokenType} ${authData.accessToken}`);
+        options.headers.set('Authorization', `${this.authData.tokenType} ${this.authData.accessToken}`);
       } else {
         // we have to add the token to the url object
-        url.headers.set('Authorization', `${authData.tokenType} ${authData.accessToken}`);
+        url.headers.set('Authorization', `${this.authData.tokenType} ${this.authData.accessToken}`);
+        url.headers.set('Access-Control-Allow-Origin', '*');
+        url.headers.set('Accept', '*/*');
+        url.headers.set('Accept-Charset', '*');
+        url.headers.set('Accept-Language', '*');
+        url.headers.set('Accept-Encoding', '*');
       }
     }
 
