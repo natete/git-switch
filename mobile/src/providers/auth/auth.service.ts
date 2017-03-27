@@ -8,7 +8,7 @@ import { Constants } from '../../shared/constants';
 @Injectable()
 export class AuthService {
 
-  private authSubject = new ReplaySubject<boolean>();
+  private authSubject = new ReplaySubject<boolean>(1);
 
   constructor(private http: Http,
               private tokenService: TokenService) {
