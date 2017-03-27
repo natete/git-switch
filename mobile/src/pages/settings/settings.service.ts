@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Setting } from './setting';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Http } from '@angular/http';
+import { Http} from '@angular/http';
+import { Constants } from '../../shared/constants';
 
 @Injectable()
 export class SettingsService {
-  private readonly SETTINGS_URL = 'api/settings';
+  private readonly SETTINGS_URL = 'api/simple_git/settings';
 
   private settingsStream = new BehaviorSubject<Setting[]>([]);
 
@@ -18,9 +19,8 @@ export class SettingsService {
   getSettings(): Observable<Setting[]> {
     if(this.settingsStream.getValue()){
       this.http
-          .get(this.SETTINGS_URL)
-          .map(response => response.json().data as Setting[])
-          .subscribe(setting => this.settingsStream.next(setting));
+          .get(`${Constants.BACKEND_URL}/${this.SETTINGS_URL}`)
+          .subscribe((setting: any) => this.settingsStream.next(setting as Setting[]));
     }
 
     return this.settingsStream.asObservable();

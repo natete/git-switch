@@ -1,8 +1,11 @@
 export interface Account {
   id: number;
-  type: string,
-  name: string,
-  avatar: string,
-  numOfRepos: number,
-  company?: string
+  fullname: string;
+  username: string;
+  email: string;
+  type: string;
+  photoUrl: string;
+  repoNumber: number;
+  organization: string;
+  location: string;
 }
