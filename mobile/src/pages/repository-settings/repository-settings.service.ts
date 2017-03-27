@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RepositorySetting } from './repository-setting';
 import { Http } from '@angular/http';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { Constants } from '../../shared/constants';
 
 @Injectable()
@@ -19,7 +19,6 @@ export class RepositorySettingsService {
 
   updateRepositorySettings(repositorySetting: RepositorySetting):  Promise<RepositorySetting>{
     const url = `${Constants.BACKEND_URL}/${this.REPOSITORYSETTINGS_URL}/${repositorySetting.id}`;
-    //new Headers({'Content-Type': 'application/json'});
     return this.http
       .put(url, JSON.stringify(repositorySetting))
       .toPromise();

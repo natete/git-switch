@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { PullRequest } from './pull-request';
-import { TokenService } from '../../providers/auth/token.service';
 import { Constants } from '../../shared/constants';
 
 @Injectable()
 export class PullRequestsService {
-  private readonly PULLREQUEST_URL = 'api/simple_git/pull_request';
+  private readonly PULLREQUEST_URL = 'api/simple_git/pull_request?_format=json';
 
   private pullRequestsStream = new BehaviorSubject<PullRequest[]>([]);
 
@@ -20,7 +19,7 @@ export class PullRequestsService {
   getPullRequests(): Observable<PullRequest[]> {
     if(this.pullRequestsStream.getValue()){
       this.http
-        .get(`${Constants.BACKEND_URL}/${this.PULLREQUEST_URL}?_format=json`)
+          .get(`${Constants.BACKEND_URL}/${this.PULLREQUEST_URL}`)
         .subscribe((pullrequest: any) => this.pullRequestsStream.next(pullrequest as PullRequest[]));
     }
 

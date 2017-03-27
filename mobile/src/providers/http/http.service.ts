@@ -32,11 +32,7 @@ export class HttpService extends Http {
       } else {
         // we have to add the token to the url object
         url.headers.set('Authorization', `${this.authData.tokenType} ${this.authData.accessToken}`);
-        url.headers.set('Access-Control-Allow-Origin', '*');
-        url.headers.set('Accept', '*/*');
-        url.headers.set('Accept-Charset', '*');
-        url.headers.set('Accept-Language', '*');
-        url.headers.set('Accept-Encoding', '*');
+        url.headers.set('Content-Type', 'application/json');
       }
     }
 

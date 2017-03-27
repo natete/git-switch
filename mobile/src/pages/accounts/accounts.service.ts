@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams} from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Account } from './account';
@@ -10,6 +10,7 @@ import { Constants } from '../../shared/constants';
 export class AccountsService {
   private readonly IN_APP_BROWSER_PARAMS = 'location=no,clearcache=yes';
   private readonly ACCOUNTS_URL = 'api/simple_git/account';
+  private readonly FORMAT_URL = '?_format=json';
 
   private accountsStream = new BehaviorSubject<Account[]>([]);
 
@@ -22,7 +23,7 @@ export class AccountsService {
   getAccounts(): Observable<Account[]> {
     if (this.accountsStream.getValue()) {
       this.http
-          .get(`${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}/all?_format=json`)
+          .get(`${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}/all${this.FORMAT_URL}`)
           .subscribe((accounts: any) => this.accountsStream.next(accounts as Account[]));
     }
 
@@ -34,7 +35,7 @@ export class AccountsService {
    */
   addAccount(): void {
 
-    const redirectUri = `${window.location.protocol}//localhost:${window.location.port}/accounts`;
+    const redirectUri = `${window.location.protocol}//localhost:${window.location.port}/accounts${this.FORMAT_URL}`;
 
     const nonce = this.createNonce();
 
@@ -105,7 +106,7 @@ export class AccountsService {
     const params: any = urlParams
       .split('&')
       .reduce((acc, param) => this.stringParamToObjectParam(acc, param), {});
-    const url = `${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}`;
+    const url = `${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}${this.FORMAT_URL}`;
 
     if (params.state === nonce) {
       this.http
@@ -115,8 +116,6 @@ export class AccountsService {
             accounts.push(account as Account);
             this.accountsStream.next(accounts);
           });
-          /*.subscribe((account: any) => this.accountsStream.next(this.accountsStream.getValue()
-                                         .concat(account as Account)));*/
     }
 
     browserRef.close();
