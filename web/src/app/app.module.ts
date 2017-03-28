@@ -2,15 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
-
 import { RoutesModule } from './core/routes/routes.module';
 import { AppComponent } from './app.component';
-
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './core/auth/auth.service';
 import { httpFactory } from './core/http/http.factory';
-
 import 'hammerjs';
 import { AccountsModule } from './accounts/accounts.module';
 import { SharedModule } from './shared/shared.module';
@@ -20,6 +17,7 @@ import { ConfigurationService } from './configuration/configuration.service';
 import { TokenService } from './core/auth/token.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { RepositoryComponent } from './configuration/repository/repository.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,6 +29,7 @@ import { RepositoryComponent } from './configuration/repository/repository.compo
   ],
   imports: [
     AccountsModule,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
