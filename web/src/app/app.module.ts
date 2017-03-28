@@ -17,7 +17,6 @@ import { ConfigurationService } from './configuration/configuration.service';
 import { TokenService } from './core/auth/token.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { RepositoryComponent } from './configuration/repository/repository.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     AccountsModule,
-    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
