@@ -105,11 +105,7 @@ export class AccountService {
       api = '/assets/json/new-account-lab.json';
     }
     if (currentNonce === nonce) {
-      // const params = new URLSearchParams();
-      // params.set('code', code);
-      // params.set('nonce', nonce);
 
-      //this.http.post('', params); // TODO
       return this.http.post(`${this.ACCOUNTS_ENDPOINT}?_format=json`, { code: code, state: nonce })
                  .map((res) => {
                    const currentValue: Account[] = this.accounts.getValue();
@@ -138,10 +134,6 @@ export class AccountService {
   private refreshConnectedAccounts(): Observable<Account[]> {
 
     return this.http.get(`${this.ACCOUNTS_ENDPOINT}/all?_format=json`)
-    //return this.http.get(`${Constants.BACKEND_URL}/${accountEndpoint}/account/all?_format=json`)
-    // .map((res: Response) => {
-    //   res.json()
-    // })
                .catch((err: any) => Observable.throw(err));
   }
 
