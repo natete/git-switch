@@ -1,11 +1,11 @@
 export class PullRequest {
   title: string;
   description: string;
-  userName: string;
+  username: string;
   date: string;
   commits: number;
   comments: number;
-  count: number;
+  id: number;
   from: string;
   to: string;
 
@@ -13,9 +13,9 @@ export class PullRequest {
     // TODO: Adapt this to the information received from the BE
     if (pullRequest) {
       this.title = pullRequest.title;
-      this.count = pullRequest.count;
+      this.id = pullRequest.id;
       this.description = pullRequest.description;
-      this.userName = pullRequest.userName;
+      this.username = pullRequest.username;
       this.date = pullRequest.date;
       this.commits = pullRequest.commits;
       this.comments = pullRequest.comments;

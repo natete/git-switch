@@ -10,7 +10,6 @@ export class Account {
   location: string;
 
   constructor(account?: any) {
-    // TODO: Adapt this to the information received from the BE
     if (account) {
       this.id = account.id;
       this.username = account.username;
