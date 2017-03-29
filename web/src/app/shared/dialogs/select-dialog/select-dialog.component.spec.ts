@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { SelectDialog } from './select-dialog.component';
 
-import { MdDialog, MdDialogRef } from '@angular/material';
-
-describe('SelectDialogComponent', () => {
-  let component: MdDialog;
-  let fixture: ComponentFixture<MdDialog>;
+describe('SelectDialog', () => {
+  let component: SelectDialog;
+  let fixture: ComponentFixture<SelectDialog>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectDialogComponent ]
+      declarations: [ SelectDialog ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectDialogComponent);
+    fixture = TestBed.createComponent(SelectDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

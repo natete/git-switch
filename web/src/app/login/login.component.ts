@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../shared/providers/spinner.service';
@@ -17,7 +17,6 @@ export class LoginComponent {
   constructor(private loginService: LoginService,
               private spinnerService: SpinnerService,
               private router: Router) { }
-
 
   /**
    * Check if the login button must be disabled.

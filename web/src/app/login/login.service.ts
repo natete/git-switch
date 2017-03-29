@@ -15,7 +15,7 @@ export class LoginService {
    * @param password The password.
    * @returns {Promise<boolean>} That resolves if everything goes fine or it's rejected otherwise.
    */
-  login(username: string, password: string): Promise<boolean> {
+  login(username: string, password: string): Promise<void> {
     const loginEndpoint = 'oauth/token';
     const requestBody = this.buildRequestBody(username, password);
 
