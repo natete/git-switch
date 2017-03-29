@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptionsArgs, Request, Response, XHRBackend, RequestOptions, Headers } from '@angular/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable()
@@ -24,14 +24,16 @@ export class HttpService extends Http {
           options = { headers: new Headers() };
         }
         options.headers.set('Authorization', `${authData.tokenType} ${authData.accessToken}`);
+        options.headers.set('Content-Type', 'application/json');
       } else {
         // we have to add the token to the url object
         url.headers.set('Authorization', `${authData.tokenType} ${authData.accessToken}`);
+        url.headers.set('Content-Type', 'application/json');
       }
     }
 
     return super.request(url, options)
-        .map(res => res.json());
+                .map(res => res.json());
 
     // return s.asObservable();
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
-import { Observable, BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Account } from './account';
 import { InAppBrowser } from '@ionic-native/inappbrowser';
 import { Constants } from '../../shared/constants';
@@ -9,12 +9,12 @@ import { Constants } from '../../shared/constants';
 @Injectable()
 export class AccountsService {
   private readonly IN_APP_BROWSER_PARAMS = 'location=no,clearcache=yes';
-  private readonly ACCOUNTS_URL = 'api/accounts';
+  private readonly ACCOUNTS_URL = 'api/simple_git/account';
+  private readonly FORMAT_URL = '?_format=json';
 
   private accountsStream = new BehaviorSubject<Account[]>([]);
 
-
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   /**
    * Get the observable of the accounts the user has.
@@ -23,9 +23,8 @@ export class AccountsService {
   getAccounts(): Observable<Account[]> {
     if (this.accountsStream.getValue()) {
       this.http
-          .get(this.ACCOUNTS_URL)
-          .map(response => response.json().data as Account[])
-          .subscribe(accounts => this.accountsStream.next(accounts));
+          .get(`${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}/all${this.FORMAT_URL}`)
+          .subscribe((accounts: any) => this.accountsStream.next(accounts as Account[]));
     }
 
     return this.accountsStream.asObservable();
@@ -36,7 +35,7 @@ export class AccountsService {
    */
   addAccount(): void {
 
-    const redirectUri = `${window.location.protocol}//localhost:${window.location.port}/accounts`;
+    const redirectUri = `${window.location.protocol}//localhost:${window.location.port}/accounts${this.FORMAT_URL}`;
 
     const nonce = this.createNonce();
 
@@ -54,7 +53,7 @@ export class AccountsService {
    * @param accountId the id  of account to be deleted
    */
   deleteAccount(accountId: number): void {
-    const url = `${this.ACCOUNTS_URL}/${accountId}`;
+    const url = `${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}/${accountId}`;
     this.http
         .delete(url)
         .subscribe(() => this.accountsStream.next(
@@ -107,20 +106,16 @@ export class AccountsService {
     const params: any = urlParams
       .split('&')
       .reduce((acc, param) => this.stringParamToObjectParam(acc, param), {});
+    const url = `${Constants.BACKEND_URL}/${this.ACCOUNTS_URL}${this.FORMAT_URL}`;
 
     if (params.state === nonce) {
-      // TODO: send code and state to BE to get token
-      console.warn(`TODO send code to BE to get auth token ${JSON.stringify(params)}`);
-      this.accountsStream.next(this.accountsStream.getValue()
-                                   .concat([
-                                     {
-                                       id: (new Date()).getTime(),
-                                       type: 'github',
-                                       name: 'ale',
-                                       avatar: 'https://avatars1.githubusercontent.com/u/4848998?v=3&s=40',
-                                       numOfRepos: 20
-                                     }
-                                   ]));
+      this.http
+          .post(url, JSON.stringify(params))
+          .subscribe((account: any) => {
+            const accounts: Account[] = this.accountsStream.getValue();
+            accounts.push(account as Account);
+            this.accountsStream.next(accounts);
+          });
     }
 
     browserRef.close();

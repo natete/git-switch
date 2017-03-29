@@ -1,6 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { Http, XHRBackend, RequestOptions } from '@angular/http';
-import { InMemoryWebApiModule, InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { PullRequestsPage } from '../pages/pull-requests/pull-requests.page';
@@ -29,11 +28,7 @@ import { RepositorySettingsService } from '../pages/repository-settings/reposito
     RepositorySettingsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    InMemoryWebApiModule.forRoot(InMemoryDataService, {
-      host: 'localhost',
-      passThruUnknownUrl: true
-    } as InMemoryBackendConfigArgs)
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

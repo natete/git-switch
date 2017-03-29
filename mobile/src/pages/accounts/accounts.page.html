@@ -16,21 +16,21 @@
 
   <ion-list [virtualScroll]="accounts" approxItemHeight="115px">
     <ion-item *virtualItem="let account" margin-bottom>
-      <ion-avatar item-left><img [src]="account.avatar"></ion-avatar>
+      <ion-avatar item-left><img [src]="account.photoUrl"></ion-avatar>
 
       <div class="item-content">
         <h2>
           <ion-icon item-left name="logo-github"></ion-icon>
-          {{account.name}}
+          {{account.username}}
         </h2>
         <ion-row>
           <ion-col col-4 class="repo-info-container">
             <ion-icon name="book" item-left></ion-icon>
-            {{account.numOfRepos}}
+            {{account.repoNumber}}
           </ion-col>
           <ion-col col-8 class="repo-info-container">
             <ion-icon name="people" item-left></ion-icon>
-            {{account.company}}
+            {{account.organization}}
           </ion-col>
         </ion-row>
       </div>
