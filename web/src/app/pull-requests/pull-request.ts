@@ -10,7 +10,6 @@ export class PullRequest {
   to: string;
 
   constructor(pullRequest?: any) {
-    // TODO: Adapt this to the information received from the BE
     if (pullRequest) {
       this.title = pullRequest.title;
       this.id = pullRequest.id;
